@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>Gran Teatro Falla</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="../Fotos/favicon.png">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="styles.css" rel="stylesheet">
+
+    <style>
+        body {
+            color: white;
+        }
+        
+        .carousel-inner img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-md bg-falla navbar-dark">
+        <div class="col-md-2">
+            <a class="navbar-brand" href="home.html"><img class="logo" src="../Fotos/logo.png"></a>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        <div class="col-md-6 collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="nav nav-pills">
+                <li class="nav-item">
+                    <a class="nav-link" href="home.html">Inicio</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">COAC</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="list-sesion.html">Preliminares</a>
+                        <a class="dropdown-item" href="list-sesion.html">Cuartos de Final</a>
+                        <a class="dropdown-item" href="list-sesion.html">Semifinales</a>
+                        <a class="dropdown-item" href="list-sesion.html">Final</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="clasificacion.html">Clasificación</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Agrupaciones</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="agrupacion.html">Comparsas</a>
+                        <a class="dropdown-item" href="agrupacion.html">Chirigotas</a>
+                        <a class="dropdown-item" href="agrupacion.html">Cuartetos</a>
+                        <a class="dropdown-item" href="agrupacion.html">Coros</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="radio.html">Radio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="entradas.html">Comprar Entradas</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-3 offset-1 collapse navbar-collapse" id="collapsibleNavbar">
+            <form class="form-inline" action="">
+                <div class="input-group">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Buscar">
+                    <button class="btn btn-primary" type="submit">Buscar</button>
+                </div>
+            </form>
+        </div>
+    </nav>
+    <div class="jumbotron text-center">
+        <h1>Bienvenido al Gran Teatro Falla</h1>
+        <p class="text-secondary">Sigue en directo el COAC con Onda Cádiz y Canal Sur.</p>
+    </div>
+    <div class="container" style="margin-top: 3%;">
+        <div class="embed-responsive embed-responsive-16by9">
+            <iframe src="https://www.youtube.com/embed/z9PDX1vgmw0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+</body>
+
+</html>
