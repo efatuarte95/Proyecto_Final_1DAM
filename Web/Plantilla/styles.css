@@ -269,15 +269,14 @@ fieldset {
     font-size: 17px;
 }
 
-footer.main-footer.fixed-footer {
-    position: fixed;
+.main-footer {
     z-index: 2;
     left: 0px;
     bottom: 0px;
 }
 
 .sub-footer {
-    margin-top: 40px;
+    margin-top: 4%;
     background: #AF7840;
     padding: 5px 0px;
 }
@@ -311,8 +310,12 @@ footer.main-footer.fixed-footer {
     color: #730707;
 }
 
+.about-widget {
+    margin-left: 5%;
+}
+
 .sub-footer .about-widget img {
     float: left;
-    width: 60%;
+    width: 65%;
     height: auto;
 }

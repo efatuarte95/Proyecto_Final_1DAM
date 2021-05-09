@@ -14,13 +14,34 @@
     <link href="styles.css" rel="stylesheet">
 
     <style>
-        body {
-            color: white;
+        body,
+        html {
+            height: 100%;
+            margin: 0;
         }
         
-        .carousel-inner img {
-            width: 100%;
-            height: 100%;
+        .bgimg {
+            background-image: url('../Fotos/telon.jpeg');
+            height: 70%;
+            background-position: center;
+            background-size: cover;
+            position: relative;
+            color: white;
+            font-family: "Courier New", Courier, monospace;
+            font-size: 50px;
+        }
+        
+        .middle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        
+        hr {
+            margin: auto;
+            width: 40%;
         }
     </style>
 </head>
@@ -77,6 +98,13 @@
             </form>
         </div>
     </nav>
+    <div class="bgimg">
+        <div class="middle">
+            <h1>COMING SOON</h1>
+            <hr>
+            <p>El próximo Febrero...</p>
+        </div>
+    </div>
     <footer class="main-footer bg-falla">
         <div class="sub-footer fl-wrap">
             <div class="container-fluid">
@@ -87,7 +115,7 @@
                         </div>
                     </div>
                     <div class="col-md-4 offset-1">
-                        <div class="copyright"> ©Gran Teatro Falla. Todos los derechos reservados.</div>
+                        <div class="copyright">©Gran Teatro Falla. Todos los derechos reservados.</div>
                     </div>
                     <div class="col-md-3 offset-1">
                         <div class="footer-social">
