@@ -268,3 +268,51 @@ fieldset {
 .nav-item>a {
     font-size: 17px;
 }
+
+footer.main-footer.fixed-footer {
+    position: fixed;
+    z-index: 2;
+    left: 0px;
+    bottom: 0px;
+}
+
+.sub-footer {
+    margin-top: 40px;
+    background: #AF7840;
+    padding: 5px 0px;
+}
+
+.copyright {
+    display: inline-block;
+    text-align: center;
+    color: #730707;
+    font-size: 15px;
+    position: relative;
+    top: 30%;
+}
+
+.footer-social {
+    float: inline-end;
+}
+
+.footer-social li {
+    float: left;
+    margin-left: 20px;
+    list-style-type: none;
+}
+
+.footer-social li a {
+    border-left: none;
+    font-size: 20px;
+    color: #730707;
+}
+
+.footer-social li a:hover {
+    color: #730707;
+}
+
+.sub-footer .about-widget img {
+    float: left;
+    width: 60%;
+    height: auto;
+}
