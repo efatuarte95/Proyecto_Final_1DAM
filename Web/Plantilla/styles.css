@@ -30,6 +30,11 @@ a:hover {
     color: #730707;
 }
 
+.show a:active {
+    color: white;
+    background-color: #730707;
+}
+
 p,
 li,
 a {
@@ -38,6 +43,11 @@ a {
 
 .bg-falla {
     background-color: #AF7840!important;
+}
+
+a:active {
+    color: white;
+    background-color: #730707;
 }
 
 fieldset {
