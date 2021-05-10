@@ -14,7 +14,7 @@
     <link href="styles.css" rel="stylesheet">
     <style>
         body {
-            color: #730707;
+            color: #566787;
             background: #730707;
             font-family: 'Roboto', sans-serif;
         }
@@ -118,6 +118,10 @@
             margin: 0 5px;
         }
         
+        table.table td a.save {
+            color: #003AA7;
+        }
+        
         table.table td a.edit {
             color: #FFC107;
         }
@@ -189,9 +193,10 @@
                 $(this).attr("disabled", "disabled");
                 var index = $("table tbody tr:last-child").index();
                 var row = '<tr>' +
-                    '<td><input type="text" class="form-control" name="name" id="name"></td>' +
-                    '<td><input type="text" class="form-control" name="department" id="department"></td>' +
-                    '<td><input type="text" class="form-control" name="phone" id="phone"></td>' +
+                    '<td></td>' +
+                    '<td><input type="text" class="form-control" name="nombre" id="nombre"></td>' +
+                    '<td><input type="text" class="form-control" name="director" id="director"></td>' +
+                    '<td><input type="text" class="form-control" name="ciudad" id="ciudad"></td>' +
                     '<td>' + actions + '</td>' +
                     '</tr>';
                 $("table").append(row);
@@ -279,15 +284,16 @@
                     <a class="nav-link" href="radio.html">Radio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="entradas.html">Comprar Entradas</a>
+                    <a class="nav-link" href="#">Comprar Entradas</a>
                 </li>
             </ul>
         </div>
+        <div class="col-1 offset-1" style="margin-left: 5%;"><a href="#">Acceder<i class="fa fa-sign-in" style="margin-left: 6%" aria-hidden="true"></i></a></div>
     </nav>
 
     <div class="jumbotron text-center">
         <h1>Bienvenido al Gran Teatro Falla</h1>
-        <p class="text-secondary">Consulta las agrupaciones inscritas en tu modalidad favorita.</p>
+        <p class="text-secondary">Cosulta las agrupaciones de tu modalidad favorita.</p>
     </div>
     <div class="container-xl">
         <div class="table-responsive">
@@ -300,11 +306,11 @@
                         <div class="col-4">
                             <div class="search-box">
                                 <i class="fa fa-search"></i>
-                                <input type="text" class="form-control" placeholder="Search&hellip;">
+                                <input type="text" class="form-control" placeholder="Buscar&hellip;">
                             </div>
                         </div>
                         <div class="col-2">
-                            <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i>Añadir</button>
+                            <button class="btn btn-info add-new"><i class="fa fa-plus"></i>Añadir</button>
                         </div>
                     </div>
                 </div>
@@ -315,80 +321,100 @@
                             <th>Nombre<i class="fa fa-sort"></i></th>
                             <th>Director</th>
                             <th>Ciudad</th>
-                            <th>Puntos<i class="fa fa-sort"></i></th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>1</td>
-                            <td>Thomas Hardy</td>
-                            <td>89 Chiaroscuro Rd.</td>
-                            <td>Portland</td>
-                            <td>97219</td>
+                            <td>Lorem Ipsum</td>
+                            <td>Lorem Ipsum.</td>
+                            <td>Sevilla</td>
                             <td>
+                                <a href="#" class="save" title="Guardar" data-toggle="tooltip"><i class="fa fa-save"></i></a>
                                 <a href="#" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
                                 <a href="#" class="delete" title="Borrar" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                         <tr>
                             <td>2</td>
-                            <td>Maria Anders</td>
-                            <td>Obere Str. 57</td>
-                            <td>Berlin</td>
-                            <td>12209</td>
+                            <td>Lorem Ipsum</td>
+                            <td>Lorem Ipsum</td>
+                            <td>Cádiz</td>
                             <td>
+                                <a href="#" class="save" title="Guardar" data-toggle="tooltip"><i class="fa fa-save"></i></a>
                                 <a href="#" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
                                 <a href="#" class="delete" title="Borrar" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                         <tr>
                             <td>3</td>
-                            <td>Fran Wilson</td>
-                            <td>C/ Araquil, 67</td>
-                            <td>Madrid</td>
-                            <td>28023</td>
+                            <td>Lorem Ipsum</td>
+                            <td>Lorem Ipsum</td>
+                            <td>Huelva</td>
                             <td>
+                                <a href="#" class="save" title="Guardar" data-toggle="tooltip"><i class="fa fa-save"></i></a>
                                 <a href="#" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
                                 <a href="#" class="delete" title="Borrar" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                         <tr>
                             <td>4</td>
-                            <td>Dominique Perrier</td>
-                            <td>25, rue Lauriston</td>
-                            <td>Paris</td>
-                            <td>75016</td>
+                            <td>Lorem Ipsum</td>
+                            <td>Lorem Ipsum</td>
+                            <td>Sevilla</td>
                             <td>
+                                <a href="#" class="save" title="Guardar" data-toggle="tooltip"><i class="fa fa-save"></i></a>
                                 <a href="#" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
                                 <a href="#" class="delete" title="Borrar" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                         <tr>
                             <td>5</td>
-                            <td>Martin Blank</td>
-                            <td>Via Monte Bianco 34</td>
-                            <td>Turin</td>
-                            <td>10100</td>
+                            <td>Lorem Ipsum</td>
+                            <td>Lorem Ipsum</td>
+                            <td>Cádiz</td>
                             <td>
+                                <a href="#" class="save" title="Guardar" data-toggle="tooltip"><i class="fa fa-save"></i></a>
+                                <a href="#" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
+                                <a href="#" class="delete" title="Borrar" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>Lorem Ipsum</td>
+                            <td>Lorem Ipsum</td>
+                            <td>Cádiz</td>
+                            <td>
+                                <a href="#" class="save" title="Guardar" data-toggle="tooltip"><i class="fa fa-save"></i></a>
+                                <a href="#" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
+                                <a href="#" class="delete" title="Borrar" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>Lorem Ipsum</td>
+                            <td>Lorem Ipsum</td>
+                            <td>Cádiz</td>
+                            <td>
+                                <a href="#" class="save" title="Guardar" data-toggle="tooltip"><i class="fa fa-save"></i></a>
+                                <a href="#" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
+                                <a href="#" class="delete" title="Borrar" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>Lorem Ipsum</td>
+                            <td>Lorem Ipsum</td>
+                            <td>Cádiz</td>
+                            <td>
+                                <a href="#" class="save" title="Guardar" data-toggle="tooltip"><i class="fa fa-save"></i></a>
                                 <a href="#" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
                                 <a href="#" class="delete" title="Borrar" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                     </tbody>
                 </table>
-                <div class="clearfix">
-                    <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
-                    <ul class="pagination">
-                        <li class="page-item disabled"><a href="#"><i class="fa fa-angle-double-left"></i></a></li>
-                        <li class="page-item"><a href="#" class="page-link">1</a></li>
-                        <li class="page-item"><a href="#" class="page-link">2</a></li>
-                        <li class="page-item active"><a href="#" class="page-link">3</a></li>
-                        <li class="page-item"><a href="#" class="page-link">4</a></li>
-                        <li class="page-item"><a href="#" class="page-link">5</a></li>
-                        <li class="page-item"><a href="#" class="page-link"><i class="fa fa-angle-double-right"></i></a></li>
-                    </ul>
-                </div>
             </div>
         </div>
     </div>
