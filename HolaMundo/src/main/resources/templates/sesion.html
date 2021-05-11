@@ -18,15 +18,56 @@
             background: #730707;
             font-family: 'Roboto', sans-serif;
         }
-        
-        table.table td a.eye {
-            color: #003AA7;
-        }
     </style>
     <script>
         $(document).ready(function() {
             $('[data-toggle="tooltip"]').tooltip();
             var actions = $("table td:last-child").html();
+            // Append table with add row form on add new button click
+            $(".add-new").click(function() {
+                $(this).attr("disabled", "disabled");
+                var index = $("table tbody tr:last-child").index();
+                var row = '<tr>' +
+                    '<td><input type="text" class="form-control" name="modalidad" id="modalidad"></td>' +
+                    '<td><input type="text" class="form-control" name="nombre" id="nombre"></td>' +
+                    '<td><input type="text" class="form-control" name="director" id="director"></td>' +
+                    '<td><input type="text" class="form-control" name="ciudad" id="ciudad"></td>' +
+                    '<td><input type="number" class="form-control" name="puntos" id="puntos"></td>' +
+                    '<td>' + actions + '</td>' +
+                    '</tr>';
+                $("table").append(row);
+                $("table tbody tr").eq(index + 1).find(".add, .edit").toggle();
+                $('[data-toggle="tooltip"]').tooltip();
+            });
+            // Add row on add button click
+            $(document).on("click", ".add", function() {
+                var empty = false;
+                var input = $(this).parents("tr").find('input[type="text"]');
+                input.each(function() {
+                    if (!$(this).val()) {
+                        $(this).addClass("error");
+                        empty = true;
+                    } else {
+                        $(this).removeClass("error");
+                    }
+                });
+                $(this).parents("tr").find(".error").first().focus();
+                if (!empty) {
+                    input.each(function() {
+                        $(this).parent("td").html($(this).val());
+                    });
+                    $(this).parents("tr").find(".add, .edit").toggle();
+                    $(".add-new").removeAttr("disabled");
+                }
+            });
+            // Edit row on edit button click
+            $(document).on("click", ".edit", function() {
+                $(this).parents("tr").find("td:not(:last-child)").each(function() {
+                    $(this).html('<input type="text" class="form-control" value="' + $(this).text() + '">');
+                });
+                $(this).parents("tr").find(".add, .edit").toggle();
+                $(".add-new").attr("disabled", "disabled");
+            });
             // Delete row on delete button click
             $(document).on("click", ".delete", function() {
                 $(this).parents("tr").remove();
@@ -88,99 +129,135 @@
 
     <div class="jumbotron text-center">
         <h1>Bienvenido al Gran Teatro Falla</h1>
-        <p class="text-secondary">Comprueba qué agrupaciones cantan en las semifinales del COAC.</p>
+        <p class="text-secondary">Comprueba qué agrupaciones cantan en la sesión de hoy.</p>
     </div>
-    <div class="container">
+    <div class="container-xl">
         <div class="table-responsive">
             <div class="table-wrapper">
                 <div class="table-title">
                     <div class="row">
                         <div class="col-6">
-                            <h2><b>Semifinales</b></h2>
+                            <h2><b>Semifinal Día 3</b></h2>
                         </div>
-                        <div class="col-2 offset-4">
-                            <a href="form-sesion.html"><button class="btn btn-info add-new"><i class="fa fa-plus"></i>Añadir</button></a>
+                        <div class="col-4">
+                            <div class="search-box">
+                                <i class="fa fa-search"></i>
+                                <input type="text" class="form-control" placeholder="Buscar&hellip;">
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <button class="btn btn-info add-new"><i class="fa fa-plus"></i>Añadir</button>
                         </div>
                     </div>
                 </div>
                 <table class="table table-striped table-hover table-bordered">
                     <thead>
                         <tr>
-                            <th>Sesióm</th>
-                            <th>Fecha<i class="fa fa-sort"></i></th>
+                            <th>Modalidad</th>
+                            <th>Nombre<i class="fa fa-sort"></i></th>
+                            <th>Director</th>
+                            <th>Ciudad</th>
+                            <th>Puntos<i class="fa fa-sort"></i></th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>1</td>
-                            <td>01/01/2021</td>
+                            <td>Comparsa</td>
+                            <td>Lorem Ipsum</td>
+                            <td>Lorem Ipsum.</td>
+                            <td>Sevilla</td>
+                            <td>97219</td>
                             <td>
-                                <a href="sesion.html" class="eye" title="Ver Sesión" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
-                                <a href="sesion.html" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
+                                <a href="#" class="save" title="Guardar" data-toggle="tooltip"><i class="fa fa-save"></i></a>
+                                <a href="#" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
                                 <a href="#" class="delete" title="Borrar" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                         <tr>
-                            <td>2</td>
-                            <td>01/01/2021</td>
+                            <td>Coro</td>
+                            <td>Lorem Ipsum</td>
+                            <td>Lorem Ipsum</td>
+                            <td>Cádiz</td>
+                            <td>12209</td>
                             <td>
-                                <a href="sesion.html" class="eye" title="Ver Sesión" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
-                                <a href="sesion.html" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
+                                <a href="#" class="save" title="Guardar" data-toggle="tooltip"><i class="fa fa-save"></i></a>
+                                <a href="#" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
                                 <a href="#" class="delete" title="Borrar" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                         <tr>
-                            <td>3</td>
-                            <td>01/01/2021</td>
+                            <td>Chirigota</td>
+                            <td>Lorem Ipsum</td>
+                            <td>Lorem Ipsum</td>
+                            <td>Huelva</td>
+                            <td>28023</td>
                             <td>
-                                <a href="sesion.html" class="eye" title="Ver Sesión" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
-                                <a href="sesion.html" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
+                                <a href="#" class="save" title="Guardar" data-toggle="tooltip"><i class="fa fa-save"></i></a>
+                                <a href="#" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
                                 <a href="#" class="delete" title="Borrar" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                         <tr>
-                            <td>4</td>
-                            <td>01/01/2021</td>
+                            <td>Cuarteto</td>
+                            <td>Lorem Ipsum</td>
+                            <td>Lorem Ipsum</td>
+                            <td>Sevilla</td>
+                            <td>75016</td>
                             <td>
-                                <a href="sesion.html" class="eye" title="Ver Sesión" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
-                                <a href="sesion.html" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
+                                <a href="#" class="save" title="Guardar" data-toggle="tooltip"><i class="fa fa-save"></i></a>
+                                <a href="#" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
                                 <a href="#" class="delete" title="Borrar" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                         <tr>
-                            <td>5</td>
-                            <td>01/01/2021</td>
+                            <td colspan="6" style="text-align: center; letter-spacing: 3em;">DESCANSO</td>
+                        </tr>
+                        <tr>
+                            <td>Comparsa</td>
+                            <td>Lorem Ipsum</td>
+                            <td>Lorem Ipsum</td>
+                            <td>Cádiz</td>
+                            <td>10100</td>
                             <td>
-                                <a href="sesion.html" class="eye" title="Ver Sesión" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
-                                <a href="sesion.html" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
+                                <a href="#" class="save" title="Guardar" data-toggle="tooltip"><i class="fa fa-save"></i></a>
+                                <a href="#" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
                                 <a href="#" class="delete" title="Borrar" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                         <tr>
-                            <td>6</td>
-                            <td>01/01/2021</td>
+                            <td>Coro</td>
+                            <td>Lorem Ipsum</td>
+                            <td>Lorem Ipsum</td>
+                            <td>Cádiz</td>
+                            <td>10100</td>
                             <td>
-                                <a href="sesion.html" class="eye" title="Ver Sesión" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
-                                <a href="sesion.html" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
+                                <a href="#" class="save" title="Guardar" data-toggle="tooltip"><i class="fa fa-save"></i></a>
+                                <a href="#" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
                                 <a href="#" class="delete" title="Borrar" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                         <tr>
-                            <td>7</td>
-                            <td>01/01/2021</td>
+                            <td>Chirigota</td>
+                            <td>Lorem Ipsum</td>
+                            <td>Lorem Ipsum</td>
+                            <td>Cádiz</td>
+                            <td>10100</td>
                             <td>
-                                <a href="sesion.html" class="eye" title="Ver Sesión" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
-                                <a href="sesion.html" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
+                                <a href="#" class="save" title="Guardar" data-toggle="tooltip"><i class="fa fa-save"></i></a>
+                                <a href="#" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
                                 <a href="#" class="delete" title="Borrar" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                         <tr>
-                            <td>8</td>
-                            <td>01/01/2021</td>
+                            <td>Comparsa</td>
+                            <td>Lorem Ipsum</td>
+                            <td>Lorem Ipsum</td>
+                            <td>Cádiz</td>
+                            <td>10100</td>
                             <td>
-                                <a href="sesion.html" class="eye" title="Ver Sesión" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
-                                <a href="sesion.html" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
+                                <a href="#" class="save" title="Guardar" data-toggle="tooltip"><i class="fa fa-save"></i></a>
+                                <a href="#" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
                                 <a href="#" class="delete" title="Borrar" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
