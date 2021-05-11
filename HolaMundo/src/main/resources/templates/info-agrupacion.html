@@ -51,7 +51,7 @@
         }
         
         .sub-footer {
-            margin-top: 9% !important;
+            margin-top: 5% !important;
             background: #AF7840;
             padding: 5px 0px;
         }
@@ -103,33 +103,22 @@
         </div>
         <div class="col-1 offset-1" style="margin-left: 5%;"><a href="#">Acceder<i class="fa fa-sign-in" style="margin-left: 6%" aria-hidden="true"></i></a></div>
     </nav>
-
-    <div class="container">
+    <div class="jumbotron text-center">
+        <h1>Bienvenido al Gran Teatro Falla</h1>
+        <p class="text-secondary">Consulta la información de tu agrupación favorita.</p>
+    </div>
+    <div class="container-xl">
         <div class="table-responsive">
             <div class="table-wrapper">
-                <div class="row">
-                    <div class="col-12 text-center">
-                        <h2><b>Añadir nueva Sesión</b></h2>
+                <div class="table-title">
+                    <div class="row">
+                        <div class="col-10">
+                            <h2><b>Comparsa La Chusma Selecta</b></h2>
+                        </div>
+                        <div class="col-2">
+                            <a href="/form-agrupacion" th:href="@{'/form-agrupacion'}"><button class="btn btn-info add-new"><i class="fa fa-pencil"></i>Editar</button></a>
+                        </div>
                     </div>
-                </div>
-                <form action="">
-                    <div class="form-group col-8 offset-2">
-                        <label for="selectModalidad">Categoría</label>
-                        <select class="form-control" id="selectModalidad">
-                            <option>-------</option>
-                            <option>Preliminares</option>
-                            <option>Cuartos de Final</option>
-                            <option>Semifinal</option>
-                            <option>Final</option>
-                        </select>
-                    </div>
-                    <div class="form-group col-8 offset-2">
-                        <label for="name">Fecha</label>
-                        <input type="date" class="form-control" id="fecha" placeholder="Fecha">
-                    </div>
-                </form>
-                <div class="col-2 offset-10">
-                    <button type="button" class="btn btn-info add-new"><i class="fa fa-save"></i>Guardar</button>
                 </div>
             </div>
         </div>

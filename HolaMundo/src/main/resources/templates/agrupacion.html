@@ -11,7 +11,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link href="styles.css" rel="stylesheet">
+    <link href="/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet">
     <style>
         body {
             color: #566787;
@@ -48,7 +48,7 @@
 <body>
     <nav class="navbar navbar-expand-md bg-falla navbar-dark">
         <div class="col-md-2">
-            <a class="navbar-brand" href="home.html"><img class="logo" src="/img/logo.png"></a>
+            <a class="navbar-brand" href="/"><img class="logo" src="/img/logo.png"></a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
@@ -56,31 +56,31 @@
         <div class="col-7 offset-1 collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="nav nav-pills">
                 <li class="nav-item">
-                    <a class="nav-link" href="home.html">Inicio</a>
+                    <a class="nav-link" href="/">Inicio</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">COAC</a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="list-sesion.html">Preliminares</a>
-                        <a class="dropdown-item" href="list-sesion.html">Cuartos de Final</a>
-                        <a class="dropdown-item" href="list-sesion.html">Semifinales</a>
-                        <a class="dropdown-item" href="list-sesion.html">Final</a>
+                        <a class="dropdown-item" href="/list-sesion" th:href="@{'/list-sesion'}">Preliminares</a>
+                        <a class="dropdown-item" href="/list-sesion" th:href="@{'/list-sesion'}">Cuartos de Final</a>
+                        <a class="dropdown-item" href="/list-sesion" th:href="@{'/list-sesion'}">Semifinales</a>
+                        <a class="dropdown-item" href="/list-sesion" th:href="@{'/list-sesion'}">Final</a>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="clasificacion.html">Clasificación</a>
+                    <a class="nav-link" href="/clasificacion" th:href="@{'/clasificacion'}">Clasificación</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Agrupaciones</a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="agrupacion.html">Comparsas</a>
-                        <a class="dropdown-item" href="agrupacion.html">Chirigotas</a>
-                        <a class="dropdown-item" href="agrupacion.html">Cuartetos</a>
-                        <a class="dropdown-item" href="agrupacion.html">Coros</a>
+                        <a class="dropdown-item" href="/agrupacion" th:href="@{'/agrupacion'}">Comparsas</a>
+                        <a class="dropdown-item" href="/agrupacion" th:href="@{'/agrupacion'}">Chirigotas</a>
+                        <a class="dropdown-item" href="/agrupacion" th:href="@{'/agrupacion'}">Cuartetos</a>
+                        <a class="dropdown-item" href="/agrupacion" th:href="@{'/agrupacion'}">Coros</a>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="radio.html">Radio</a>
+                    <a class="nav-link" href="/radio" th:href="@{'/radio'}">Radio</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Comprar Entradas</a>
@@ -109,7 +109,7 @@
                             </div>
                         </div>
                         <div class="col-2">
-                            <a href="form-agrupacion.html"><button class="btn btn-info add-new"><i class="fa fa-plus"></i>Añadir</button></a>
+                            <a href="/form-agrupacion" th:href="@{'/form-agrupacion'}"><button class="btn btn-info add-new"><i class="fa fa-plus"></i>Añadir</button></a>
                         </div>
                     </div>
                 </div>
@@ -126,8 +126,8 @@
                     <tbody>
                         <tr>
                             <td>1</td>
-                            <td>Lorem Ipsum</td>
-                            <td>Lorem Ipsum.</td>
+                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
+                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
                             <td>Sevilla</td>
                             <td>
                                 <a href="#" class="save" title="Guardar" data-toggle="tooltip"><i class="fa fa-save"></i></a>
@@ -137,8 +137,8 @@
                         </tr>
                         <tr>
                             <td>2</td>
-                            <td>Lorem Ipsum</td>
-                            <td>Lorem Ipsum</td>
+                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
+                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
                             <td>Cádiz</td>
                             <td>
                                 <a href="#" class="save" title="Guardar" data-toggle="tooltip"><i class="fa fa-save"></i></a>
@@ -148,8 +148,8 @@
                         </tr>
                         <tr>
                             <td>3</td>
-                            <td>Lorem Ipsum</td>
-                            <td>Lorem Ipsum</td>
+                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
+                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
                             <td>Huelva</td>
                             <td>
                                 <a href="#" class="save" title="Guardar" data-toggle="tooltip"><i class="fa fa-save"></i></a>
@@ -159,8 +159,8 @@
                         </tr>
                         <tr>
                             <td>4</td>
-                            <td>Lorem Ipsum</td>
-                            <td>Lorem Ipsum</td>
+                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
+                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
                             <td>Sevilla</td>
                             <td>
                                 <a href="#" class="save" title="Guardar" data-toggle="tooltip"><i class="fa fa-save"></i></a>
@@ -170,8 +170,8 @@
                         </tr>
                         <tr>
                             <td>5</td>
-                            <td>Lorem Ipsum</td>
-                            <td>Lorem Ipsum</td>
+                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
+                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
                             <td>Cádiz</td>
                             <td>
                                 <a href="#" class="save" title="Guardar" data-toggle="tooltip"><i class="fa fa-save"></i></a>
@@ -181,8 +181,8 @@
                         </tr>
                         <tr>
                             <td>6</td>
-                            <td>Lorem Ipsum</td>
-                            <td>Lorem Ipsum</td>
+                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
+                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
                             <td>Cádiz</td>
                             <td>
                                 <a href="#" class="save" title="Guardar" data-toggle="tooltip"><i class="fa fa-save"></i></a>
@@ -192,8 +192,8 @@
                         </tr>
                         <tr>
                             <td>7</td>
-                            <td>Lorem Ipsum</td>
-                            <td>Lorem Ipsum</td>
+                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
+                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
                             <td>Cádiz</td>
                             <td>
                                 <a href="#" class="save" title="Guardar" data-toggle="tooltip"><i class="fa fa-save"></i></a>
@@ -203,8 +203,8 @@
                         </tr>
                         <tr>
                             <td>8</td>
-                            <td>Lorem Ipsum</td>
-                            <td>Lorem Ipsum</td>
+                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
+                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
                             <td>Cádiz</td>
                             <td>
                                 <a href="#" class="save" title="Guardar" data-toggle="tooltip"><i class="fa fa-save"></i></a>
