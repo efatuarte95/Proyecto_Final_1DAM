@@ -12,54 +12,40 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet">
-
     <style>
         body {
-            color: #730707;
+            color: #566787;
+            background: #730707;
             font-family: 'Roboto', sans-serif;
         }
-        
-        .table-wrapper {
-            min-width: 100%;
-            background: white;
-            padding: 5% 3% 13% 0%;
-            box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
-        }
-        
-        .add-new {
-            background-color: #730707;
-            border-color: #730707;
-            float: right;
-            height: 40px;
-            font-weight: bold;
-            font-size: 14px;
-            text-shadow: none;
-            min-width: 125px;
-            border-radius: 50px;
-            line-height: 14px;
-            margin-top: 20%;
-        }
-        
-        .add-new i {
-            margin-left: -3px;
-            margin-right: 6px;
-        }
-        
-        .add-new:hover {
-            background-color: #730707;
-            border-color: #730707;
-        }
-        
-        .sub-footer {
-            margin-top: 5% !important;
-            background: #AF7840;
-            padding: 5px 0px;
-        }
     </style>
+    <script>
+        $(document).ready(function() {
+            $('[data-toggle="tooltip"]').tooltip();
+            var actions = $("table td:last-child").html();
+            // Edit row on edit button click
+            $(document).on("click", ".edit", function() {
+                $(this).parents("tr").find("td:not(:last-child)").each(function() {
+                    $(this).html('<input type="text" class="form-control" value="' + $(this).text() + '">');
+                });
+                $(this).parents("tr").find(".add, .edit").toggle();
+                $(".add-new").attr("disabled", "disabled");
+            });
+            // Delete row on delete button click
+            $(document).on("click", ".delete", function() {
+                $(this).parents("tr").remove();
+                $(".add-new").removeAttr("disabled");
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
 </head>
 
-<body background="/img/telon.jpeg">
-
+<body>
     <nav class="navbar navbar-expand-md bg-falla navbar-dark">
         <div class="col-md-2">
             <a class="navbar-brand" href="/"><img class="logo" src="/img/logo.png"></a>
@@ -103,23 +89,131 @@
         </div>
         <div class="col-1 offset-1" style="margin-left: 5%;"><a href="#">Acceder<i class="fa fa-sign-in" style="margin-left: 6%" aria-hidden="true"></i></a></div>
     </nav>
+
     <div class="jumbotron text-center">
         <h1>Bienvenido al Gran Teatro Falla</h1>
-        <p class="text-secondary">Consulta la información de tu agrupación favorita.</p>
+        <p class="text-secondary">Consulta las agrupaciones de tu modalidad favorita.</p>
     </div>
     <div class="container-xl">
         <div class="table-responsive">
             <div class="table-wrapper">
                 <div class="table-title">
                     <div class="row">
-                        <div class="col-10">
-                            <h2><b>Comparsa La Chusma Selecta</b></h2>
+                        <div class="col-6">
+                            <h2><b>Comparsas</b></h2>
+                        </div>
+                        <div class="col-4">
+                            <div class="search-box">
+                                <i class="fa fa-search"></i>
+                                <input type="text" class="form-control" placeholder="Buscar&hellip;">
+                            </div>
                         </div>
                         <div class="col-2">
-                            <a href="/form-agrupacion" th:href="@{'/form-agrupacion'}"><button class="btn btn-info add-new"><i class="fa fa-pencil"></i>Editar</button></a>
+                            <a href="/form-agrupacion" th:href="@{'/form-agrupacion'}"><button class="btn btn-info add-new"><i class="fa fa-plus"></i>Añadir</button></a>
                         </div>
                     </div>
                 </div>
+                <table class="table table-striped table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre<i class="fa fa-sort"></i></th>
+                            <th>Director</th>
+                            <th>Ciudad</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
+                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
+                            <td>Sevilla</td>
+                            <td>
+                                <a href="#" class="save" title="Guardar" data-toggle="tooltip"><i class="fa fa-save"></i></a>
+                                <a href="#" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
+                                <a href="#" class="delete" title="Borrar" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
+                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
+                            <td>Cádiz</td>
+                            <td>
+                                <a href="#" class="save" title="Guardar" data-toggle="tooltip"><i class="fa fa-save"></i></a>
+                                <a href="#" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
+                                <a href="#" class="delete" title="Borrar" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
+                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
+                            <td>Huelva</td>
+                            <td>
+                                <a href="#" class="save" title="Guardar" data-toggle="tooltip"><i class="fa fa-save"></i></a>
+                                <a href="#" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
+                                <a href="#" class="delete" title="Borrar" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
+                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
+                            <td>Sevilla</td>
+                            <td>
+                                <a href="#" class="save" title="Guardar" data-toggle="tooltip"><i class="fa fa-save"></i></a>
+                                <a href="#" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
+                                <a href="#" class="delete" title="Borrar" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
+                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
+                            <td>Cádiz</td>
+                            <td>
+                                <a href="#" class="save" title="Guardar" data-toggle="tooltip"><i class="fa fa-save"></i></a>
+                                <a href="#" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
+                                <a href="#" class="delete" title="Borrar" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
+                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
+                            <td>Cádiz</td>
+                            <td>
+                                <a href="#" class="save" title="Guardar" data-toggle="tooltip"><i class="fa fa-save"></i></a>
+                                <a href="#" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
+                                <a href="#" class="delete" title="Borrar" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
+                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
+                            <td>Cádiz</td>
+                            <td>
+                                <a href="#" class="save" title="Guardar" data-toggle="tooltip"><i class="fa fa-save"></i></a>
+                                <a href="#" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
+                                <a href="#" class="delete" title="Borrar" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
+                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
+                            <td>Cádiz</td>
+                            <td>
+                                <a href="#" class="save" title="Guardar" data-toggle="tooltip"><i class="fa fa-save"></i></a>
+                                <a href="#" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
+                                <a href="#" class="delete" title="Borrar" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
