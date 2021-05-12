@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <title>Gran Teatro Falla</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" href="/img/favicon.png">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -16,7 +16,6 @@
     <style>
         body {
             color: #730707;
-            font-family: 'Roboto', sans-serif;
         }
         
         .table-wrapper {
@@ -30,13 +29,12 @@
             background-color: #730707;
             border-color: #730707;
             float: right;
-            height: 40px;
+            height: 2.7em;
             font-weight: bold;
             font-size: 14px;
             text-shadow: none;
-            min-width: 125px;
+            min-width: 20%;
             border-radius: 50px;
-            line-height: 14px;
             margin-top: 20%;
         }
         
@@ -51,9 +49,9 @@
         }
         
         .sub-footer {
-            margin-top: 5% !important;
+            margin-top: 4.5% !important;
             background: #AF7840;
-            padding: 5px 0px;
+            padding: 0% 0%;
         }
     </style>
 </head>
@@ -61,7 +59,7 @@
 <body background="/img/telon.jpeg">
 
     <nav class="navbar navbar-expand-md bg-falla navbar-dark">
-        <div class="col-md-2">
+        <div class="col-2">
             <a class="navbar-brand" href="/"><img class="logo" src="/img/logo.png"></a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -118,6 +116,10 @@
                         <input type="name" class="form-control" id="name" placeholder="Nombre">
                     </div>
                     <div class="form-group col-8 offset-2">
+                        <label for="name">Director</label>
+                        <input type="name" class="form-control" id="provincia" placeholder="Provincia">
+                    </div>
+                    <div class="form-group col-8 offset-2">
                         <label for="selectModalidad">Modalidad</label>
                         <select class="form-control" id="selectModalidad">
                             <option>-------</option>
@@ -142,15 +144,15 @@
         <div class="sub-footer fl-wrap">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-3">
                         <div class="about-widget">
                             <img src="/img/logo.png" alt="">
                         </div>
                     </div>
-                    <div class="col-md-4 offset-1">
+                    <div class="col-4 offset-1">
                         <div class="copyright">©Gran Teatro Falla. Todos los derechos reservados.</div>
                     </div>
-                    <div class="col-md-3 offset-1">
+                    <div class="col-3 offset-1">
                         <div class="footer-social">
                             <ul>
                                 <li><a href="#"><i class="fa fa-facebook-official"></i></a></li>

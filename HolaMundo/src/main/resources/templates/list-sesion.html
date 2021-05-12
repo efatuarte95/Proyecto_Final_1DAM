@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <title>Gran Teatro Falla</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" href="/img/favicon.png">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -16,7 +16,6 @@
         body {
             color: #566787;
             background: #730707;
-            font-family: 'Roboto', sans-serif;
         }
         
         table.table td a.eye {
@@ -43,7 +42,7 @@
 
 <body>
     <nav class="navbar navbar-expand-md bg-falla navbar-dark">
-        <div class="col-md-2">
+        <div class="col-2">
             <a class="navbar-brand" href="/"><img class="logo" src="/img/logo.png"></a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -98,7 +97,7 @@
                         <div class="col-6">
                             <h2><b>Semifinales</b></h2>
                         </div>
-                        <div class="col-2 offset-4">
+                        <div class="col-3 offset-3">
                             <a href="/form-sesion" th:href="@{'/form-sesion'}"><button class="btn btn-info add-new"><i class="fa fa-plus"></i>Añadir</button></a>
                         </div>
                     </div>
@@ -116,8 +115,8 @@
                             <td>1</td>
                             <td>01/01/2021</td>
                             <td>
-                                <a href="sesion.html" class="eye" title="Ver Sesión" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
-                                <a href="sesion.html" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
+                                <a href="/sesion" th:href="@{'/sesion'}" class="eye" title="Ver Sesión" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
+                                <a href="/sesion" th:href="@{'/sesion'}" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
                                 <a href="#" class="delete" title="Borrar" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
@@ -125,8 +124,8 @@
                             <td>2</td>
                             <td>01/01/2021</td>
                             <td>
-                                <a href="sesion.html" class="eye" title="Ver Sesión" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
-                                <a href="sesion.html" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
+                                <a href="/sesion" th:href="@{'/sesion'}" class="eye" title="Ver Sesión" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
+                                <a href="/sesion" th:href="@{'/sesion'}" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
                                 <a href="#" class="delete" title="Borrar" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
@@ -134,8 +133,8 @@
                             <td>3</td>
                             <td>01/01/2021</td>
                             <td>
-                                <a href="sesion.html" class="eye" title="Ver Sesión" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
-                                <a href="sesion.html" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
+                                <a href="/sesion" th:href="@{'/sesion'}" class="eye" title="Ver Sesión" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
+                                <a href="/sesion" th:href="@{'/sesion'}" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
                                 <a href="#" class="delete" title="Borrar" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
@@ -143,8 +142,8 @@
                             <td>4</td>
                             <td>01/01/2021</td>
                             <td>
-                                <a href="sesion.html" class="eye" title="Ver Sesión" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
-                                <a href="sesion.html" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
+                                <a href="/sesion" th:href="@{'/sesion'}" class="eye" title="Ver Sesión" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
+                                <a href="/sesion" th:href="@{'/sesion'}" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
                                 <a href="#" class="delete" title="Borrar" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
@@ -152,8 +151,8 @@
                             <td>5</td>
                             <td>01/01/2021</td>
                             <td>
-                                <a href="sesion.html" class="eye" title="Ver Sesión" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
-                                <a href="sesion.html" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
+                                <a href="/sesion" th:href="@{'/sesion'}" class="eye" title="Ver Sesión" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
+                                <a href="/sesion" th:href="@{'/sesion'}" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
                                 <a href="#" class="delete" title="Borrar" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
@@ -161,8 +160,8 @@
                             <td>6</td>
                             <td>01/01/2021</td>
                             <td>
-                                <a href="sesion.html" class="eye" title="Ver Sesión" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
-                                <a href="sesion.html" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
+                                <a href="/sesion" th:href="@{'/sesion'}" class="eye" title="Ver Sesión" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
+                                <a href="/sesion" th:href="@{'/sesion'}" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
                                 <a href="#" class="delete" title="Borrar" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
@@ -170,8 +169,8 @@
                             <td>7</td>
                             <td>01/01/2021</td>
                             <td>
-                                <a href="sesion.html" class="eye" title="Ver Sesión" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
-                                <a href="sesion.html" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
+                                <a href="/sesion" th:href="@{'/sesion'}" class="eye" title="Ver Sesión" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
+                                <a href="/sesion" th:href="@{'/sesion'}" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
                                 <a href="#" class="delete" title="Borrar" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
@@ -179,8 +178,8 @@
                             <td>8</td>
                             <td>01/01/2021</td>
                             <td>
-                                <a href="sesion.html" class="eye" title="Ver Sesión" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
-                                <a href="sesion.html" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
+                                <a href="/sesion" th:href="@{'/sesion'}" class="eye" title="Ver Sesión" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
+                                <a href="/sesion" th:href="@{'/sesion'}" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
                                 <a href="#" class="delete" title="Borrar" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
@@ -193,15 +192,15 @@
         <div class="sub-footer fl-wrap">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-3">
                         <div class="about-widget">
                             <img src="/img/logo.png" alt="">
                         </div>
                     </div>
-                    <div class="col-md-4 offset-1">
+                    <div class="col-4 offset-1">
                         <div class="copyright">©Gran Teatro Falla. Todos los derechos reservados.</div>
                     </div>
-                    <div class="col-md-3 offset-1">
+                    <div class="col-3 offset-1">
                         <div class="footer-social">
                             <ul>
                                 <li><a href="#"><i class="fa fa-facebook-official"></i></a></li>

@@ -293,7 +293,7 @@ fieldset {
 .sub-footer {
     margin-top: 4%;
     background: #AF7840;
-    padding: 5px 0px;
+    padding: 0% 0%;
 }
 
 .copyright {
@@ -360,12 +360,13 @@ fieldset {
 .search-box {
     position: relative;
     float: right;
+    width: 75%;
 }
 
 .search-box input {
-    height: 40px;
+    height: 2.4em;
     border-radius: 20px;
-    padding-left: 30px;
+    padding-left: 15%;
     border-color: #730707;
     box-shadow: none;
 }
@@ -377,27 +378,26 @@ fieldset {
 .search-box i {
     color: #730707;
     position: absolute;
-    font-size: 18px;
-    top: 8px;
-    left: 10px;
+    font-size: 1.3em;
+    top: 0.4em;
+    left: 5%;
 }
 
 .table-title .add-new {
     background-color: #730707;
     border-color: #730707;
     float: right;
-    height: 40px;
+    height: 2.7em;
     font-weight: bold;
     font-size: 14px;
     text-shadow: none;
-    min-width: 130px;
+    min-width: 100%;
     border-radius: 50px;
-    line-height: 15px;
 }
 
 .table-title .add-new i {
-    margin-left: -3px;
-    margin-right: 6px;
+    margin-left: -0.5em;
+    margin-right: 0.5em;
 }
 
 .add-new:hover {
@@ -406,14 +406,8 @@ fieldset {
 }
 
 .fa,
-.fa-eye,
 .fa-search {
-    margin-top: 6px;
-}
-
-.fa,
-.fa-search {
-    margin-top: 0px;
+    margin-top: 0em;
 }
 
 table.table tr th,
@@ -436,7 +430,7 @@ table.table th i {
 }
 
 table.table td:last-child {
-    width: 130px;
+    width: 20%;
 }
 
 table.table td a {
@@ -463,7 +457,7 @@ table.table td i {
 
 .pagination {
     float: right;
-    margin: 0 0 5px;
+    margin: 0px 5px;
 }
 
 .pagination li a {
@@ -473,10 +467,10 @@ table.table td i {
     height: 30px;
     color: #999;
     margin: 0 2px;
-    line-height: 30px;
+    line-height: 2.15em;
     border-radius: 30px !important;
     text-align: center;
-    padding: 0;
+    padding: 0%;
 }
 
 .pagination li a:hover {

@@ -5,31 +5,21 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class ControladorMain {
+public class AgrupacionController {
 
-	@GetMapping("/")
-	public String inicioController (Model model){
-		return "home";
-	}
-	
-	@GetMapping("/sesion")
-	public String listarAgrupacionesSesionController (Model model) {
-		return "sesion";
-	}
-
-	@GetMapping("/list-sesion")
-	public String listarSesionController (Model model) {
-		return "list-sesion";
-	}
-	
 	@GetMapping("/agrupacion")
-	public String agrupacionController (Model model) {
+	public String mostrarAgrupaciones(Model model) {
 		return "agrupacion";
 	}
 	
 	@GetMapping("/list-agrupacion")
 	public String listarAgrupacionesController (Model model) {
 		return "list-agrupacion";
+	}
+	
+	@GetMapping("/form-agrupacion")
+	public String editarAgrupacionController (Model model) {
+		return "form-agrupacion";
 	}
 
 	@GetMapping("/info-agrupacion")
@@ -40,10 +30,5 @@ public class ControladorMain {
 	@GetMapping("/clasificacion")
 	public String mostrarPuntosController (Model model) {
 		return "clasificacion";
-	}
-
-	@GetMapping("/radio")
-	public String mostrarRadioController (Model model) {
-		return "radio";
 	}
 }
