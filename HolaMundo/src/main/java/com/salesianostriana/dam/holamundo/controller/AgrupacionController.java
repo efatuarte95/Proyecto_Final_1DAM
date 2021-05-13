@@ -7,17 +7,22 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.salesianostriana.dam.holamundo.model.Agrupacion;
+import com.salesianostriana.dam.holamundo.servicio.AgrupacionService;
 
 @Controller
 public class AgrupacionController {
 
+	private AgrupacionService agrupacionServicio;
+	
 	@GetMapping("/agrupacion")
 	public String mostrarAgrupaciones(Model model) {
+		model.addAttribute("agrupaciones", agrupacionServicio.findAll());
 		return "agrupacion";
 	}
 	
 	@GetMapping("/list-agrupacion")
 	public String listarAgrupacionesController (Model model) {
+		model.addAttribute("agrupaciones", agrupacionServicio.findAll());
 		return "list-agrupacion";
 	}
 	
@@ -28,13 +33,13 @@ public class AgrupacionController {
 		return "form-agrupacion";
 	}
 	
-	@PostMapping ("/sesion")
+	@PostMapping ("/addAgrupacion")
 	public String submit(@ModelAttribute("agrupacionForm") Agrupacion agrupacion,  Model model) {
 
-		//Se añade al modelo, el empleado que se creará al recoger los datos del formulario
+		//Se añade al modelo la agrupacion que se creará al recoger los datos del formulario
 		model.addAttribute("agrupacion", agrupacion);
-		//Se muestra la página con la información mandada en el formulario al pulsar el botón submit
-		return "sesion";
+		//Se muestra la página con la información mandada en el formulario al guardar 
+		return "redirect:/sesion";
 	}
 
 	@GetMapping("/info-agrupacion")
@@ -44,6 +49,7 @@ public class AgrupacionController {
 	
 	@GetMapping("/clasificacion")
 	public String mostrarPuntosController (Model model) {
+		model.addAttribute("agrupaciones", agrupacionServicio.findAll());
 		return "clasificacion";
 	}
 }

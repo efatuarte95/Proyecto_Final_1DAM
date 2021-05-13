@@ -130,6 +130,14 @@
                     <button type="button" class="btn btn-info add-new"><i class="fa fa-save"></i>Guardar</button>
                 </div>
             </div>
+            <form method="POST" action="#" th:action="@{/nuevo/submit}" th:object="${alumno}">
+		<input type="text" name="nombre" th:field="*{nombre}" placeholder="Nombre..."/>
+		<input type="text" name="apellidos" th:field="*{apellidos}" placeholder="Apellidos..." /> 
+		<input type="email" name="email" th:field="*{email}" placeholder="Email..." />
+		<input type="date" name="fechaNacimiento" th:field="*{fechaNacimiento}" />
+		<input type="submit" name="enviar" value="Enviar" />
+
+	</form>
         </div>
     </div>
     <footer class="main-footer bg-falla">

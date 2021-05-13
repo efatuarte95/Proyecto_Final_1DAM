@@ -113,11 +113,11 @@
                 <form action="">
                     <div class="form-group col-8 offset-2">
                         <label for="name">Nombre</label>
-                        <input type="name" class="form-control" id="name" placeholder="Nombre">
+                        <input type="text" class="form-control" id="name" placeholder="Nombre">
                     </div>
                     <div class="form-group col-8 offset-2">
                         <label for="name">Director</label>
-                        <input type="name" class="form-control" id="provincia" placeholder="Provincia">
+                        <input type="text" class="form-control" id="provincia" placeholder="Provincia">
                     </div>
                     <div class="form-group col-8 offset-2">
                         <label for="selectModalidad">Modalidad</label>
@@ -139,7 +139,7 @@
                 </div>
             </div>
                         <div class="table-wrapper">
-            <form method="POST" th:action="sesion" th:object="${agrupacionForm}">
+            <form method="POST" th:action="addAgrupacion" th:object="${agrupacionForm}">
          <table>
             <tr>
                 <td><label for="nombre">Nombre</label></td>
