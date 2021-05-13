@@ -131,13 +131,45 @@
                     </div>
                     <div class="form-group col-8 offset-2">
                         <label for="name">Provincia</label>
-                        <input type="name" class="form-control" id="provincia" placeholder="Provincia">
+                        <input type="text" class="form-control" id="provincia" placeholder="Provincia">
                     </div>
                 </form>
                 <div class="col-2 offset-10">
                     <button type="button" class="btn btn-info add-new"><i class="fa fa-save"></i>Guardar</button>
                 </div>
             </div>
+                        <div class="table-wrapper">
+            <form method="POST" th:action="sesion" th:object="${agrupacionForm}">
+         <table>
+            <tr>
+                <td><label for="nombre">Nombre</label></td>
+                <td><input type="text" th:field="*{nombre}"/></td>
+            </tr>
+
+            <tr>
+                <td><label for="director">Director</label></td>
+                <td><input type="text" th:field="*{director}"/></td>
+            </tr>
+            <tr>
+                <td><label for="procedencia">Procedencia</label></td>
+                <td><input type="text" th:field="*{procedencia}"/></td>
+            </tr>
+            <tr>
+            	<td><label for="selectModalidad">Modalidad</label></td>
+                        <select th:field="*{modalidad}">
+                            <option th:value="''" th:text="-------"></option>
+                            <option th:value="'Comparsa'" th:text="Comparsa"></option>
+                            <option th:value="'Chirigota'" th:text="Chirigota"></option>
+                            <option th:value="'Cuarteto'" th:text="Cuarteto"></option>
+                            <option th:value="'Coro'" th:text="Comparsa"></option>
+                        </select>
+            </tr>
+            <tr>
+                <td><i class="fa fa-save"></i><input type="submit" value="Submit"/></td>
+            </tr>
+        </table>
+    </form>
+    </div>
         </div>
     </div>
     <footer class="main-footer bg-falla">

@@ -3,6 +3,10 @@ package com.salesianostriana.dam.holamundo.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import com.salesianostriana.dam.holamundo.model.Agrupacion;
 
 @Controller
 public class AgrupacionController {
@@ -18,8 +22,19 @@ public class AgrupacionController {
 	}
 	
 	@GetMapping("/form-agrupacion")
-	public String editarAgrupacionController (Model model) {
+	public String showAgrupacionFormController (Model model) {
+		Agrupacion agrupacion = new Agrupacion(); 		
+		model.addAttribute("agrupacionForm", agrupacion);
 		return "form-agrupacion";
+	}
+	
+	@PostMapping ("/sesion")
+	public String submit(@ModelAttribute("agrupacionForm") Agrupacion agrupacion,  Model model) {
+
+		//Se añade al modelo, el empleado que se creará al recoger los datos del formulario
+		model.addAttribute("agrupacion", agrupacion);
+		//Se muestra la página con la información mandada en el formulario al pulsar el botón submit
+		return "sesion";
 	}
 
 	@GetMapping("/info-agrupacion")
