@@ -28,6 +28,7 @@ a {
 
 a:hover {
     color: #730707;
+    background-color: transparent;
 }
 
 .navbar-brand:active {
@@ -391,7 +392,7 @@ fieldset {
     font-weight: bold;
     font-size: 14px;
     text-shadow: none;
-    min-width: 100%;
+    min-width: 90%;
     border-radius: 50px;
 }
 
@@ -437,6 +438,11 @@ table.table td a {
     color: #730707;
     display: inline-block;
     margin: 0 5px;
+}
+
+table.table td a:active {
+    color: #730707;
+    background-color: transparent !important;
 }
 
 table.table td a.save {

@@ -98,36 +98,40 @@
             <div class="table-wrapper">
                 <div class="table-title">
                     <div class="row">
-                        <div class="col-6">
+                        <div class="col-5 offset-1">
                             <h2><b>Modalidad: Nombre Modalidad</b></h2>
                         </div>
                         <div class="col-2 offset-4">
-                            <a href="/form-agrupacion" th:href="@{'/form-agrupacion'}"><button class="btn btn-info add-new"><i class="fa fa-plus"></i>Añadir</button></a>
+                            <a href="/form-agrupacion" th:href="@{'/form-agrupacion'}"><button class="btn btn-info add-new"><i class="fa fa-pencil"></i>Editar</button></a>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-6">
-                            <h2><b>Nombre: Nombre Agrupacion</b></h2>
+                        <div class="col-12 text-center">
+                            <img src="/img/comparsa-la-chusma-selecta-final.jpg" alt="Imagen">
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-6">
-                            <h2><b>Director: Nombre Director</b></h2>
+                    <form action="">
+                        <div class="form-group col-6 offset-3">
+                            <label for="name">Nombre</label>
+                            <input type="text" class="form-control" id="name" placeholder="La Chusma Selecta" disabled>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-6">
-                            <h2><b>Procedencia: Procedencia</b></h2>
+                        <div class="form-group col-6 offset-3">
+                            <label for="name">Director</label>
+                            <input type="text" class="form-control" id="director" placeholder="Antonio Martínez Ares" disabled>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-6">
-                            <h2><b>Puntos: 99999</b></h2>
+                        <div class="form-group col-6 offset-3">
+                            <label for="name">Provincia</label>
+                            <input type="text" class="form-control" id="provincia" placeholder="Cádiz" disabled>
                         </div>
-                    </div>
+                        <div class="form-group col-6 offset-3">
+                            <label for="name">Puntos</label>
+                            <input type="number" class="form-control" id="provincia" placeholder="100" disabled>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
+    </div>
     </div>
     <footer class="main-footer bg-falla">
         <div class="sub-footer fl-wrap">

@@ -33,7 +33,7 @@
             font-weight: bold;
             font-size: 14px;
             text-shadow: none;
-            min-width: 20%;
+            min-width: 120px;
             border-radius: 50px;
             margin-top: 20%;
         }
@@ -49,7 +49,7 @@
         }
         
         .sub-footer {
-            margin-top: 9% !important;
+            margin-top: 10% !important;
             background: #AF7840;
             padding: 0% 0%;
         }
@@ -130,14 +130,6 @@
                     <button type="button" class="btn btn-info add-new"><i class="fa fa-save"></i>Guardar</button>
                 </div>
             </div>
-            <form method="POST" action="#" th:action="@{/nuevo/submit}" th:object="${alumno}">
-		<input type="text" name="nombre" th:field="*{nombre}" placeholder="Nombre..."/>
-		<input type="text" name="apellidos" th:field="*{apellidos}" placeholder="Apellidos..." /> 
-		<input type="email" name="email" th:field="*{email}" placeholder="Email..." />
-		<input type="date" name="fechaNacimiento" th:field="*{fechaNacimiento}" />
-		<input type="submit" name="enviar" value="Enviar" />
-
-	</form>
         </div>
     </div>
     <footer class="main-footer bg-falla">

@@ -33,7 +33,7 @@
             font-weight: bold;
             font-size: 14px;
             text-shadow: none;
-            min-width: 20%;
+            min-width: 120px;
             border-radius: 50px;
             margin-top: 20%;
         }
@@ -138,38 +138,44 @@
                     <button type="button" class="btn btn-info add-new"><i class="fa fa-save"></i>Guardar</button>
                 </div>
             </div>
-                        <div class="table-wrapper">
-            <form method="POST" th:action="addAgrupacion" th:object="${agrupacionForm}">
-         <table>
-            <tr>
-                <td><label for="nombre">Nombre</label></td>
-                <td><input type="text" th:field="*{nombre}"/></td>
-            </tr>
-
-            <tr>
-                <td><label for="director">Director</label></td>
-                <td><input type="text" th:field="*{director}"/></td>
-            </tr>
-            <tr>
-                <td><label for="procedencia">Procedencia</label></td>
-                <td><input type="text" th:field="*{procedencia}"/></td>
-            </tr>
-            <tr>
-            	<td><label for="selectModalidad">Modalidad</label></td>
-                        <select th:field="*{modalidad}">
-                            <option th:value="''" th:text="-------"></option>
-                            <option th:value="'Comparsa'" th:text="Comparsa"></option>
-                            <option th:value="'Chirigota'" th:text="Chirigota"></option>
-                            <option th:value="'Cuarteto'" th:text="Cuarteto"></option>
-                            <option th:value="'Coro'" th:text="Comparsa"></option>
-                        </select>
-            </tr>
-            <tr>
-                <td><i class="fa fa-save"></i><input type="submit" value="Submit"/></td>
-            </tr>
-        </table>
-    </form>
+        </div>
     </div>
+    <div class="container">
+        <div class="table-responsive">
+            <div class="table-wrapper">
+                <form method="POST" th:action="addAgrupacion" th:object="${agrupacionForm}">
+                    <table>
+                        <tr>
+                            <td><label for="nombre">Nombre</label></td>
+                            <td><input type="text" th:field="*{nombre}" /></td>
+                        </tr>
+
+                        <tr>
+                            <td><label for="director">Director</label></td>
+                            <td><input type="text" th:field="*{director}" /></td>
+                        </tr>
+                        <tr>
+                            <td><label for="procedencia">Procedencia</label></td>
+                            <td><input type="text" th:field="*{procedencia}" /></td>
+                        </tr>
+                        <tr>
+                            <td><label for="selectModalidad">Modalidad</label></td>
+                            <select th:field="*{modalidad}">
+                                <option th:value="''" th:text="-------"></option>
+                                <option th:value="'Comparsa'" th:text="Comparsa"></option>
+                                <option th:value="'Chirigota'" th:text="Chirigota"></option>
+                                <option th:value="'Cuarteto'" th:text="Cuarteto"></option>
+                                <option th:value="'Coro'" th:text="Comparsa"></option>
+                            </select>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button type="button" class="btn btn-info add-new"><i class="fa fa-save"></i>Guardar</button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
         </div>
     </div>
     <footer class="main-footer bg-falla">
