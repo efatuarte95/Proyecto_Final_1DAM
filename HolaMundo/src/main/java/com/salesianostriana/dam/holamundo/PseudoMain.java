@@ -49,7 +49,7 @@ public class PseudoMain {
 		}
 		
 		for (Agrupacion a : agrupaciones) {
-			sesiones.(a);
+			agrupaciones.add(a);
 			agrupacionServicio.save(a);
 		}
 		
