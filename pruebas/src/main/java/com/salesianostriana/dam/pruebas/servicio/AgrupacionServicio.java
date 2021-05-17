@@ -8,12 +8,14 @@ import com.salesianostriana.dam.pruebas.modelo.Agrupacion;
 import com.salesianostriana.dam.pruebas.repositorio.AgrupacionRepositorio;
 import com.salesianostriana.dam.pruebas.servicio.base.ServicioBase;
 
-import lombok.RequiredArgsConstructor;
 
 @Service
-@RequiredArgsConstructor
 public class AgrupacionServicio extends ServicioBase<Agrupacion, Long, AgrupacionRepositorio>{
-
+	
+	public AgrupacionServicio(AgrupacionRepositorio repo) {
+		super(repo);
+	}
+	
 	public Agrupacion buscarPorNombre(String nombre) {
 		return repositorio.findByNombre(nombre);
 	}
@@ -22,4 +24,7 @@ public class AgrupacionServicio extends ServicioBase<Agrupacion, Long, Agrupacio
 		return repositorio.findTop10ByModalidadOrderByPuntosDesc(modalidad);
 	}
 	
+	public List<Agrupacion> mostrarAgrupacionesModalidad(String modalidad) {
+		return repositorio.findByModalidad(modalidad);
+	}
 }

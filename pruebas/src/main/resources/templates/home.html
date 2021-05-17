@@ -42,7 +42,7 @@
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">COAC</a>
                     <div class="dropdown-menu">
                         <a th:each="sesion : ${nombreSesiones}">
-                            <a class="dropdown-item" href="#" th:href="@{'/${sesion}'}" th:text="${#strings.capitalize(sesion)}">Sesion</a>
+                            <a class="dropdown-item" href="#" th:href="@{/sesion/{nombre_sesion}(nombre_sesion=${sesion})}" th:text="${#strings.capitalize(sesion)}">Sesion</a>
                         </a>
                     </div>
                 </li>
@@ -50,7 +50,7 @@
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Clasificacion</a>
                     <div class="dropdown-menu">
                         <a th:each="modalidad : ${modalidades}">
-                            <a class="dropdown-item" href="#" th:href="@{'/clasificacion/${modalidad}'}" th:text="${#strings.capitalize(modalidad)}">Modalidad</a>
+                            <a class="dropdown-item" href="#" th:href="@{/clasificacion/{modalidad}(modalidad=${modalidad})}" th:text="${#strings.capitalize(modalidad)}">Modalidad</a>
                         </a>
                     </div>
                 </li>
@@ -58,12 +58,12 @@
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Agrupaciones</a>
                     <div class="dropdown-menu">
                         <a th:each="modalidad : ${modalidades}">
-                            <a class="dropdown-item" href="#" th:href="@{'/list-agrupacion/${modalidad}'}" th:text="${#strings.capitalize(modalidad)}">categoría</a>
+                            <a class="dropdown-item" href="#" th:href="@{/{modalidad}(modalidad=${modalidad})/agrupaciones}" th:text="${#strings.capitalize(modalidad)}">categoría</a>
                         </a>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/radio" th:href="@{'/radio'}">Radio</a>
+                    <a class="nav-link" href="/radio" th:href="@{/radio}">Radio</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Comprar Entradas</a>
@@ -120,7 +120,7 @@
                     <img class="card-img-top" src="/img/preliminares-coac.png" alt="Preliminares" style="width:100%">
                     <div class="card-body">
                         <h4 class="card-title">Preliminares</h4>
-                        <a class="btn btn-primary" href="/list-sesion" th:href="@{'/list-sesion'}">Ver Sesiones</a>
+                        <a class="btn btn-primary" href="#" th:href="@{/sesion/Preliminares}">Ver Sesiones</a>
                     </div>
                 </div>
             </div>
@@ -129,7 +129,7 @@
                     <img class="card-img-top" src="/img/cuartos-de-final-coac.png" alt="Cuartos de Final" style="width:100%">
                     <div class="card-body">
                         <h4 class="card-title">Cuartos de Final</h4>
-                        <a class="btn btn-primary" href="/list-sesion" th:href="@{'/list-sesion'}">Ver Sesiones</a>
+                        <a class="btn btn-primary" href="#" th:href="@{/sesion/Cuartos}">Ver Sesiones</a>
                     </div>
                 </div>
             </div>
@@ -138,7 +138,7 @@
                     <img class="card-img-top" src="/img/semifinales-coac.png" alt="Semifinales" style="width:100%">
                     <div class="card-body">
                         <h4 class="card-title">Semifinales</h4>
-                        <a class="btn btn-primary" href="/list-sesion" th:href="@{'/list-sesion'}">Ver Sesiones</a>
+                        <a class="btn btn-primary" href="#" th:href="@{/sesion/Semifinales}">Ver Sesiones</a>
                     </div>
                 </div>
             </div>
@@ -147,45 +147,27 @@
                     <img class="card-img-top" src="/img/final-coac.png" alt="Final" style="width:100%">
                     <div class="card-body">
                         <h4 class="card-title">Final</h4>
-                        <a class="btn btn-primary" href="/sesion" th:href="@{'/sesion'}">Ver Sesión</a>
+                        <a class="btn btn-primary" href="#" th:href="@{/sesion/Final}">Ver Sesión</a>
                     </div>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-3">
+            <div class="col-3 offset-2">
                 <div class="card">
                     <img class="card-img-top" src="/img/nombres-coac.png" alt="Agrupaciones Inscritas" style="width:100%">
                     <div class="card-body">
                         <h4 class="card-title">Agrupaciones Inscritas</h4>
-                        <a class="btn btn-primary" href="/list-agrupacion" th:href="@{'/list-agrupacion'}">Ver Agrupaciones</a>
+                        <a class="btn btn-primary" href="/agrupaciones" th:href="@{/agrupaciones}">Ver Agrupaciones</a>
                     </div>
                 </div>
             </div>
-            <div class="col-3">
-                <div class="card">
-                    <img class="card-img-top" src="/img/puntos-coac.png" alt="Clasificacion" style="width:100%">
-                    <div class="card-body">
-                        <h4 class="card-title">Clasificación</h4>
-                        <a class="btn btn-primary" href="/clasificacion" th:href="@{'/clasificacion'}">Ver Puntos</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-3">
+            <div class="col-3 offset-2">
                 <div class="card">
                     <img class="card-img-top" src="/img/radio-coac.png" alt="Onda Cádiz" style="width:100%">
                     <div class="card-body">
                         <h4 class="card-title">Onda Cádiz Directo</h4>
-                        <a class="btn btn-primary" href="/radio" th:href="@{'/radio'}">Ver Directo</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="card">
-                    <img class="card-img-top" src="/img/entradas-coac.png" alt="Comprar Entradas" style="width:100%">
-                    <div class="card-body">
-                        <h4 class="card-title">Entradas COAC</h4>
-                        <a class="btn btn-primary" href="#">Comprar Entradas</a>
+                        <a class="btn btn-primary" href="/radio" th:href="@{/radio}">Ver Directo</a>
                     </div>
                 </div>
             </div>

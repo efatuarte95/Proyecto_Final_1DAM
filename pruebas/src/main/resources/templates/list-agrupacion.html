@@ -96,7 +96,7 @@
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">COAC</a>
                     <div class="dropdown-menu">
                         <a th:each="sesion : ${nombreSesiones}">
-                            <a class="dropdown-item" href="#" th:href="@{'/${sesion}'}" th:text="${#strings.capitalize(sesion)}">Sesion</a>
+                            <a class="dropdown-item" href="#" th:href="@{/${sesion}}" th:text="${#strings.capitalize(sesion)}">Sesion</a>
                         </a>
                     </div>
                 </li>
@@ -104,7 +104,7 @@
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Clasificacion</a>
                     <div class="dropdown-menu">
                         <a th:each="modalidad : ${modalidades}">
-                            <a class="dropdown-item" href="#" th:href="@{'/clasificacion/${modalidad}'}" th:text="${#strings.capitalize(modalidad)}">Modalidad</a>
+                            <a class="dropdown-item" href="#" th:href="@{/clasificacion/${modalidad}}" th:text="${#strings.capitalize(modalidad)}">Modalidad</a>
                         </a>
                     </div>
                 </li>
@@ -112,12 +112,12 @@
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Agrupaciones</a>
                     <div class="dropdown-menu">
                         <a th:each="modalidad : ${modalidades}">
-                            <a class="dropdown-item" href="#" th:href="@{'/list-agrupacion/${modalidad}'}" th:text="${#strings.capitalize(modalidad)}">categoría</a>
+                            <a class="dropdown-item" href="#" th:href="@{/${modalidad}/agrupaciones}" th:text="${#strings.capitalize(modalidad)}">categoría</a>
                         </a>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/radio" th:href="@{'/radio'}">Radio</a>
+                    <a class="nav-link" href="/radio" th:href="@{/radio}">Radio</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Comprar Entradas</a>
@@ -137,7 +137,7 @@
                 <div class="table-title">
                     <div class="row">
                         <div class="col-6">
-                            <h2><b>Comparsas</b></h2>
+                            <h2><b>Modalidad</b></h2>
                         </div>
                         <div class="col-4">
                             <div class="search-box">
@@ -146,320 +146,37 @@
                             </div>
                         </div>
                         <div class="col-2">
-                            <a href="/agrupacion" th:href="@{'/agrupacion'}"><button class="btn btn-info add-new"><i class="fa fa-eye"></i>Ver Todas</button></a>
+                            <a href="/agrupacion" th:href="@{/agrupacion}"><button class="btn btn-info add-new"><i class="fa fa-eye"></i>Ver Todas</button></a>
                         </div>
                     </div>
                 </div>
-                <table class="table table-striped table-hover table-bordered">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nombre<i class="fa fa-sort"></i></th>
-                            <th>Director</th>
-                            <th>Ciudad</th>
-                            <th>Puntos<i class="fa fa-sort"></i></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td><a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}">Lorem Ipsum</a></td>
-                            <td><a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}">Lorem Ipsum</a></td>
-                            <td>Sevilla</td>
-                            <td>97219</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td><a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}">Lorem Ipsum</a></td>
-                            <td><a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}">Lorem Ipsum</a></td>
-                            <td>Cádiz</td>
-                            <td>12209</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td><a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}">Lorem Ipsum</a></td>
-                            <td><a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}">Lorem Ipsum</a></td>
-                            <td>Huelva</td>
-                            <td>28023</td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td><a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}">Lorem Ipsum</a></td>
-                            <td><a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}">Lorem Ipsum</a></td>
-                            <td>Sevilla</td>
-                            <td>75016</td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td><a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}">Lorem Ipsum</a></td>
-                            <td><a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}">Lorem Ipsum</a></td>
-                            <td>Cádiz</td>
-                            <td>10100</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <div class="clearfix">
-                    <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
-                    <ul class="pagination">
-                        <li class="page-item disabled"><a href="#"><i class="fa fa-angle-double-left"></i></a></li>
-                        <li class="page-item active"><a href="#" class="page-link">1</a></li>
-                        <li class="page-item"><a href="#" class="page-link">2</a></li>
-                        <li class="page-item"><a href="#" class="page-link">3</a></li>
-                        <li class="page-item"><a href="#" class="page-link">4</a></li>
-                        <li class="page-item disabled"><a href="#" class="page-link">...</a></li>
-                        <li class="page-item"><a href="#" class="page-link"><i class="fa fa-angle-double-right"></i></a></li>
-                    </ul>
-                </div>
             </div>
-        </div>
-    </div>
-    <div class="container-xl">
-        <div class="table-responsive">
-            <div class="table-wrapper">
-                <div class="table-title">
-                    <div class="row">
-                        <div class="col-6">
-                            <h2><b>Chirigotas</b></h2>
-                        </div>
-                        <div class="col-4">
-                            <div class="search-box">
-                                <i class="fa fa-search"></i>
-                                <input type="text" class="form-control" placeholder="Search&hellip;">
-                            </div>
-                        </div>
-                        <div class="col-2">
-                            <a href="/agrupacion" th:href="@{'/agrupacion'}"><button  class="btn btn-info add-new"><i class="fa fa-eye"></i>Ver Todas</button></a>
-                        </div>
-                    </div>
-                </div>
-                <table class="table table-striped table-hover table-bordered">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nombre<i class="fa fa-sort"></i></th>
-                            <th>Director</th>
-                            <th>Ciudad</th>
-                            <th>Puntos<i class="fa fa-sort"></i></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td><a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}">Lorem Ipsum</a></td>
-                            <td><a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}">Lorem Ipsum</a></td>
-                            <td>Sevilla</td>
-                            <td>97219</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td><a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}">Lorem Ipsum</a></td>
-                            <td><a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}">Lorem Ipsum</a></td>
-                            <td>Cádiz</td>
-                            <td>12209</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td><a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}">Lorem Ipsum</a></td>
-                            <td><a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}">Lorem Ipsum</a></td>
-                            <td>Huelva</td>
-                            <td>28023</td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td><a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}">Lorem Ipsum</a></td>
-                            <td><a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}">Lorem Ipsum</a></td>
-                            <td>Sevilla</td>
-                            <td>75016</td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td><a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}">Lorem Ipsum</a></td>
-                            <td><a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}">Lorem Ipsum</a></td>
-                            <td>Cádiz</td>
-                            <td>10100</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <div class="clearfix">
-                    <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
-                    <ul class="pagination">
-                        <li class="page-item disabled"><a href="#"><i class="fa fa-angle-double-left"></i></a></li>
-                        <li class="page-item active"><a href="#" class="page-link">1</a></li>
-                        <li class="page-item"><a href="#" class="page-link">2</a></li>
-                        <li class="page-item"><a href="#" class="page-link">3</a></li>
-                        <li class="page-item"><a href="#" class="page-link">4</a></li>
-                        <li class="page-item disabled"><a href="#" class="page-link">...</a></li>
-                        <li class="page-item"><a href="#" class="page-link"><i class="fa fa-angle-double-right"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container-xl">
-        <div class="table-responsive">
-            <div class="table-wrapper">
-                <div class="table-title">
-                    <div class="row">
-                        <div class="col-6">
-                            <h2><b>Cuartetos</b></h2>
-                        </div>
-                        <div class="col-4">
-                            <div class="search-box">
-                                <i class="fa fa-search"></i>
-                                <input type="text" class="form-control" placeholder="Search&hellip;">
-                            </div>
-                        </div>
-                        <div class="col-2">
-                            <a href="/agrupacion" th:href="@{'/agrupacion'}"><button  class="btn btn-info add-new"><i class="fa fa-eye"></i>Ver Todas</button></a>
-                        </div>
-                    </div>
-                </div>
-                <table class="table table-striped table-hover table-bordered">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nombre<i class="fa fa-sort"></i></th>
-                            <th>Director</th>
-                            <th>Ciudad</th>
-                            <th>Puntos<i class="fa fa-sort"></i></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td><a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}">Lorem Ipsum</a></td>
-                            <td><a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}">Lorem Ipsum</a></td>
-                            <td>Sevilla</td>
-                            <td>97219</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td><a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}">Lorem Ipsum</a></td>
-                            <td><a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}">Lorem Ipsum</a></td>
-                            <td>Cádiz</td>
-                            <td>12209</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td><a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}">Lorem Ipsum</a></td>
-                            <td><a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}">Lorem Ipsum</a></td>
-                            <td>Huelva</td>
-                            <td>28023</td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td><a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}">Lorem Ipsum</a></td>
-                            <td><a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}">Lorem Ipsum</a></td>
-                            <td>Sevilla</td>
-                            <td>75016</td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td><a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}">Lorem Ipsum</a></td>
-                            <td><a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}">Lorem Ipsum</a></td>
-                            <td>Cádiz</td>
-                            <td>10100</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <div class="clearfix">
-                    <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
-                    <ul class="pagination">
-                        <li class="page-item disabled"><a href="#"><i class="fa fa-angle-double-left"></i></a></li>
-                        <li class="page-item active"><a href="#" class="page-link">1</a></li>
-                        <li class="page-item"><a href="#" class="page-link">2</a></li>
-                        <li class="page-item"><a href="#" class="page-link">3</a></li>
-                        <li class="page-item"><a href="#" class="page-link">4</a></li>
-                        <li class="page-item disabled"><a href="#" class="page-link">...</a></li>
-                        <li class="page-item"><a href="#" class="page-link"><i class="fa fa-angle-double-right"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container-xl">
-        <div class="table-responsive">
-            <div class="table-wrapper">
-                <div class="table-title">
-                    <div class="row">
-                        <div class="col-6">
-                            <h2><b>Coros</b></h2>
-                        </div>
-                        <div class="col-4">
-                            <div class="search-box">
-                                <i class="fa fa-search"></i>
-                                <input type="text" class="form-control" placeholder="Search&hellip;">
-                            </div>
-                        </div>
-                        <div class="col-2">
-                            <a href="/agrupacion" th:href="@{'/agrupacion'}"><button  class="btn btn-info add-new"><i class="fa fa-eye"></i>Ver Todas</button></a>
-                        </div>
-                    </div>
-                </div>
-                <table class="table table-striped table-hover table-bordered">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nombre<i class="fa fa-sort"></i></th>
-                            <th>Director</th>
-                            <th>Ciudad</th>
-                            <th>Puntos<i class="fa fa-sort"></i></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td><a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}">Lorem Ipsum</a></td>
-                            <td><a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}">Lorem Ipsum</a></td>
-                            <td>Sevilla</td>
-                            <td>97219</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td><a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}">Lorem Ipsum</a></td>
-                            <td><a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}">Lorem Ipsum</a></td>
-                            <td>Cádiz</td>
-                            <td>12209</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td><a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}">Lorem Ipsum</a></td>
-                            <td><a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}">Lorem Ipsum</a></td>
-                            <td>Huelva</td>
-                            <td>28023</td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td><a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}">Lorem Ipsum</a></td>
-                            <td><a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}">Lorem Ipsum</a></td>
-                            <td>Sevilla</td>
-                            <td>75016</td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td><a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}">Lorem Ipsum</a></td>
-                            <td><a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}">Lorem Ipsum</a></td>
-                            <td>Cádiz</td>
-                            <td>10100</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <div class="clearfix">
-                    <ul class="pagination">
-                        <li class="page-item disabled"><a href="#"><i class="fa fa-angle-double-left"></i></a></li>
-                        <li class="page-item active"><a href="#" class="page-link">1</a></li>
-                        <li class="page-item"><a href="#" class="page-link">2</a></li>
-                        <li class="page-item"><a href="#" class="page-link">3</a></li>
-                        <li class="page-item"><a href="#" class="page-link">4</a></li>
-                        <li class="page-item disabled"><a href="#" class="page-link">...</a></li>
-                        <li class="page-item"><a href="#" class="page-link"><i class="fa fa-angle-double-right"></i></a></li>
-                    </ul>
-                </div>
-            </div>
+            <table class="table table-striped table-hover table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Modalidad<i class="fa fa-sort"></i></th>
+                        <th>Nombre<i class="fa fa-sort"></i></th>
+                        <th>Director</th>
+                        <th>Procedencia</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="agrupacion : ${agrupaciones}">
+                        <td th:text="${agrupacionStat.count}"></td>
+                        <td th:text="${agrupacion.modalidad}"></td>
+                        <td th:text="${agrupacion.nombre}"></td>
+                        <td th:text="${agrupacion.director}"></td>
+                        <td th:text="${agrupacion.procedencia}"></td>
+                        <td>
+                            <a href="#" class="save" title="Guardar" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
+                            <a href="#" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
+                            <a href="#" class="delete" title="Borrar" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
     <footer class="main-footer bg-falla">

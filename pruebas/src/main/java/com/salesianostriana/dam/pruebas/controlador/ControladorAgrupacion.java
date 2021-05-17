@@ -25,45 +25,61 @@ public class ControladorAgrupacion {
 	private final AgrupacionServicio servicio;
 	private final SesionServicio sesionServicio;
 
-	@GetMapping("/agrupacion")
+	@GetMapping("/agrupaciones")
 	public String mostrarAgrupaciones(Model model) {
 		model.addAttribute("agrupaciones", servicio.findAll());
 		return "agrupacion";
 	}
 
-	@GetMapping("/list-agrupacion")
-	public String listarAgrupacionesController(Model model) {
-		model.addAttribute("modalidades", servicio.findAll());
+	@GetMapping("/{modalidad}/agrupaciones")
+	public String listarAgrupacionesController(@PathVariable("modalidad") String modalidad, Model model) {		
+		model.addAttribute("agrupaciones", servicio.mostrarAgrupacionesModalidad(modalidad));
 		return "list-agrupacion";
 	}
 
-	@GetMapping("/form-agrupacion")
-	public String showAgrupacionFormController(Model model) {
-		Agrupacion agrupacion = new Agrupacion();
-		model.addAttribute("agrupacionForm", agrupacion);
+	@GetMapping("/agrupaciones/nueva")
+	public String nuevaAgrupacion(Model model) {
+		model.addAttribute("agrupacion", new Agrupacion());
 		return "form-agrupacion";
 	}
 
-	@PostMapping("/addAgrupacion")
-	public String submit(@ModelAttribute("agrupacionForm") Agrupacion agrupacion, Model model) {
-		// Se añade al modelo la agrupacion que se creará al recoger los datos del
-		// formulario
-		model.addAttribute("agrupacion", agrupacion);
-		// Se muestra la página con la información mandada en el formulario al guardar
-		return "redirect:/sesion";
+	@PostMapping("/agrupaciones/nueva/submit")
+	public String submitNuevaAgrupacion(@ModelAttribute("agrupacion") Agrupacion agrupacion, Model model) {
+			servicio.save(agrupacion);
+		return "redirect:/";
+	}
+
+	@GetMapping("/agrupaciones/editar/{id}")
+	public String editarAgrupacion(@PathVariable("id") Long id, Model model) {
+		Agrupacion agrupacion = servicio.findById(id);
+		if (agrupacion != null) {
+			model.addAttribute("agrupacion", agrupacion);
+			model.addAttribute("sesiones", sesionServicio.findAll());
+			return "form-agrupacion";
+		} else {
+			return "redirect:/";
+		}
+	}
+	
+	@GetMapping("/agrupaciones/borrar/{id}")
+	public String borrarAgrupacion(@PathVariable("id") Long id, Model model) {
+		
+		Agrupacion agrupacion = servicio.findById(id);
+		
+		if (agrupacion != null) {
+			servicio.delete(agrupacion);
+		}
+
+		return "redirect:/";
 	}
 
 	@GetMapping("/agrupacion/{nombre}")
-	public String mostrarInfoAgrupacionController(@PathVariable("nombre") String nombre, Model model) {
-		//Buscamos el producto por 
-		Agrupacion a = servicio.buscarPorNombre(nombre);
-		//Si el producto no es null (si existe el producto buscado) se añade al modelo y mostramos la página del detalle detail.html
-		//Si no existe, volvemos a la página index que vuelve a realizar todo lo que hace el método index
-		if (a != null) {
-			model.addAttribute("agrupacionInfo", a);
+	public String mostrarInfoAgrupacion(@PathVariable("nombre") String nombre, Model model) {
+		Agrupacion agrupacion = servicio.buscarPorNombre(nombre);
+		if (agrupacion != null) {
+			model.addAttribute("agrupacionInfo", agrupacion);
 			return "info-agrupacion";
 		}
-		
 		return "redirect:/";
 	}
 
@@ -73,30 +89,6 @@ public class ControladorAgrupacion {
 		if (agrupaciones != null) {
 			model.addAttribute("agrupacionClasificacion", agrupaciones);
 			return "clasificacion";
-		}
-		return "redirect:/";
-	}
-	
-	@GetMapping("/agrupacion/{nombre}/editar")
-	public String editarAgrupacion(@PathVariable("nombre") String nombre, Model model) {
-
-		Agrupacion agrupacion = servicio.buscarPorNombre(nombre);
-
-		if (agrupacion != null) {
-			model.addAttribute("agrupacion", agrupacion);
-			return "/form-agrupacion";
-		} else {
-			return "redirect:/";
-		}
-
-	}
-	
-	@GetMapping("/agrupacion/{nombre}/borrar")
-	public String borrarAgrupacion(@PathVariable("nombre") String nombre, Model model) {
-
-		Agrupacion agrupacion = servicio.buscarPorNombre(nombre);
-		if (agrupacion != null) {
-			servicio.delete(agrupacion);
 		}
 		return "redirect:/";
 	}

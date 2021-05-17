@@ -11,6 +11,10 @@ public abstract class ServicioBase<T, ID, R extends JpaRepository<T, ID>> {
 
 	@Autowired
 	protected R repositorio;
+	
+	public ServicioBase(R repo) {
+		this.repositorio = repo;
+	}
 
 	/**
 	 * Almacenamos una nueva entidad a través del repositorio

@@ -1,7 +1,6 @@
 package com.salesianostriana.dam.pruebas.modelo;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -34,7 +33,7 @@ public class Sesion {
 			joinColumns = @JoinColumn(name = "sesion_id"), 
 			inverseJoinColumns = @JoinColumn(name = "agrupacion_id")
 	)
-	private List<Agrupacion> agrupaciones = new ArrayList<>();
+	private List<Agrupacion> agrupaciones;
 	
 	public Sesion(String nombre, LocalDate fecha) {
 		super();
