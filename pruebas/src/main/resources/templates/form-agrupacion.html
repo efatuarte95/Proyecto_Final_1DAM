@@ -73,22 +73,25 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">COAC</a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="/list-sesion" th:href="@{'/list-sesion'}">Preliminares</a>
-                        <a class="dropdown-item" href="/list-sesion" th:href="@{'/list-sesion'}">Cuartos de Final</a>
-                        <a class="dropdown-item" href="/list-sesion" th:href="@{'/list-sesion'}">Semifinales</a>
-                        <a class="dropdown-item" href="/list-sesion" th:href="@{'/list-sesion'}">Final</a>
+                        <a th:each="sesion : ${nombreSesiones}">
+                            <a class="dropdown-item" href="#" th:href="@{'/${sesion}'}" th:text="${#strings.capitalize(sesion)}">Sesion</a>
+                        </a>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/clasificacion" th:href="@{'/clasificacion'}">Clasificación</a>
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Clasificacion</a>
+                    <div class="dropdown-menu">
+                        <a th:each="modalidad : ${modalidades}">
+                            <a class="dropdown-item" href="#" th:href="@{'/clasificacion/${modalidad}'}" th:text="${#strings.capitalize(modalidad)}">Modalidad</a>
+                        </a>
+                    </div>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Agrupaciones</a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="/agrupacion" th:href="@{'/agrupacion'}">Comparsas</a>
-                        <a class="dropdown-item" href="/agrupacion" th:href="@{'/agrupacion'}">Chirigotas</a>
-                        <a class="dropdown-item" href="/agrupacion" th:href="@{'/agrupacion'}">Cuartetos</a>
-                        <a class="dropdown-item" href="/agrupacion" th:href="@{'/agrupacion'}">Coros</a>
+                        <a th:each="modalidad : ${modalidades}">
+                            <a class="dropdown-item" href="#" th:href="@{'/list-agrupacion/${modalidad}'}" th:text="${#strings.capitalize(modalidad)}">categoría</a>
+                        </a>
                     </div>
                 </li>
                 <li class="nav-item">
