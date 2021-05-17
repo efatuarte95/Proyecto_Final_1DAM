@@ -2,12 +2,14 @@ package com.salesianostriana.dam.pruebas.controlador;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.salesianostriana.dam.pruebas.modelo.Agrupacion;
@@ -25,10 +27,15 @@ public class ControladorSesion {
 	private final SesionServicio servicio;
 	private final AgrupacionServicio agrupacionServicio;
 
-	@GetMapping("/sesion")
-	public String listarAgrupacionesSesionController(Model model) {
-		List<Agrupacion> lista = new ArrayList<Agrupacion>();
-		model.addAttribute("agrupacionSesion", lista);
+	@GetMapping("/{nombre_sesion}")
+	public String listarAgrupacionesSesionController(@PathVariable("nombre_sesion") String nombre, Model model) {
+		List<Agrupacion> lista = new ArrayList<>();
+		for (int i = 0; i < agrupacionServicio.findAll().size(); i++) {
+			if(agrupacionServicio.findAll().get(i).getSesiones().contains(nombre))
+				lista.add(agrupacionServicio.findAll().get(i));
+		}
+		
+		model.addAttribute("agrupacionesSesion", lista);
 		return "sesion";
 	}
 
@@ -51,7 +58,7 @@ public class ControladorSesion {
 		return "redirect:/list-sesion";
 	}
 
-	@GetMapping("/list-sesion")
+	@GetMapping("/list-sesion/{sesion}/{id}")
 	public String listarSesionController(Model model) {
 		model.addAttribute("sesiones", servicio.findAll());
 		return "list-sesion";
