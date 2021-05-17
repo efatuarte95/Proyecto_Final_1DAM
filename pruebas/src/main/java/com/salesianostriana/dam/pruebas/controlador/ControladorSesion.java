@@ -2,7 +2,6 @@ package com.salesianostriana.dam.pruebas.controlador;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Controller;
@@ -29,16 +28,29 @@ public class ControladorSesion {
 
 	@GetMapping("/{nombre_sesion}")
 	public String listarAgrupacionesSesionController(@PathVariable("nombre_sesion") String nombre, Model model) {
-		List<Agrupacion> lista = new ArrayList<>();
-		for (int i = 0; i < agrupacionServicio.findAll().size(); i++) {
-			if(agrupacionServicio.findAll().get(i).getSesiones().contains(nombre))
-				lista.add(agrupacionServicio.findAll().get(i));
+		List<Sesion> lista = new ArrayList<>();
+		for (int i = 0; i < servicio.findAll().size(); i++) {
+			if(servicio.findAll().get(i).getNombre().equals(nombre))
+				lista.add(servicio.findAll().get(i));
 		}
-		
-		model.addAttribute("agrupacionesSesion", lista);
+		model.addAttribute("sesiones", lista);
 		return "sesion";
 	}
 
+	@GetMapping("/{nombre_sesion}/{id}")
+	public String listarSesionController(@PathVariable("nombre_sesion") String nombre, @PathVariable("nombre_sesion") long sesion_id, Model model) {
+		List<Agrupacion> lista = new ArrayList<>();
+		for (int i = 0; i < agrupacionServicio.findAll().size(); i++) {
+			for (int j = 0; j < agrupacionServicio.findAll().get(i).getSesiones().size(); j++) {
+				if(agrupacionServicio.findAll().get(i).getSesiones().get(j).getNombre().equals(nombre) && 
+						agrupacionServicio.findAll().get(i).getSesiones().get(j).getSesion_id() == sesion_id)
+					lista.add(agrupacionServicio.findAll().get(i));
+			}
+		}	
+		model.addAttribute("agrupacionesSesion", lista);
+		return "list-sesion";
+	}
+	
 	@GetMapping("/form-sesion")
 	public String editarSesionController(Model model) {
 		return "form-sesion";
@@ -56,12 +68,6 @@ public class ControladorSesion {
 		// Rediregimos al controlador list-sesion para que muestre el listado de
 		// sesiones con el que se acaba de añadir
 		return "redirect:/list-sesion";
-	}
-
-	@GetMapping("/list-sesion/{sesion}/{id}")
-	public String listarSesionController(Model model) {
-		model.addAttribute("sesiones", servicio.findAll());
-		return "list-sesion";
 	}
 	
 	@ModelAttribute("nombreSesiones")
