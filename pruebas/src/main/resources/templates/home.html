@@ -44,7 +44,7 @@
                     <div class="dropdown-menu">
                         <ul class="nav nav-sidebar">
                             <li th:each="sesion : ${nombreSesiones}">
-                                <a href="#" th:href="/@{${sesion})}" th:text="${#strings.capitalize(sesion)}">Sesion</a>
+                                <a href="#" th:href="/@{${sesion}}" th:text="${#strings.capitalize(sesion)}">Sesion</a>
                             </li>
                         </ul>
                     </div>
@@ -54,7 +54,7 @@
                     <div class="dropdown-menu">
                         <ul class="nav nav-sidebar">
                             <li th:each="modalidad : ${modalidades}">
-                                <a href="#" th:href="@{/clasificacion/${modalidad})}" th:text="${#strings.capitalize(modalidad)}">Modalidad</a>
+                                <a href="#" th:href="@{/clasificacion/${modalidad}}" th:text="${#strings.capitalize(modalidad)}">Modalidad</a>
                             </li>
                         </ul>
                     </div>
@@ -64,7 +64,7 @@
                     <div class="dropdown-menu">
                         <ul class="nav nav-sidebar">
                             <li th:each="modalidad : ${modalidades}">
-                                <a href="#" th:href="@{/list-agrupacion/${modalidad})}" th:text="${#strings.capitalize(modalidad)}">categoría</a>
+                                <a href="#" th:href="@{/list-agrupacion/${modalidad}}" th:text="${#strings.capitalize(modalidad)}">categoría</a>
                             </li>
                         </ul>
                     </div>
