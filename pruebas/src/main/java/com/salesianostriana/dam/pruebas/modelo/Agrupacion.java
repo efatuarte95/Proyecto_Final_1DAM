@@ -28,7 +28,8 @@ public class Agrupacion {
 	private String nombre;
 	private String director;
 	private String procedencia;
-	private String modalidad;
+	private Modalidad modalidad;
+	private String imagen;
 	private int puntos;
 	
 	@EqualsAndHashCode.Exclude
@@ -36,20 +37,22 @@ public class Agrupacion {
 	@ManyToMany(mappedBy="agrupaciones", fetch = FetchType.EAGER)
 	private List<Sesion> sesiones = new ArrayList<>();
 	
-	public Agrupacion(String nombre, String director, String procedencia, String modalidad) {
+	public Agrupacion(String nombre, String director, String procedencia, Modalidad modalidad, String imagen) {
 		super();
 		this.nombre = nombre;
 		this.director = director;
 		this.procedencia = procedencia;
 		this.modalidad = modalidad;
+		this.imagen = imagen;
 		this.puntos = 0;
 	}
 	
-	public Agrupacion(String nombre, String director, String procedencia, String modalidad, List<Sesion> sesiones) {
+	public Agrupacion(String nombre, String director, String procedencia, Modalidad modalidad, String imagen, List<Sesion> sesiones) {
 		this.nombre = nombre;
 		this.director = director;
 		this.procedencia = procedencia;
 		this.modalidad = modalidad;
+		this.imagen = imagen;
 		this.puntos = 0;
 		this.sesiones = sesiones;
 	}	

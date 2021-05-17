@@ -147,299 +147,31 @@
                 <table class="table table-striped table-hover table-bordered">
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            <th>Modalidad</th>
                             <th>Nombre<i class="fa fa-sort"></i></th>
                             <th>Director</th>
-                            <th>Ciudad</th>
+                            <th>Procedencia</th>
                             <th>Puntos<i class="fa fa-sort"></i></th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
-                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
-                            <td>Sevilla</td>
-                            <td>97219</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
-                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
-                            <td>Cádiz</td>
-                            <td>12209</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
-                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
-                            <td>Huelva</td>
-                            <td>28023</td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
-                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
-                            <td>Sevilla</td>
-                            <td>75016</td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
-                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
-                            <td>Cádiz</td>
-                            <td>10100</td>
+                        <tr th:each="agrupacion : ${agrupacionClasificacion}">
+                            <td th:text="${agrupacion.modalidad}">
+                                <a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}"></a>
+                            </td>
+                            <td th:text="${agrupacion.nombre}"></td>
+                            <td th:text="${agrupacion.director}"></td>
+                            <td th:text="${agrupacion.procedencia}"></td>
+                            <td th:text="${agrupacion.puntos}"></td>
+                            <td>
+                                <a href="#" class="save" title="Guardar" data-toggle="tooltip"><i class="fa fa-save"></i></a>
+                                <a href="#" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
+                                <a href="#" class="delete" title="Borrar" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
-
-                <div class="clearfix">
-                    <ul class="pagination">
-                        <li class="page-item disabled"><a href="#"><i class="fa fa-angle-double-left"></i></a></li>
-                        <li class="page-item active"><a href="#" class="page-link">1</a></li>
-                        <li class="page-item"><a href="#" class="page-link">2</a></li>
-                        <li class="page-item"><a href="#" class="page-link">3</a></li>
-                        <li class="page-item"><a href="#" class="page-link">4</a></li>
-                        <li class="page-item disabled"><a href="#" class="page-link">...</a></li>
-                        <li class="page-item"><a href="#" class="page-link"><i class="fa fa-angle-double-right"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container-xl">
-        <div class="table-responsive">
-            <div class="table-wrapper">
-                <div class="table-title">
-                    <div class="row">
-                        <div class="col-6">
-                            <h2><b>Chirigotas</b></h2>
-                        </div>
-                        <div class="col-4 offset-2">
-                            <div class="search-box">
-                                <i class="fa fa-search"></i>
-                                <input type="text" class="form-control" placeholder="Search&hellip;">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <table class="table table-striped table-hover table-bordered">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nombre<i class="fa fa-sort"></i></th>
-                            <th>Director</th>
-                            <th>Ciudad</th>
-                            <th>Puntos<i class="fa fa-sort"></i></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
-                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
-                            <td>Sevilla</td>
-                            <td>97219</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
-                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
-                            <td>Cádiz</td>
-                            <td>12209</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
-                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
-                            <td>Huelva</td>
-                            <td>28023</td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
-                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
-                            <td>Sevilla</td>
-                            <td>75016</td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
-                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
-                            <td>Cádiz</td>
-                            <td>10100</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <div class="clearfix">
-                    <ul class="pagination">
-                        <li class="page-item disabled"><a href="#"><i class="fa fa-angle-double-left"></i></a></li>
-                        <li class="page-item active"><a href="#" class="page-link">1</a></li>
-                        <li class="page-item"><a href="#" class="page-link">2</a></li>
-                        <li class="page-item"><a href="#" class="page-link">3</a></li>
-                        <li class="page-item"><a href="#" class="page-link">4</a></li>
-                        <li class="page-item disabled"><a href="#" class="page-link">...</a></li>
-                        <li class="page-item"><a href="#" class="page-link"><i class="fa fa-angle-double-right"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container-xl">
-        <div class="table-responsive">
-            <div class="table-wrapper">
-                <div class="table-title">
-                    <div class="row">
-                        <div class="col-6">
-                            <h2><b>Cuartetos</b></h2>
-                        </div>
-                        <div class="col-4 offset-2">
-                            <div class="search-box">
-                                <i class="fa fa-search"></i>
-                                <input type="text" class="form-control" placeholder="Search&hellip;">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <table class="table table-striped table-hover table-bordered">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nombre<i class="fa fa-sort"></i></th>
-                            <th>Director</th>
-                            <th>Ciudad</th>
-                            <th>Puntos<i class="fa fa-sort"></i></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
-                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
-                            <td>Sevilla</td>
-                            <td>97219</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
-                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
-                            <td>Cádiz</td>
-                            <td>12209</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
-                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
-                            <td>Huelva</td>
-                            <td>28023</td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
-                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
-                            <td>Sevilla</td>
-                            <td>75016</td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
-                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
-                            <td>Cádiz</td>
-                            <td>10100</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <div class="clearfix">
-                    <ul class="pagination">
-                        <li class="page-item disabled"><a href="#"><i class="fa fa-angle-double-left"></i></a></li>
-                        <li class="page-item active"><a href="#" class="page-link">1</a></li>
-                        <li class="page-item"><a href="#" class="page-link">2</a></li>
-                        <li class="page-item"><a href="#" class="page-link">3</a></li>
-                        <li class="page-item"><a href="#" class="page-link">4</a></li>
-                        <li class="page-item disabled"><a href="#" class="page-link">...</a></li>
-                        <li class="page-item"><a href="#" class="page-link"><i class="fa fa-angle-double-right"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container-xl">
-        <div class="table-responsive">
-            <div class="table-wrapper">
-                <div class="table-title">
-                    <div class="row">
-                        <div class="col-6">
-                            <h2><b>Coros</b></h2>
-                        </div>
-                        <div class="col-4 offset-2">
-                            <div class="search-box">
-                                <i class="fa fa-search"></i>
-                                <input type="text" class="form-control" placeholder="Search&hellip;">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <table class="table table-striped table-hover table-bordered">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nombre<i class="fa fa-sort"></i></th>
-                            <th>Director</th>
-                            <th>Ciudad</th>
-                            <th>Puntos<i class="fa fa-sort"></i></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
-                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
-                            <td>Sevilla</td>
-                            <td>97219</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
-                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
-                            <td>Cádiz</td>
-                            <td>12209</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
-                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
-                            <td>Huelva</td>
-                            <td>28023</td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
-                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
-                            <td>Sevilla</td>
-                            <td>75016</td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
-                            <td><a href="/info-agrupacion" th:href="@{'/info-agrupacion'}">Lorem Ipsum</a></td>
-                            <td>Cádiz</td>
-                            <td>10100</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="clearfix">
-                    <ul class="pagination">
-                        <li class="page-item disabled"><a href="#"><i class="fa fa-angle-double-left"></i></a></li>
-                        <li class="page-item active"><a href="#" class="page-link">1</a></li>
-                        <li class="page-item"><a href="#" class="page-link">2</a></li>
-                        <li class="page-item"><a href="#" class="page-link">3</a></li>
-                        <li class="page-item"><a href="#" class="page-link">4</a></li>
-                        <li class="page-item disabled"><a href="#" class="page-link">...</a></li>
-                        <li class="page-item"><a href="#" class="page-link"><i class="fa fa-angle-double-right"></i></a></li>
-                    </ul>
-                </div>
             </div>
         </div>
     </div>

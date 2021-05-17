@@ -126,7 +126,7 @@
                     <tbody>
                         <tr th:each="agrupacion : ${agrupacionSesion}">
                             <td th:text="${agrupacion.modalidad}">
-                                <a href="/info-agrupacion" th:href="@{'/info-agrupacion'}"></a>
+                                <a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}"></a>
                             </td>
                             <td th:text="${agrupacion.nombre}"></td>
                             <td th:text="${agrupacion.director}"></td>
