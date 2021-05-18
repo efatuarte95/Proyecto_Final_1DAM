@@ -91,7 +91,7 @@
                             <h2><b>Sesion</b></h2>
                         </div>
                         <div class="col-3 offset-3">
-                            <a href="/form-sesion" th:href="@{/form-sesion}"><button class="btn btn-info add-new"><i class="fa fa-plus"></i>Añadir</button></a>
+                            <a href="#" th:href="@{nueva}"><button class="btn btn-info add-new"><i class="fa fa-plus"></i>Añadir</button></a>
                         </div>
                     </div>
                 </div>
@@ -99,20 +99,20 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Tipo<i class="fa fa-sort"></i></th>
+                            <th>Tipo</th>
                             <th>Fecha<i class="fa fa-sort"></i></th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr th:each="sesion : ${sesiones}">
-                            <td th:text="${sesion.count}"></td>
+                            <td th:text="${sesionStat.count}"></td>
                             <td th:text="${sesion.tipoSesion}">
                                 <a href="#" th:href="@{/sesion/editar/{id}(id=${sesion.sesion_id})}"></a>
                             </td>
                             <td th:text="${sesion.fecha}"></td>
                             <td>
-                                <a href="#" th:href="@{/{nombre_sesion}(sesion=${sesion.tipoSesion})/{id}(id=${sesion.sesion_id})}" class="save" title="Ver Sesión" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
+                                <a href="#" th:href="@{/{tipoSesion}(tipoSesion=${sesion.tipoSesion})/{id}(id=${sesion.sesion_id})}" class="save" title="Ver Sesión" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
                                 <a href="#" th:href="@{/sesion/editar/{id}(id=${sesion.sesion_id})}" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
                                 <a data-toggle="modal" data-target="#delete-modal" title="Borrar" th:data-id="${sesion.sesion_id}"><i class="fa fa-trash"></i></a>
                             </td>

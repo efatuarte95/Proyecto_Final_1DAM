@@ -105,7 +105,7 @@
         <div class="col-1 offset-1" style="margin-left: 5%;"><a href="#">Acceder<i class="fa fa-sign-in" style="margin-left: 6%" aria-hidden="true"></i></a></div>
     </nav>
 
-    <div class="container">
+    <!-- <div class="container">
         <div class="table-responsive">
             <div class="table-wrapper">
                 <div class="row">
@@ -132,6 +132,35 @@
                 <div class="col-2 offset-10">
                     <button type="button" class="btn btn-info add-new"><i class="fa fa-save"></i>Guardar</button>
                 </div>
+            </div>
+        </div>
+    </div> -->
+    <div class="container">
+        <div class="table-responsive">
+            <div class="table-wrapper">
+                <form method="POST" th:action="nueva/submit" th:object="${sesionForm}">
+                    <table>
+                        <tr>
+                            <td><label for="selectTipoSesion">Tipo de Sesión</label></td>
+                            <select th:field="*{tipoSesion}">
+                                <option th:value="''" th:text="-------"></option>
+                                <option th:value="'Preliminares'" th:text="Preliminares"></option>
+                                <option th:value="'Cuartos'" th:text="Cuartos"></option>
+                                <option th:value="'Semifinales'" th:text="Semifinales"></option>
+                                <option th:value="'Final'" th:text="Final"></option>
+                            </select>
+                        </tr>
+                        <tr>
+                            <td><label for="fecha">Fecha</label></td>
+                            <td><input type="date" id="fecha" name="fecha" th:field="*{fecha}" th:value="*{fecha}" /></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button type="submit" class="btn btn-info add-new"><i class="fa fa-save"></i>Guardar</button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
             </div>
         </div>
     </div>

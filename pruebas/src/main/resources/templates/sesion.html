@@ -99,6 +99,7 @@
                 <table class="table table-striped table-hover table-bordered">
                     <thead>
                         <tr>
+                            <th>Orden</th>
                             <th>Modalidad</th>
                             <th>Nombre<i class="fa fa-sort"></i></th>
                             <th>Director</th>
@@ -109,16 +110,15 @@
                     </thead>
                     <tbody>
                         <tr th:each="agrupacion : ${agrupacionSesion}">
-                            <td th:text="${agrupacion.modalidad}">
-                                <a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}"></a>
-                            </td>
+                            <td th:text="${agrupacionStat.count}"></td>
+                            <td th:text="${agrupacion.modalidad}"></td>
                             <td th:text="${agrupacion.nombre}"></td>
                             <td th:text="${agrupacion.director}"></td>
                             <td th:text="${agrupacion.procedencia}"></td>
                             <td th:text="${agrupacion.puntos}"></td>
                             <td>
-                                <a href="#" class="save" title="Guardar" data-toggle="tooltip"><i class="fa fa-save"></i></a>
-                                <a href="#" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
+                                <a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}" class="save" title="Ver Agrupación" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
+                                <a href="#" th:href="@{/agrupacion/editar/{agrupacion_id}(agrupacion_id=${agrupacion.agrupacion_id})}" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
                                 <a data-toggle="modal" data-target="#delete-modal" title="Borrar" th:data-id="${sesion.sesion_id}"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>

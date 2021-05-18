@@ -83,46 +83,46 @@
                 <div class="table-title">
                     <div class="row">
                         <div class="col-6">
-                            <h2><b>Modalidad</b></h2>
+                            <h2><b>Comparsas</b></h2>
                         </div>
                         <div class="col-4">
                             <div class="search-box">
                                 <i class="fa fa-search"></i>
-                                <input type="text" class="form-control" placeholder="Search&hellip;">
+                                <input type="text" class="form-control" placeholder="Buscar&hellip;">
                             </div>
                         </div>
                         <div class="col-2">
-                            <a href="/agrupaciones" th:href="@{/agrupaciones}"><button class="btn btn-info add-new"><i class="fa fa-eye"></i>Ver Todas</button></a>
+                            <a href="#" th:href="@{/agrupaciones}"><button class="btn btn-info add-new"><i class="fa fa-eye"></i>Ver Todas</button></a>
                         </div>
                     </div>
                 </div>
+                <table class="table table-striped table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Director</th>
+                            <th>Procedencia</th>
+                            <th>Puntos<i class="fa fa-sort"></i></th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="agrupacion : ${agrupaciones}">
+                            <td th:text="${agrupacionStat.count}"></td>
+                            <td th:text="${agrupacion.nombre}"></td>
+                            <td th:text="${agrupacion.director}"></td>
+                            <td th:text="${agrupacion.procedencia}"></td>
+                            <td th:text="${agrupacion.puntos}"></td>
+                            <td>
+                                <a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}" class="save" title="Ver Agrupación" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
+                                <a href="#" th:href="@{/agrupacion/editar/{agrupacion_id}(agrupacion_id=${agrupacion.agrupacion_id})}" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
+                                <a data-toggle="modal" data-target="#delete-modal" title="Borrar" th:data-id="${agrupacion.agrupacion_id}"><i class="fa fa-trash"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            <table class="table table-striped table-hover table-bordered">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Modalidad<i class="fa fa-sort"></i></th>
-                        <th>Nombre<i class="fa fa-sort"></i></th>
-                        <th>Director</th>
-                        <th>Procedencia</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="agrupacion : ${agrupaciones}">
-                        <td th:text="${agrupacionStat.count}"></td>
-                        <td th:text="${agrupacion.modalidad}"></td>
-                        <td th:text="${agrupacion.nombre}"></td>
-                        <td th:text="${agrupacion.director}"></td>
-                        <td th:text="${agrupacion.procedencia}"></td>
-                        <td>
-                            <a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre)}}" class="save" title="Ver Agrupación" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
-                            <a href="#" th:href="@{/agrupacion/editar/{agrupacion_id}(agrupacion_id=${agrupacion.agrupacion_id})}" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
-                            <a data-toggle="modal" data-target="#delete-modal" title="Borrar" th:data-id="${agrupacion.agrupacion_id}"><i class="fa fa-trash"></i></a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
         </div>
     </div>
     <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog">

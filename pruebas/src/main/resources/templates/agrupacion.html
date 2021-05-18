@@ -120,21 +120,23 @@
                         <tr>
                             <th>ID</th>
                             <th>Modalidad</th>
-                            <th>Nombre<i class="fa fa-sort"></i></th>
+                            <th>Nombre</th>
                             <th>Director</th>
-                            <th>Ciudad</th>
+                            <th>Procedencia</th>
+                            <th>Puntos<i class="fa fa-sort"></i></th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr th:each="agrupacion: ${agrupaciones}">
+                        <tr th:each="agrupacion : ${agrupaciones}">
                             <td th:text="${agrupacionStat.count}"></td>
                             <td th:text="${agrupacion.modalidad}"></td>
                             <td th:text="${agrupacion.nombre}"></td>
                             <td th:text="${agrupacion.director}"></td>
                             <td th:text="${agrupacion.procedencia}"></td>
+                            <td th:text="${agrupacion.puntos}"></td>
                             <td>
-                                <a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre)}}" class="save" title="Ver Agrupación" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
+                                <a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}" class="save" title="Ver Agrupación" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
                                 <a href="#" th:href="@{/agrupacion/editar/{agrupacion_id}(agrupacion_id=${agrupacion.agrupacion_id})}" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
                                 <a data-toggle="modal" data-target="#delete-modal" title="Borrar" th:data-id="${agrupacion.agrupacion_id}"><i class="fa fa-trash"></i></a>
                             </td>

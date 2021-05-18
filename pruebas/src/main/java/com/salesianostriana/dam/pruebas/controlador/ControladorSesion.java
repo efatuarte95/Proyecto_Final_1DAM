@@ -44,17 +44,17 @@ public class ControladorSesion {
 				lista.add(servicio.findAll().get(i));
 		}
 		model.addAttribute("sesiones", lista);
-		return "sesion";
+		return "list-sesion";
 	}
 
 	@GetMapping("/nueva")
 	public String nuevaSesion(Model model) {
-		model.addAttribute("sesion", new Sesion());
+		model.addAttribute("sesionForm", new Sesion());
 		return "form-sesion";
 	}
 
 	@PostMapping("/nueva/submit")
-	public String submitNuevaSesion(@ModelAttribute("sesion") Sesion sesion, Model model) {
+	public String submitNuevaSesion(@ModelAttribute("sesionForm") Sesion sesion, Model model) {
 			servicio.save(sesion);
 		return "redirect:/";
 	}
@@ -98,7 +98,7 @@ public class ControladorSesion {
 			}
 		}	
 		model.addAttribute("agrupacionesSesion", lista);
-		return "list-sesion";
+		return "sesion";
 	}
 
 	@ModelAttribute("tipoSesiones")
