@@ -105,79 +105,41 @@
         <div class="col-1 offset-1" style="margin-left: 5%;"><a href="#">Acceder<i class="fa fa-sign-in" style="margin-left: 6%" aria-hidden="true"></i></a></div>
     </nav>
 
-    <!-- <div class="container">
+    <div class="container">
         <div class="table-responsive">
             <div class="table-wrapper">
                 <div class="row">
                     <div class="col-12 text-center">
-                        <h2><b>Añadir nueva Agrupación</b></h2>
+                        <h2><b>Registro de Agrupaciones COAC</b></h2>
                     </div>
                 </div>
-                <form action="">
+                <form method="POST" th:action="@{agrupacion/nueva/submit}" th:object="${agrupacionForm}">
                     <div class="form-group col-8 offset-2">
                         <label for="name">Nombre</label>
-                        <input type="text" class="form-control" id="name" placeholder="Nombre">
+                        <input type="text" th:field="*{nombre}" class="form-control" id="name" placeholder="Nombre" required>
                     </div>
                     <div class="form-group col-8 offset-2">
                         <label for="name">Director</label>
-                        <input type="text" class="form-control" id="provincia" placeholder="Provincia">
+                        <input type="text" th:field="*{director}" class="form-control" id="director" placeholder="Director" required>
                     </div>
                     <div class="form-group col-8 offset-2">
                         <label for="selectModalidad">Modalidad</label>
-                        <select class="form-control" id="selectModalidad">
-                            <option>-------</option>
-                            <option>Comparsa</option>
-                            <option>Chirigota</option>
-                            <option>Cuarteto</option>
-                            <option>Coro</option>
+                        <select th:field="*{modalidad}" class="form-control" id="selectModalidad" required>
+                            <option th:value="''" th:text="--------">-------</option>
+                            <option th:value="'Comparsa'" th:text="Comparsa" >Comparsa</option>
+                            <option th:value="'Chirigota'" th:text="Chirigota">Chirigota</option>
+                            <option th:value="'Cuarteto'" th:text="Cuarteto">Cuarteto</option>
+                            <option th:value="'Coro'" th:text="Coro">Coro</option>
                         </select>
                     </div>
                     <div class="form-group col-8 offset-2">
                         <label for="name">Provincia</label>
-                        <input type="text" class="form-control" id="provincia" placeholder="Provincia">
+                        <input type="text" th:field="*{procedencia}" class="form-control" id="provincia" placeholder="Provincia" required>
                     </div>
                 </form>
                 <div class="col-2 offset-10">
                     <button type="button" class="btn btn-info add-new"><i class="fa fa-save"></i>Guardar</button>
                 </div>
-            </div>
-        </div>
-    </div> -->
-    <div class="container">
-        <div class="table-responsive">
-            <div class="table-wrapper">
-                <form method="POST" th:action="agrupacion/nueva/submit" th:object="${agrupacionForm}">
-                    <table>
-                        <tr>
-                            <td><label for="nombre">Nombre</label></td>
-                            <td><input type="text" th:field="*{nombre}" /></td>
-                        </tr>
-
-                        <tr>
-                            <td><label for="director">Director</label></td>
-                            <td><input type="text" th:field="*{director}" /></td>
-                        </tr>
-                        <tr>
-                            <td><label for="procedencia">Procedencia</label></td>
-                            <td><input type="text" th:field="*{procedencia}" /></td>
-                        </tr>
-                        <tr>
-                            <td><label for="selectModalidad">Modalidad</label></td>
-                            <select th:field="*{modalidad}">
-                                <option th:value="''" th:text="-------"></option>
-                                <option th:value="'Comparsa'" th:text="Comparsa"></option>
-                                <option th:value="'Chirigota'" th:text="Chirigota"></option>
-                                <option th:value="'Cuarteto'" th:text="Cuarteto"></option>
-                                <option th:value="'Coro'" th:text="Comparsa"></option>
-                            </select>
-                        </tr>
-                        <tr>
-                            <td>
-                                <button type="submit" class="btn btn-info add-new"><i class="fa fa-save"></i>Guardar</button>
-                            </td>
-                        </tr>
-                    </table>
-                </form>
             </div>
         </div>
     </div>
