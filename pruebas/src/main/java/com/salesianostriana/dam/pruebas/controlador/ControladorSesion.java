@@ -100,6 +100,14 @@ public class ControladorSesion {
 		model.addAttribute("agrupacionesSesion", lista);
 		return "sesion";
 	}
+	
+//	public void agregarAgrupacionASesion(Agrupacion a, Sesion s) {
+//		if (a != null && s != null) 
+//			if(a.getAgrupacion_id() < 1)
+//				agrupacionServicio.save(a);
+//			s.addAgrupacion(a);
+//			agrupacionServicio.edit(a);	
+//	}
 
 	@ModelAttribute("tipoSesiones")
 	public List<TipoSesion> listartipoSesiones() {

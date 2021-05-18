@@ -101,11 +101,8 @@
             <div class="table-wrapper">
                 <div class="table-title">
                     <div class="row">
-                        <div class="col-5 offset-1">
-                            <h2><b>Modalidad: Nombre Modalidad</b></h2>
-                        </div>
-                        <div class="col-2 offset-4">
-                            <a href="/form-agrupacion" th:href="@{/form-agrupacion}"><button class="btn btn-info add-new"><i class="fa fa-pencil"></i>Editar</button></a>
+                        <div class="col-2 offset-10">
+                            <a href="#" th:href="@{/agrupacion/editar/{agrupacion_id}(agrupacion_id=${agrupacion.agrupacion_id})}"><button class="btn btn-info add-new"><i class="fa fa-pencil"></i>Editar</button></a>
                         </div>
                     </div>
                     <!-- <div class="row">

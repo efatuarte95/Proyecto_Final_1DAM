@@ -22,10 +22,11 @@ public class AgrupacionServicio extends ServicioBase<Agrupacion, Long, Agrupacio
 	}
 	
 	public List<Agrupacion> mostrarMejoresAgrupaciones(Modalidad modalidad) {
-		return repositorio.findTop10ByModalidadOrderByPuntosDesc(modalidad);
+		return repositorio.findTop20ByModalidadOrderByPuntosDesc(modalidad);
 	}
 	
 	public List<Agrupacion> mostrarAgrupacionesModalidad(Modalidad modalidad) {
 		return repositorio.findByModalidad(modalidad);
 	}
+	
 }

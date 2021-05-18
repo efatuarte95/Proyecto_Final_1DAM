@@ -1,5 +1,6 @@
 package com.salesianostriana.dam.pruebas.modelo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -34,7 +35,7 @@ public class Agrupacion {
 	@EqualsAndHashCode.Exclude
 	@ToString.Exclude
 	@ManyToMany(mappedBy="agrupaciones", fetch = FetchType.EAGER)
-	private List<Sesion> sesiones;
+	private List<Sesion> sesiones = new ArrayList<>();
 	
 	public Agrupacion(String nombre, String director, String procedencia, Modalidad modalidad, String imagen) {
 		this.nombre = nombre;
