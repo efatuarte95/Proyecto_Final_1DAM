@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.salesianostriana.dam.pruebas.modelo.Agrupacion;
 import com.salesianostriana.dam.pruebas.modelo.Modalidad;
 import com.salesianostriana.dam.pruebas.modelo.Sesion;
+import com.salesianostriana.dam.pruebas.modelo.TipoSesion;
 import com.salesianostriana.dam.pruebas.servicio.AgrupacionServicio;
 import com.salesianostriana.dam.pruebas.servicio.SesionServicio;
 
@@ -31,27 +32,27 @@ public class ControladorAgrupacion {
 		return "agrupacion";
 	}
 
-	@GetMapping("/{modalidad}/agrupaciones")
-	public String listarAgrupacionesController(@PathVariable("modalidad") String modalidad, Model model) {		
+	@GetMapping("/agrupaciones/{modalidad}")
+	public String listarAgrupacionesController(@PathVariable("modalidad") Modalidad modalidad, Model model) {		
 		model.addAttribute("agrupaciones", servicio.mostrarAgrupacionesModalidad(modalidad));
 		return "list-agrupacion";
 	}
 
-	@GetMapping("/agrupaciones/nueva")
+	@GetMapping("/agrupacion/nueva")
 	public String nuevaAgrupacion(Model model) {
-		model.addAttribute("agrupacion", new Agrupacion());
+		model.addAttribute("agrupacionForm", new Agrupacion());
 		return "form-agrupacion";
 	}
 
-	@PostMapping("/agrupaciones/nueva/submit")
-	public String submitNuevaAgrupacion(@ModelAttribute("agrupacion") Agrupacion agrupacion, Model model) {
+	@PostMapping("/agrupacion/nueva/submit")
+	public String submitNuevaAgrupacion(@ModelAttribute("agrupacionForm") Agrupacion agrupacion, Model model) {
 			servicio.save(agrupacion);
 		return "redirect:/";
 	}
 
-	@GetMapping("/agrupaciones/editar/{id}")
-	public String editarAgrupacion(@PathVariable("id") Long id, Model model) {
-		Agrupacion agrupacion = servicio.findById(id);
+	@GetMapping("/agrupacion/editar/{agrupacion_id}")
+	public String editarAgrupacion(@PathVariable("agrupacion_id") Long agrupacion_id, Model model) {
+		Agrupacion agrupacion = servicio.findById(agrupacion_id);
 		if (agrupacion != null) {
 			model.addAttribute("agrupacion", agrupacion);
 			model.addAttribute("sesiones", sesionServicio.findAll());
@@ -61,10 +62,10 @@ public class ControladorAgrupacion {
 		}
 	}
 	
-	@GetMapping("/agrupaciones/borrar/{id}")
-	public String borrarAgrupacion(@PathVariable("id") Long id, Model model) {
+	@GetMapping("/agrupacion/borrar/{agrupacion_id}")
+	public String borrarAgrupacion(@PathVariable("agrupacion_id") Long agrupacion_id, Model model) {
 		
-		Agrupacion agrupacion = servicio.findById(id);
+		Agrupacion agrupacion = servicio.findById(agrupacion_id);
 		
 		if (agrupacion != null) {
 			servicio.delete(agrupacion);
@@ -84,7 +85,7 @@ public class ControladorAgrupacion {
 	}
 
 	@GetMapping("/clasificacion/{modalidad}")
-	public String mostrarPuntosController(@PathVariable("modalidad") String modalidad, Model model) {
+	public String mostrarPuntosController(@PathVariable("modalidad") Modalidad modalidad, Model model) {
 		List<Agrupacion> agrupaciones = servicio.mostrarMejoresAgrupaciones(modalidad);
 		if (agrupaciones != null) {
 			model.addAttribute("agrupacionClasificacion", agrupaciones);
@@ -93,11 +94,11 @@ public class ControladorAgrupacion {
 		return "redirect:/";
 	}
 	
-	@ModelAttribute("nombreSesiones")
-	public List<String> listarNombreSesiones() {
-		List<Sesion> nombreSesiones = sesionServicio.findAll();
-		return nombreSesiones.stream()
-				.map(x -> x.getNombre())
+	@ModelAttribute("tipoSesiones")
+	public List<TipoSesion> listartipoSesiones() {
+		List<Sesion> tipoSesiones = sesionServicio.findAll();
+		return tipoSesiones.stream()
+				.map(x -> x.getTipoSesion())
 				.distinct()
 				.collect(Collectors.toList());
 	}

@@ -40,8 +40,8 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">COAC</a>
                     <div class="dropdown-menu">
-                        <a th:each="sesion : ${nombreSesiones}">
-                            <a class="dropdown-item" href="#" th:href="@{/${sesion}}" th:text="${#strings.capitalize(sesion)}">Sesion</a>
+                        <a th:each="sesion : ${tipoSesiones}">
+                            <a class="dropdown-item" href="#" th:href="@{/sesion/{nombre_sesion}(nombre_sesion=${sesion})}" th:text="${#strings.capitalize(sesion)}">Sesion</a>
                         </a>
                     </div>
                 </li>
@@ -49,7 +49,7 @@
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Clasificacion</a>
                     <div class="dropdown-menu">
                         <a th:each="modalidad : ${modalidades}">
-                            <a class="dropdown-item" href="#" th:href="@{/clasificacion/${modalidad}}" th:text="${#strings.capitalize(modalidad)}">Modalidad</a>
+                            <a class="dropdown-item" href="#" th:href="@{/clasificacion/{modalidad}(modalidad=${modalidad})}" th:text="${#strings.capitalize(modalidad)}">Modalidad</a>
                         </a>
                     </div>
                 </li>
@@ -57,7 +57,7 @@
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Agrupaciones</a>
                     <div class="dropdown-menu">
                         <a th:each="modalidad : ${modalidades}">
-                            <a class="dropdown-item" href="#" th:href="@{/${modalidad}/agrupaciones}" th:text="${#strings.capitalize(modalidad)}">categoría</a>
+                            <a class="dropdown-item" href="#" th:href="@{/agrupaciones/{modalidad}(modalidad=${modalidad})}" th:text="${#strings.capitalize(modalidad)}">Modalidad</a>
                         </a>
                     </div>
                 </li>
@@ -107,14 +107,14 @@
                     <tbody>
                         <tr th:each="sesion : ${sesiones}">
                             <td th:text="${sesion.count}"></td>
-                            <td th:text="${sesion.nombre}">
+                            <td th:text="${sesion.tipoSesion}">
                                 <a href="#" th:href="@{/sesion/editar/{id}(id=${sesion.sesion_id})}"></a>
                             </td>
                             <td th:text="${sesion.fecha}"></td>
                             <td>
-                                <a href="#" th:href="@{/{nombre_sesion}(sesion=${sesion.nombre})/{id}(id=${sesion.sesion_id})}" class="save" title="Guardar" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
+                                <a href="#" th:href="@{/{nombre_sesion}(sesion=${sesion.tipoSesion})/{id}(id=${sesion.sesion_id})}" class="save" title="Ver Sesión" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
                                 <a href="#" th:href="@{/sesion/editar/{id}(id=${sesion.sesion_id})}" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
-                                <a data-toggle="modal" data-target="#delete-modal" th:data-id="${sesion.sesion_id}"><i class="fa fa-trash"></i></a>
+                                <a data-toggle="modal" data-target="#delete-modal" title="Borrar" th:data-id="${sesion.sesion_id}"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                     </tbody>
@@ -126,18 +126,17 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
+                    <h4 class="modal-title">Borrar Sesión</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
-                    <h4 class="modal-title">Borrar Sesión</h4>
                 </div>
                 <div class="modal-body">
                     <p>¿Está usted seguro de borrar esta sesión?</p>
                     <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-                    <a href="/sesion/borrar/" class="btn btn-danger">Sí</a>
+                    <a href="/agrupacion/borrar/" class="btn btn-danger">Sí</a>
                 </div>
             </div>
-
         </div>
     </div>
     <footer class="main-footer bg-falla">

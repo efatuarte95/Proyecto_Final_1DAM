@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.salesianostriana.dam.pruebas.modelo.Agrupacion;
+import com.salesianostriana.dam.pruebas.modelo.Modalidad;
 import com.salesianostriana.dam.pruebas.repositorio.AgrupacionRepositorio;
 import com.salesianostriana.dam.pruebas.servicio.base.ServicioBase;
 
@@ -20,11 +21,11 @@ public class AgrupacionServicio extends ServicioBase<Agrupacion, Long, Agrupacio
 		return repositorio.findByNombre(nombre);
 	}
 	
-	public List<Agrupacion> mostrarMejoresAgrupaciones(String modalidad) {
+	public List<Agrupacion> mostrarMejoresAgrupaciones(Modalidad modalidad) {
 		return repositorio.findTop10ByModalidadOrderByPuntosDesc(modalidad);
 	}
 	
-	public List<Agrupacion> mostrarAgrupacionesModalidad(String modalidad) {
+	public List<Agrupacion> mostrarAgrupacionesModalidad(Modalidad modalidad) {
 		return repositorio.findByModalidad(modalidad);
 	}
 }

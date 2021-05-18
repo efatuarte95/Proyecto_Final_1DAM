@@ -73,8 +73,8 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">COAC</a>
                     <div class="dropdown-menu">
-                        <a th:each="sesion : ${nombreSesiones}">
-                            <a class="dropdown-item" href="#" th:href="@{/${sesion}}" th:text="${#strings.capitalize(sesion)}">Sesion</a>
+                        <a th:each="sesion : ${tipoSesiones}">
+                            <a class="dropdown-item" href="#" th:href="@{/sesion/{nombre_sesion}(nombre_sesion=${sesion})}" th:text="${#strings.capitalize(sesion)}">Sesion</a>
                         </a>
                     </div>
                 </li>
@@ -82,7 +82,7 @@
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Clasificacion</a>
                     <div class="dropdown-menu">
                         <a th:each="modalidad : ${modalidades}">
-                            <a class="dropdown-item" href="#" th:href="@{/clasificacion/${modalidad}}" th:text="${#strings.capitalize(modalidad)}">Modalidad</a>
+                            <a class="dropdown-item" href="#" th:href="@{/clasificacion/{modalidad}(modalidad=${modalidad})}" th:text="${#strings.capitalize(modalidad)}">Modalidad</a>
                         </a>
                     </div>
                 </li>
@@ -90,7 +90,7 @@
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Agrupaciones</a>
                     <div class="dropdown-menu">
                         <a th:each="modalidad : ${modalidades}">
-                            <a class="dropdown-item" href="#" th:href="@{/${modalidad}/agrupaciones}" th:text="${#strings.capitalize(modalidad)}">categoría</a>
+                            <a class="dropdown-item" href="#" th:href="@{/agrupaciones/{modalidad}(modalidad=${modalidad})}" th:text="${#strings.capitalize(modalidad)}">Modalidad</a>
                         </a>
                     </div>
                 </li>
@@ -105,7 +105,7 @@
         <div class="col-1 offset-1" style="margin-left: 5%;"><a href="#">Acceder<i class="fa fa-sign-in" style="margin-left: 6%" aria-hidden="true"></i></a></div>
     </nav>
 
-    <div class="container">
+    <!-- <div class="container">
         <div class="table-responsive">
             <div class="table-wrapper">
                 <div class="row">
@@ -142,11 +142,11 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <div class="container">
         <div class="table-responsive">
             <div class="table-wrapper">
-                <form method="POST" th:action="addAgrupacion" th:object="${agrupacionForm}">
+                <form method="POST" th:action="agrupacion/nueva/submit" th:object="${agrupacionForm}">
                     <table>
                         <tr>
                             <td><label for="nombre">Nombre</label></td>
@@ -173,7 +173,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <button type="button" class="btn btn-info add-new"><i class="fa fa-save"></i>Guardar</button>
+                                <button type="submit" class="btn btn-info add-new"><i class="fa fa-save"></i>Guardar</button>
                             </td>
                         </tr>
                     </table>

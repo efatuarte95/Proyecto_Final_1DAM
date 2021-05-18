@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.salesianostriana.dam.pruebas.modelo.Agrupacion;
 import com.salesianostriana.dam.pruebas.modelo.Modalidad;
 import com.salesianostriana.dam.pruebas.modelo.Sesion;
+import com.salesianostriana.dam.pruebas.modelo.TipoSesion;
 import com.salesianostriana.dam.pruebas.servicio.AgrupacionServicio;
 import com.salesianostriana.dam.pruebas.servicio.SesionServicio;
 
@@ -35,11 +36,11 @@ public class ControladorSesion {
 		return "list-sesion";
 	}
 
-	@GetMapping("/{nombre_sesion}")
-	public String listarAgrupacionesSesionController(@PathVariable("nombre_sesion") String nombre, Model model) {
+	@GetMapping("/{tipoSesion}")
+	public String listarAgrupacionesSesionController(@PathVariable("tipoSesion") TipoSesion tipoSesion, Model model) {
 		List<Sesion> lista = new ArrayList<>();
 		for (int i = 0; i < servicio.findAll().size(); i++) {
-			if(servicio.findAll().get(i).getNombre().equals(nombre))
+			if(servicio.findAll().get(i).getTipoSesion().equals(tipoSesion))
 				lista.add(servicio.findAll().get(i));
 		}
 		model.addAttribute("sesiones", lista);
@@ -58,9 +59,9 @@ public class ControladorSesion {
 		return "redirect:/";
 	}
 
-	@GetMapping("/editar/{id}")
-	public String editarSesion(@PathVariable("id") Long id, Model model) {
-		Sesion sesion = servicio.findById(id);
+	@GetMapping("/editar/{sesion_id}")
+	public String editarSesion(@PathVariable("sesion_id") Long sesion_id, Model model) {
+		Sesion sesion = servicio.findById(sesion_id);
 		if (sesion != null) {
 			model.addAttribute("sesion", sesion);
 			return "form-sesion";
@@ -69,10 +70,10 @@ public class ControladorSesion {
 		}
 	}
 	
-	@GetMapping("/borrar/{id}")
-	public String borrarSesion(@PathVariable("id") Long id, Model model) {
+	@GetMapping("/borrar/{sesion_id}")
+	public String borrarSesion(@PathVariable("sesion_id") Long sesion_id, Model model) {
 		
-		Sesion sesion = servicio.findById(id);
+		Sesion sesion = servicio.findById(sesion_id);
 		
 		if (sesion != null) {
 			if (servicio.numAgrupacionesSesion(sesion) == 0) {
@@ -86,12 +87,12 @@ public class ControladorSesion {
 		return "redirect:/";
 	}
 
-	@GetMapping("/{nombre_sesion}/{id}")
-	public String listarSesionController(@PathVariable("nombre_sesion") String nombre, @PathVariable("nombre_sesion") long sesion_id, Model model) {
+	@GetMapping("/{tipoSesion}/{sesion_id}")
+	public String listarSesionController(@PathVariable("tipoSesion") TipoSesion tipoSesion, @PathVariable("sesion_id") long sesion_id, Model model) {
 		List<Agrupacion> lista = new ArrayList<>();
 		for (int i = 0; i < agrupacionServicio.findAll().size(); i++) {
 			for (int j = 0; j < agrupacionServicio.findAll().get(i).getSesiones().size(); j++) {
-				if(agrupacionServicio.findAll().get(i).getSesiones().get(j).getNombre().equals(nombre) && 
+				if(agrupacionServicio.findAll().get(i).getSesiones().get(j).getTipoSesion().equals(tipoSesion) && 
 						agrupacionServicio.findAll().get(i).getSesiones().get(j).getSesion_id() == sesion_id)
 					lista.add(agrupacionServicio.findAll().get(i));
 			}
@@ -100,11 +101,11 @@ public class ControladorSesion {
 		return "list-sesion";
 	}
 
-	@ModelAttribute("nombreSesiones")
-	public List<String> listarNombreSesiones() {
-		List<Sesion> nombreSesiones = servicio.findAll();
-		return nombreSesiones.stream()
-				.map(x -> x.getNombre())
+	@ModelAttribute("tipoSesiones")
+	public List<TipoSesion> listartipoSesiones() {
+		List<Sesion> tipoSesiones = servicio.findAll();
+		return tipoSesiones.stream()
+				.map(x -> x.getTipoSesion())
 				.distinct()
 				.collect(Collectors.toList());
 	}

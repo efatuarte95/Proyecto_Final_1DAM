@@ -60,8 +60,8 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">COAC</a>
                     <div class="dropdown-menu">
-                        <a th:each="sesion : ${nombreSesiones}">
-                            <a class="dropdown-item" href="#" th:href="@{/${sesion}}" th:text="${#strings.capitalize(sesion)}">Sesion</a>
+                        <a th:each="sesion : ${tipoSesiones}">
+                            <a class="dropdown-item" href="#" th:href="@{/sesion/{nombre_sesion}(nombre_sesion=${sesion})}" th:text="${#strings.capitalize(sesion)}">Sesion</a>
                         </a>
                     </div>
                 </li>
@@ -69,7 +69,7 @@
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Clasificacion</a>
                     <div class="dropdown-menu">
                         <a th:each="modalidad : ${modalidades}">
-                            <a class="dropdown-item" href="#" th:href="@{/clasificacion/${modalidad}}" th:text="${#strings.capitalize(modalidad)}">Modalidad</a>
+                            <a class="dropdown-item" href="#" th:href="@{/clasificacion/{modalidad}(modalidad=${modalidad})}" th:text="${#strings.capitalize(modalidad)}">Modalidad</a>
                         </a>
                     </div>
                 </li>
@@ -77,7 +77,7 @@
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Agrupaciones</a>
                     <div class="dropdown-menu">
                         <a th:each="modalidad : ${modalidades}">
-                            <a class="dropdown-item" href="#" th:href="@{/${modalidad}/agrupaciones}" th:text="${#strings.capitalize(modalidad)}">categoría</a>
+                            <a class="dropdown-item" href="#" th:href="@{/agrupaciones/{modalidad}(modalidad=${modalidad})}" th:text="${#strings.capitalize(modalidad)}">Modalidad</a>
                         </a>
                     </div>
                 </li>
@@ -111,7 +111,7 @@
                             </div>
                         </div>
                         <div class="col-2">
-                            <a href="/form-agrupacion" th:href="@{/form-agrupacion}"><button class="btn btn-info add-new"><i class="fa fa-plus"></i>Añadir</button></a>
+                            <a href="#" th:href="@{/agrupacion/nueva}"><button class="btn btn-info add-new"><i class="fa fa-plus"></i>Añadir</button></a>
                         </div>
                     </div>
                 </div>
@@ -119,6 +119,7 @@
                     <thead>
                         <tr>
                             <th>ID</th>
+                            <th>Modalidad</th>
                             <th>Nombre<i class="fa fa-sort"></i></th>
                             <th>Director</th>
                             <th>Ciudad</th>
@@ -126,96 +127,37 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td><a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}">Lorem Ipsum</a></td>
-                            <td><a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}">Lorem Ipsum</a></td>
-                            <td>Sevilla</td>
+                        <tr th:each="agrupacion: ${agrupaciones}">
+                            <td th:text="${agrupacionStat.count}"></td>
+                            <td th:text="${agrupacion.modalidad}"></td>
+                            <td th:text="${agrupacion.nombre}"></td>
+                            <td th:text="${agrupacion.director}"></td>
+                            <td th:text="${agrupacion.procedencia}"></td>
                             <td>
-                                <a href="#" class="save" title="Guardar" data-toggle="tooltip"><i class="fa fa-save"></i></a>
-                                <a href="#" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
-                                <a href="#" class="delete" title="Borrar" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td><a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}">Lorem Ipsum</a></td>
-                            <td><a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}">Lorem Ipsum</a></td>
-                            <td>Cádiz</td>
-                            <td>
-                                <a href="#" class="save" title="Guardar" data-toggle="tooltip"><i class="fa fa-save"></i></a>
-                                <a href="#" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
-                                <a href="#" class="delete" title="Borrar" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td><a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}">Lorem Ipsum</a></td>
-                            <td><a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}">Lorem Ipsum</a></td>
-                            <td>Huelva</td>
-                            <td>
-                                <a href="#" class="save" title="Guardar" data-toggle="tooltip"><i class="fa fa-save"></i></a>
-                                <a href="#" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
-                                <a href="#" class="delete" title="Borrar" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td><a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}">Lorem Ipsum</a></td>
-                            <td><a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}">Lorem Ipsum</a></td>
-                            <td>Sevilla</td>
-                            <td>
-                                <a href="#" class="save" title="Guardar" data-toggle="tooltip"><i class="fa fa-save"></i></a>
-                                <a href="#" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
-                                <a href="#" class="delete" title="Borrar" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td><a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}">Lorem Ipsum</a></td>
-                            <td><a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}">Lorem Ipsum</a></td>
-                            <td>Cádiz</td>
-                            <td>
-                                <a href="#" class="save" title="Guardar" data-toggle="tooltip"><i class="fa fa-save"></i></a>
-                                <a href="#" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
-                                <a href="#" class="delete" title="Borrar" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <td><a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}">Lorem Ipsum</a></td>
-                            <td><a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}">Lorem Ipsum</a></td>
-                            <td>Cádiz</td>
-                            <td>
-                                <a href="#" class="save" title="Guardar" data-toggle="tooltip"><i class="fa fa-save"></i></a>
-                                <a href="#" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
-                                <a href="#" class="delete" title="Borrar" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>7</td>
-                            <td><a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}">Lorem Ipsum</a></td>
-                            <td><a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}">Lorem Ipsum</a></td>
-                            <td>Cádiz</td>
-                            <td>
-                                <a href="#" class="save" title="Guardar" data-toggle="tooltip"><i class="fa fa-save"></i></a>
-                                <a href="#" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
-                                <a href="#" class="delete" title="Borrar" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>8</td>
-                            <td><a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}">Lorem Ipsum</a></td>
-                            <td><a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}">Lorem Ipsum</a></td>
-                            <td>Cádiz</td>
-                            <td>
-                                <a href="#" class="save" title="Guardar" data-toggle="tooltip"><i class="fa fa-save"></i></a>
-                                <a href="#" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
-                                <a href="#" class="delete" title="Borrar" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
+                                <a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre)}}" class="save" title="Ver Agrupación" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
+                                <a href="#" th:href="@{/agrupacion/editar/{agrupacion_id}(agrupacion_id=${agrupacion.agrupacion_id})}" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
+                                <a data-toggle="modal" data-target="#delete-modal" title="Borrar" th:data-id="${agrupacion.agrupacion_id}"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                     </tbody>
                 </table>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Borrar Agrupación</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+                </div>
+                <div class="modal-body">
+                    <p>¿Está usted seguro de borrar esta agrupación?</p>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                    <a href="/agrupacion/borrar/" class="btn btn-danger">Sí</a>
+                </div>
             </div>
         </div>
     </div>

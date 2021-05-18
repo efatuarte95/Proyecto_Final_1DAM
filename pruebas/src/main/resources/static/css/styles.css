@@ -438,6 +438,7 @@ table.table td a {
     color: #730707;
     display: inline-block;
     margin: 0 5px;
+    cursor: pointer;
 }
 
 table.table td a:active {

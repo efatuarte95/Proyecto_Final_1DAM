@@ -25,7 +25,7 @@ public class Sesion {
 	@GeneratedValue
 	private long sesion_id;
 
-	private String nombre;
+	private TipoSesion tipoSesion;
 	private LocalDate fecha;
 
 	@ManyToMany(fetch = FetchType.EAGER)
@@ -35,14 +35,13 @@ public class Sesion {
 	)
 	private List<Agrupacion> agrupaciones;
 	
-	public Sesion(String nombre, LocalDate fecha) {
-		super();
-		this.nombre = nombre;
+	public Sesion(TipoSesion tipoSesion, LocalDate fecha) {
+		this.tipoSesion = tipoSesion;
 		this.fecha = fecha;
 	}
 	
-	public Sesion(String nombre, LocalDate fecha, List<Agrupacion> agrupaciones) {
-		this.nombre = nombre;
+	public Sesion(TipoSesion tipoSesion, LocalDate fecha, List<Agrupacion> agrupaciones) {
+		this.tipoSesion = tipoSesion;
 		this.fecha = fecha;
 		this.agrupaciones = agrupaciones;
 	}

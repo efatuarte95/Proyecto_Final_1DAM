@@ -31,8 +31,8 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">COAC</a>
                     <div class="dropdown-menu">
-                        <a th:each="sesion : ${nombreSesiones}">
-                            <a class="dropdown-item" href="#" th:href="@{/${sesion}}" th:text="${#strings.capitalize(sesion)}">Sesion</a>
+                        <a th:each="sesion : ${tipoSesiones}">
+                            <a class="dropdown-item" href="#" th:href="@{/sesion/{nombre_sesion}(nombre_sesion=${sesion})}" th:text="${#strings.capitalize(sesion)}">Sesion</a>
                         </a>
                     </div>
                 </li>
@@ -40,7 +40,7 @@
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Clasificacion</a>
                     <div class="dropdown-menu">
                         <a th:each="modalidad : ${modalidades}">
-                            <a class="dropdown-item" href="#" th:href="@{/clasificacion/${modalidad}}" th:text="${#strings.capitalize(modalidad)}">Modalidad</a>
+                            <a class="dropdown-item" href="#" th:href="@{/clasificacion/{modalidad}(modalidad=${modalidad})}" th:text="${#strings.capitalize(modalidad)}">Modalidad</a>
                         </a>
                     </div>
                 </li>
@@ -48,7 +48,7 @@
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Agrupaciones</a>
                     <div class="dropdown-menu">
                         <a th:each="modalidad : ${modalidades}">
-                            <a class="dropdown-item" href="#" th:href="@{/${modalidad}/agrupaciones}" th:text="${#strings.capitalize(modalidad)}">categoría</a>
+                            <a class="dropdown-item" href="#" th:href="@{/agrupaciones/{modalidad}(modalidad=${modalidad})}" th:text="${#strings.capitalize(modalidad)}">Modalidad</a>
                         </a>
                     </div>
                 </li>

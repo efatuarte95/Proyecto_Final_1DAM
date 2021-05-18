@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 import com.salesianostriana.dam.pruebas.modelo.Agrupacion;
 import com.salesianostriana.dam.pruebas.modelo.Modalidad;
 import com.salesianostriana.dam.pruebas.modelo.Sesion;
+import com.salesianostriana.dam.pruebas.modelo.TipoSesion;
 import com.salesianostriana.dam.pruebas.servicio.AgrupacionServicio;
 import com.salesianostriana.dam.pruebas.servicio.SesionServicio;
 
@@ -26,10 +27,12 @@ public class Principal {
 	@PostConstruct
 	public void initData() {
 		List<Sesion> sesiones = List.of(
-				new Sesion("Preliminares", LocalDate.of(2021, Month.JANUARY, 20)),
-				new Sesion("Preliminares", LocalDate.of(2021, Month.JANUARY, 21)),
-				new Sesion("Preliminares", LocalDate.of(2021, Month.JANUARY, 22)),
-				new Sesion("Preliminares", LocalDate.of(2021, Month.JANUARY, 23))
+				new Sesion(TipoSesion.Preliminares, LocalDate.of(2021, Month.JANUARY, 20)),
+				new Sesion(TipoSesion.Preliminares, LocalDate.of(2021, Month.JANUARY, 21)),
+				new Sesion(TipoSesion.Preliminares, LocalDate.of(2021, Month.JANUARY, 22)),
+				new Sesion(TipoSesion.Preliminares, LocalDate.of(2021, Month.JANUARY, 23)),
+				new Sesion(TipoSesion.Cuartos, LocalDate.of(2021, Month.JANUARY, 30)),
+				new Sesion(TipoSesion.Cuartos, LocalDate.of(2021, Month.FEBRUARY, 01))
 		);
 		
 		List<Agrupacion> agrupaciones = List.of(

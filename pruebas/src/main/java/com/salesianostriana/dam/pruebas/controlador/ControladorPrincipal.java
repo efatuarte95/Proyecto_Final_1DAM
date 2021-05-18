@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import com.salesianostriana.dam.pruebas.modelo.Agrupacion;
 import com.salesianostriana.dam.pruebas.modelo.Modalidad;
 import com.salesianostriana.dam.pruebas.modelo.Sesion;
+import com.salesianostriana.dam.pruebas.modelo.TipoSesion;
 import com.salesianostriana.dam.pruebas.servicio.AgrupacionServicio;
 import com.salesianostriana.dam.pruebas.servicio.SesionServicio;
 
@@ -33,11 +34,11 @@ public class ControladorPrincipal {
 		return "radio";
 	}
 	
-	@ModelAttribute("nombreSesiones")
-	public List<String> listarNombreSesiones() {
-		List<Sesion> nombreSesiones = sesionServicio.findAll();
-		return nombreSesiones.stream()
-				.map(x -> x.getNombre())
+	@ModelAttribute("tipoSesiones")
+	public List<TipoSesion> listartipoSesiones() {
+		List<Sesion> tipoSesiones = sesionServicio.findAll();
+		return tipoSesiones.stream()
+				.map(x -> x.getTipoSesion())
 				.distinct()
 				.collect(Collectors.toList());
 	}
