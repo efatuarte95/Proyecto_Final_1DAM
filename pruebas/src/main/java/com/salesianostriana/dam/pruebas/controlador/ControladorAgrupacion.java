@@ -35,6 +35,7 @@ public class ControladorAgrupacion {
 	@GetMapping("/agrupaciones/{modalidad}")
 	public String listarAgrupacionesController(@PathVariable("modalidad") Modalidad modalidad, Model model) {		
 		model.addAttribute("agrupaciones", servicio.mostrarAgrupacionesModalidad(modalidad));
+		model.addAttribute("modalidad", modalidad);
 		return "list-agrupacion";
 	}
 
@@ -89,6 +90,7 @@ public class ControladorAgrupacion {
 		List<Agrupacion> agrupaciones = servicio.mostrarMejoresAgrupaciones(modalidad);
 		if (agrupaciones != null) {
 			model.addAttribute("agrupacionClasificacion", agrupaciones);
+			model.addAttribute("modalidad", modalidad);
 			return "clasificacion";
 		}
 		return "redirect:/";

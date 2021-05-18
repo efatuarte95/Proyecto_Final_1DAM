@@ -44,6 +44,7 @@ public class ControladorSesion {
 				lista.add(servicio.findAll().get(i));
 		}
 		model.addAttribute("sesiones", lista);
+		model.addAttribute("tipoSesion", tipoSesion);
 		return "list-sesion";
 	}
 
@@ -98,6 +99,7 @@ public class ControladorSesion {
 			}
 		}	
 		model.addAttribute("agrupacionesSesion", lista);
+		model.addAttribute("tipoSesion", tipoSesion);
 		return "sesion";
 	}
 	
