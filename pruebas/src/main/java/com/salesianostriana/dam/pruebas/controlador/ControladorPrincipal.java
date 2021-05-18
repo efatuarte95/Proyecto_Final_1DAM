@@ -34,6 +34,12 @@ public class ControladorPrincipal {
 		return "radio";
 	}
 	
+	@GetMapping("/calendario")
+	public String mostrarCalendario (Model model) {
+		model.addAttribute("sesiones", sesionServicio.findAll());
+		return "calendario";
+	}
+	
 	@ModelAttribute("tipoSesiones")
 	public List<TipoSesion> listartipoSesiones() {
 		List<Sesion> tipoSesiones = sesionServicio.findAll();
