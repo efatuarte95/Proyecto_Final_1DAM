@@ -115,7 +115,7 @@
                             <td th:text="${agrupacion.director}"></td>
                             <td th:text="${agrupacion.procedencia}"></td>
                             <td>
-                                <a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}" class="save" title="Ver Agrupación" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
+                                <a href="#" th:href="@{/agrupacion/{id}(id=${agrupacion.agrupacion_id})}" class="save" title="Ver Agrupación" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
                                 <a href="#" th:href="@{/agrupacion/editar/{agrupacion_id}(agrupacion_id=${agrupacion.agrupacion_id})}" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
                                 <a data-toggle="modal" data-target="#delete-modal" title="Borrar" th:data-id="${agrupacion.agrupacion_id}"><i class="fa fa-trash"></i></a>
                             </td>

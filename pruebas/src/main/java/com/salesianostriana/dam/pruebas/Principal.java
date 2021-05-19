@@ -43,7 +43,7 @@ public class Principal {
 		
 		List<Agrupacion> agrupaciones = List.of(
 			// Creamos comparsas de ejemplo
-			new Agrupacion("La Chusma Selecta", "Martínez Ares", "Cádiz", Modalidad.Comparsa, "https://i.ytimg.com/vi_webp/JCVmrxp7_mA/maxresdefault.webp"),
+			new Agrupacion("La Chusma Selecta", "Martínez Ares", "Cádiz", Modalidad.Comparsa, "https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2020/01/arestocracia-chusma-selecta-ares.jpg"),
 			new Agrupacion("¡Oh capitán, my capitán!", "Tino Tovar", "Cádiz", Modalidad.Comparsa, "https://i.ytimg.com/vi_webp/JCVmrxp7_mA/maxresdefault.webp"),
 			new Agrupacion("La Canción de la Laguna", "David Carapapa", "Cádiz", Modalidad.Comparsa, "https://i.ytimg.com/vi_webp/JCVmrxp7_mA/maxresdefault.webp"),
 			new Agrupacion("Los Listos", "Chapa y Aranda", "Cádiz", Modalidad.Comparsa, "https://i.ytimg.com/vi_webp/JCVmrxp7_mA/maxresdefault.webp"),

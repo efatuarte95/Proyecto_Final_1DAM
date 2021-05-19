@@ -57,7 +57,6 @@
 </head>
 
 <body>
-
     <nav class="navbar navbar-expand-md bg-falla navbar-dark">
         <div class="col-2">
             <a class="navbar-brand" href="/"><img class="logo" src="/img/logo.png"></a>
@@ -125,7 +124,7 @@
                     <div class="form-group col-8 offset-2">
                         <label for="selectModalidad">Modalidad</label>
                         <select th:field="*{modalidad}" class="form-control" id="selectModalidad" required>
-                            <option th:value="">---------</option>
+                            <option th:value="-1">---------</option>
                             <option th:each="modalidad : ${modalidades}" th:value="${modalidad}" th:text="${modalidad}"></option>
                         </select>
                     </div>

@@ -92,11 +92,21 @@ public class ControladorAgrupacion {
 		return "redirect:/";
 	}
 
-	@GetMapping("/agrupacion/{nombre}")
-	public String mostrarInfoAgrupacion(@PathVariable("nombre") String nombre, Model model) {
-		Agrupacion agrupacion = servicio.buscarPorNombre(nombre);
+//	@GetMapping("/agrupacion/{nombre}")
+//	public String mostrarInfoAgrupacion(@PathVariable("nombre") String nombre, Model model) {
+//		Agrupacion agrupacion = servicio.buscarPorNombre(nombre);
+//		if (agrupacion != null) {
+//			model.addAttribute("agrupacionInfo", agrupacion);
+//			return "info-agrupacion";
+//		}
+//		return "redirect:/";
+//	}
+	
+	@GetMapping("/agrupacion/{agrupacion_id}")
+	public String mostrarInfoAgrupacion(@PathVariable("agrupacion_id") Long agrupacion_id, Model model) {
+		Agrupacion agrupacion = servicio.findById(agrupacion_id);
 		if (agrupacion != null) {
-			model.addAttribute("agrupacionInfo", agrupacion);
+			model.addAttribute("agrupacion", agrupacion);
 			return "info-agrupacion";
 		}
 		return "redirect:/";

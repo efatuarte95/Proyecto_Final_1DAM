@@ -17,6 +17,11 @@
             color: #566787;
             background: #730707;
         }
+        
+        label {
+            color: #730707;
+            font-size: 1.3em;
+        }
     </style>
     <script>
         $(document).ready(function() {
@@ -82,40 +87,40 @@
             <div class="table-wrapper">
                 <div class="table-title">
                     <div class="row">
-                        <div class="col-2 offset-10">
-                            <a href="#" th:href="@{/agrupacion/editar/{agrupacion_id}(agrupacion_id=${agrupacion.agrupacion_id})}"><button class="btn btn-info add-new"><i class="fa fa-pencil"></i>Editar</button></a>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12 text-center">
-                            <img th:src="${#strings.isEmpty(agrupacion.imagen)} ? 'http://placehold.it/300x200' : ${agrupacion.imagen}" class="img-responsive" alt="imagen" />
+                        <div class="col-6 offset-3 text-center">
+                            <img width="100%" th:src="${#strings.isEmpty(agrupacion.imagen)} ? 'http://placehold.it/300x200' : ${agrupacion.imagen}" class="img-responsive" alt="imagen" />
                         </div>
                     </div>
                     <form>
                         <div class="form-group col-6 offset-3">
-                            <input type="hidden" th:field="*{agrupacion_id}" id="agrupacion_id" />
+                            <input type="hidden" th:field="${agrupacion.agrupacion_id}" id="agrupacion_id" />
                         </div>
                         <div class="form-group col-6 offset-3">
                             <label for="name">Modalidad</label>
-                            <input type="text" class="form-control" id="name" th:text="*{modalidad}" disabled>
+                            <input type="text" class="form-control" id="modalidad" th:value="${agrupacion.modalidad}" disabled>
                         </div>
                         <div class="form-group col-6 offset-3">
                             <label for="name">Nombre</label>
-                            <input type="text" class="form-control" id="name" th:text="*{nombre}" disabled>
+                            <input type="text" class="form-control" id="nombre" th:value="${agrupacion.nombre}" disabled>
                         </div>
                         <div class="form-group col-6 offset-3">
                             <label for="name">Director</label>
-                            <input type="text" class="form-control" id="name" th:text="*{director}" disabled>
+                            <input type="text" class="form-control" id="director" th:value="${agrupacion.director}" disabled>
                         </div>
                         <div class="form-group col-6 offset-3">
                             <label for="name">Provincia</label>
-                            <input type="text" class="form-control" id="name" th:text="*{provincia}" disabled>
+                            <input type="text" class="form-control" id="provincia" th:value="${agrupacion.agrupacion_id}" disabled>
                         </div>
                         <div class="form-group col-6 offset-3">
                             <label for="name">Puntos</label>
-                            <input type="text" class="form-control" id="name" th:text="*{puntos}" disabled>
+                            <input type="text" class="form-control" id="puntos" th:value="${agrupacion.puntos}" disabled>
                         </div>
                     </form>
+                    <div class="row">
+                        <div class="col-2 offset-10">
+                            <a href="#" th:href="@{/agrupacion/editar/{id}(id=${agrupacion.agrupacion_id})}"><button class="btn btn-info add-new"><i class="fa fa-pencil"></i>Editar</button></a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
