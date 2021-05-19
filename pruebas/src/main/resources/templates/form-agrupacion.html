@@ -112,7 +112,10 @@
                         <h2><b>Registro de Agrupaciones COAC</b></h2>
                     </div>
                 </div>
-                <form method="POST" th:action="@{agrupacion/nueva/submit}" th:object="${agrupacionForm}">
+                <form method="POST" th:action="@{/agrupacion/nueva/submit}" th:object="${agrupacionForm}">
+                	<div class="form-group col-8 offset-2">
+                        <input type="hidden" th:field="*{agrupacion_id}" class="form-control" id="name" placeholder="Nombre" required>
+                    </div>
                     <div class="form-group col-8 offset-2">
                         <label for="name">Nombre</label>
                         <input type="text" th:field="*{nombre}" class="form-control" id="name" placeholder="Nombre" required>
@@ -136,10 +139,10 @@
                         <label for="name">Imagen</label>
                         <input type="url" th:field="*{imagen}" class="form-control" id="imagen" placeholder="Imagen: https://...">
                     </div>
+                    <div class="col-2 offset-10">
+                    	<button type="submit" class="btn btn-info add-new"><i class="fa fa-save"></i>Guardar</button>
+                	</div>
                 </form>
-                <div class="col-2 offset-10">
-                    <button type="submit" class="btn btn-info add-new"><i class="fa fa-save"></i>Guardar</button>
-                </div>
             </div>
         </div>
     </div>

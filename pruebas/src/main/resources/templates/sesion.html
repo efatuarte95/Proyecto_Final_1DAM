@@ -114,9 +114,8 @@
                             <td th:text="${agrupacion.puntos}"></td>
                             <td><input type="time" value="20:00" min="20:00" max="00:00" step="1800" class="form-control" id="hora" disabled/></td>
                             <td>
-                                <a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}" class="save" title="Ver Agrupación" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
+                                <a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}" class="ver" title="Ver Agrupación" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
                                 <a href="#" th:href="@{/agrupacion/editar/{agrupacion_id}(agrupacion_id=${agrupacion.agrupacion_id})}" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
-                                <a data-toggle="modal" data-target="#delete-modal" title="Borrar" th:data-id="${agrupacion.agrupacion_id}"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                     </tbody>

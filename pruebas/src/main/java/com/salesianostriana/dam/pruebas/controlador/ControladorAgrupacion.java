@@ -65,19 +65,18 @@ public class ControladorAgrupacion {
 	@PostMapping("/agrupacion/nueva/submit")
 	public String submitNuevaAgrupacion(@ModelAttribute("agrupacionForm") Agrupacion agrupacion) {
 			servicio.save(agrupacion);
-		return "redirect:/";
+		return "redirect:/agrupaciones";
 	}
 
 	@GetMapping("/agrupacion/editar/{agrupacion_id}")
 	public String editarAgrupacion(@PathVariable("agrupacion_id") Long agrupacion_id, Model model) {
 		Agrupacion agrupacion = servicio.findById(agrupacion_id);
 		if (agrupacion != null) {
-			model.addAttribute("agrupacion", agrupacion);
+			model.addAttribute("agrupacionForm", agrupacion);
 			model.addAttribute("sesiones", sesionServicio.findAll());
 			return "form-agrupacion";
-		} else {
-			return "redirect:/";
-		}
+		} else
+			return "redirect:/agrupaciones";
 	}
 	
 	@GetMapping("/agrupacion/borrar/{agrupacion_id}")
@@ -89,7 +88,7 @@ public class ControladorAgrupacion {
 			servicio.delete(agrupacion);
 		}
 
-		return "redirect:/";
+		return "redirect:/agrupaciones";
 	}
 
 //	@GetMapping("/agrupacion/{nombre}")

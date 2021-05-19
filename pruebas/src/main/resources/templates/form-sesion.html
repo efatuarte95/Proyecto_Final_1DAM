@@ -111,7 +111,7 @@
                         <h2><b>Registro de Sesiones COAC</b></h2>
                     </div>
                 </div>
-                <form method="POST" th:action="@{nueva/submit}" th:object="${sesionForm}">
+                <form method="POST" th:action="@{/nueva/submit}" th:object="${sesionForm}">
                     <div class="form-group col-8 offset-2">
                         <label for="selectTipoSesion">Tipo de Sesión</label>
                         <select th:field="*{tipoSesion}" class="form-control" id="selectTipoSesion" required>
@@ -126,10 +126,10 @@
                         <label for="name">Fecha</label>
                         <input type="date" th:field="*{fecha}" th:value="*{fecha}" class="form-control" id="fecha" name="fecha" placeholder="Fecha" required>
                     </div>
+                    <div class="col-2 offset-10">
+                    	<button type="submit" class="btn btn-info add-new"><i class="fa fa-save"></i>Guardar</button>
+                	</div>
                 </form>
-                <div class="col-2 offset-10">
-                    <button type="submit" class="btn btn-info add-new"><i class="fa fa-save"></i>Guardar</button>
-                </div>
             </div>
         </div>
     </div>

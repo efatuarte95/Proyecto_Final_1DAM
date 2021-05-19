@@ -107,8 +107,9 @@
                             <td th:text="${agrupacion.procedencia}"></td>
                             <td th:text="${agrupacion.puntos}"></td>
                             <td>
-                                <a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}" class="save" title="Ver Agrupación" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
+                                <a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}" class="ver" title="Ver Agrupación" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
                                 <a href="#" th:href="@{/agrupacion/editar/{agrupacion_id}(agrupacion_id=${agrupacion.agrupacion_id})}" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
+                                <a href="#" th:href="@{/agrupacion/borrar/{agrupacion_id}(agrupacion_id=${agrupacion.agrupacion_id})}" class="delete" title="Borrar" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                     </tbody>
