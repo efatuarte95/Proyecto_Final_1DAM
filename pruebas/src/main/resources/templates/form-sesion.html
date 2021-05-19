@@ -111,7 +111,7 @@
                         <h2><b>Registro de Sesiones COAC</b></h2>
                     </div>
                 </div>
-                <form method="POST" th:action="@{/nueva/submit}" th:object="${sesionForm}">
+                <form method="POST" th:action="@{nueva/submit}" th:object="${sesionForm}">
                     <div class="form-group col-8 offset-2">
                         <label for="selectTipoSesion">Tipo de Sesión</label>
                         <select th:field="*{tipoSesion}" class="form-control" id="selectTipoSesion" required>
