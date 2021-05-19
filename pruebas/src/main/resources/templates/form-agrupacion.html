@@ -56,7 +56,7 @@
     </style>
 </head>
 
-<body background="/img/telon.jpeg">
+<body>
 
     <nav class="navbar navbar-expand-md bg-falla navbar-dark">
         <div class="col-2">
@@ -125,11 +125,8 @@
                     <div class="form-group col-8 offset-2">
                         <label for="selectModalidad">Modalidad</label>
                         <select th:field="*{modalidad}" class="form-control" id="selectModalidad" required>
-                            <option th:value="''" th:text="--------">-------</option>
-                            <option th:value="'Comparsa'" th:text="Comparsa" >Comparsa</option>
-                            <option th:value="'Chirigota'" th:text="Chirigota">Chirigota</option>
-                            <option th:value="'Cuarteto'" th:text="Cuarteto">Cuarteto</option>
-                            <option th:value="'Coro'" th:text="Coro">Coro</option>
+                            <option th:value="">---------</option>
+                            <option th:each="modalidad : ${modalidades}" th:value="${modalidad}" th:text="${modalidad}"></option>
                         </select>
                     </div>
                     <div class="form-group col-8 offset-2">
@@ -142,7 +139,7 @@
                     </div>
                 </form>
                 <div class="col-2 offset-10">
-                    <button type="button" class="btn btn-info add-new"><i class="fa fa-save"></i>Guardar</button>
+                    <button type="submit" class="btn btn-info add-new"><i class="fa fa-save"></i>Guardar</button>
                 </div>
             </div>
         </div>

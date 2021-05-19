@@ -25,8 +25,8 @@ public class AgrupacionServicio extends ServicioBase<Agrupacion, Long, Agrupacio
 		return repositorio.findTop20ByModalidadOrderByPuntosDesc(modalidad);
 	}
 	
-	public List<Agrupacion> mostrarAgrupacionesModalidad(Modalidad modalidad) {
-		return repositorio.findByModalidad(modalidad);
+	public List<Agrupacion> todasLasAgrupacionesDeUnaModalidad(Modalidad modalidad) {
+		return repositorio.findByModalidadOrderByNombreAsc(modalidad);
 	}
 	
 	public List<Agrupacion> busquedaPorNombre(String nombre) {

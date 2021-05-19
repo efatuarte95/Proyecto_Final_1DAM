@@ -51,7 +51,7 @@ public class ControladorAgrupacion {
 			agrupacionesResult = servicio.busquedaPorNombre(consulta.get());
 		model.addAttribute("agrupacionesConsulta", agrupacionesResult);
 		
-		model.addAttribute("agrupaciones", servicio.mostrarAgrupacionesModalidad(modalidad));
+		model.addAttribute("agrupaciones", servicio.todasLasAgrupacionesDeUnaModalidad(modalidad));
 		model.addAttribute("modalidad", modalidad);
 		return "list-agrupacion";
 	}
@@ -63,7 +63,7 @@ public class ControladorAgrupacion {
 	}
 
 	@PostMapping("/agrupacion/nueva/submit")
-	public String submitNuevaAgrupacion(@ModelAttribute("agrupacionForm") Agrupacion agrupacion, Model model) {
+	public String submitNuevaAgrupacion(@ModelAttribute("agrupacionForm") Agrupacion agrupacion) {
 			servicio.save(agrupacion);
 		return "redirect:/";
 	}
