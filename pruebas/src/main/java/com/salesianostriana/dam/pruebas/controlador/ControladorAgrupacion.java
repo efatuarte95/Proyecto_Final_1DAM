@@ -1,6 +1,7 @@
 package com.salesianostriana.dam.pruebas.controlador;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Controller;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.salesianostriana.dam.pruebas.modelo.Agrupacion;
 import com.salesianostriana.dam.pruebas.modelo.Modalidad;
@@ -27,13 +29,28 @@ public class ControladorAgrupacion {
 	private final SesionServicio sesionServicio;
 
 	@GetMapping("/agrupaciones")
-	public String mostrarAgrupaciones(Model model) {
-		model.addAttribute("agrupaciones", servicio.findAll());
+	public String mostrarAgrupaciones(@RequestParam("q") Optional<String> consulta, Model model) {
+		List<Agrupacion> agrupacionesResult;
+		
+		if(consulta.isEmpty())
+			agrupacionesResult = servicio.findAll();
+		else
+			agrupacionesResult = servicio.busquedaPorNombre(consulta.get());
+		
+		model.addAttribute("agrupaciones", agrupacionesResult);
 		return "agrupacion";
 	}
 
 	@GetMapping("/agrupaciones/{modalidad}")
-	public String listarAgrupacionesController(@PathVariable("modalidad") Modalidad modalidad, Model model) {		
+	public String listarAgrupacionesController(@RequestParam("q") Optional<String> consulta, @PathVariable("modalidad") Modalidad modalidad, Model model) {		
+		List<Agrupacion> agrupacionesResult;
+		
+		if(consulta.isEmpty())
+			agrupacionesResult = servicio.findAll();
+		else
+			agrupacionesResult = servicio.busquedaPorNombre(consulta.get());
+		model.addAttribute("agrupacionesConsulta", agrupacionesResult);
+		
 		model.addAttribute("agrupaciones", servicio.mostrarAgrupacionesModalidad(modalidad));
 		model.addAttribute("modalidad", modalidad);
 		return "list-agrupacion";
@@ -86,16 +103,25 @@ public class ControladorAgrupacion {
 	}
 
 	@GetMapping("/clasificacion/{modalidad}")
-	public String mostrarPuntosController(@PathVariable("modalidad") Modalidad modalidad, Model model) {
+	public String mostrarPuntosController(@RequestParam("q") Optional<String> consulta, @PathVariable("modalidad") Modalidad modalidad, Model model) {
 		List<Agrupacion> agrupaciones = servicio.mostrarMejoresAgrupaciones(modalidad);
+		List<Agrupacion> agrupacionesResult;
+		
 		if (agrupaciones != null) {
 			model.addAttribute("agrupacionClasificacion", agrupaciones);
 			model.addAttribute("modalidad", modalidad);
 			return "clasificacion";
 		}
+		
+		if(consulta.isEmpty())
+			agrupacionesResult = servicio.findAll();
+		else
+			agrupacionesResult = servicio.busquedaPorNombre(consulta.get());
+		model.addAttribute("agrupacionesConsulta", agrupacionesResult);
+		
 		return "redirect:/";
 	}
-	
+		
 	@ModelAttribute("tipoSesiones")
 	public List<TipoSesion> listartipoSesiones() {
 		List<Sesion> tipoSesiones = sesionServicio.findAll();

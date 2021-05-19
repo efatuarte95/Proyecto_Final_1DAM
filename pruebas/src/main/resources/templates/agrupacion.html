@@ -21,25 +21,6 @@
     <script>
         $(document).ready(function() {
             $('[data-toggle="tooltip"]').tooltip();
-            var actions = $("table td:last-child").html();
-            // Edit row on edit button click
-            $(document).on("click", ".edit", function() {
-                $(this).parents("tr").find("td:not(:last-child)").each(function() {
-                    $(this).html('<input type="text" class="form-control" value="' + $(this).text() + '">');
-                });
-                $(this).parents("tr").find(".add, .edit").toggle();
-                $(".add-new").attr("disabled", "disabled");
-            });
-            // Delete row on delete button click
-            $(document).on("click", ".delete", function() {
-                $(this).parents("tr").remove();
-                $(".add-new").removeAttr("disabled");
-            });
-        });
-    </script>
-    <script>
-        $(document).ready(function() {
-            $('[data-toggle="tooltip"]').tooltip();
         });
     </script>
 </head>
@@ -107,7 +88,7 @@
                         <div class="col-4">
                             <div class="search-box">
                                 <i class="fa fa-search"></i>
-                                <input type="text" class="form-control" placeholder="Buscar&hellip;">
+                                <input type="text" class="form-control" name="q" th:value="${param.q}" placeholder="Buscar..." onchange="window.location.href='http://localhost:9000/agrupaciones/?q=' + this.value" />
                             </div>
                         </div>
                         <div class="col-2">

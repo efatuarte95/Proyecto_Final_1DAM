@@ -88,7 +88,7 @@
                         <div class="col-4">
                             <div class="search-box">
                                 <i class="fa fa-search"></i>
-                                <input type="text" class="form-control" placeholder="Buscar&hellip;">
+                                <input type="text" class="form-control" name="q" th:value="${param.q}" placeholder="Buscar..." onchange="window.location.href='http://localhost:9000/?q=' + this.value" />
                             </div>
                         </div>
                         <div class="col-2">
@@ -113,7 +113,7 @@
                             <td th:text="${agrupacion.nombre}"></td>
                             <td th:text="${agrupacion.director}"></td>
                             <td th:text="${agrupacion.procedencia}"></td>
-                            <td th:text="${agrupacion.puntos}"></td>
+                            <td style="width: 10%;" th:text="${agrupacion.puntos}"></td>
                             <td>
                                 <a href="#" th:href="@{/agrupacion/{nombre}(nombre=${agrupacion.nombre})}" class="save" title="Ver Agrupación" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
                                 <a href="#" th:href="@{/agrupacion/editar/{agrupacion_id}(agrupacion_id=${agrupacion.agrupacion_id})}" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>

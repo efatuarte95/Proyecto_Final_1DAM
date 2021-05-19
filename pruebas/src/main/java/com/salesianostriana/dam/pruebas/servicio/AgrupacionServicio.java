@@ -29,4 +29,8 @@ public class AgrupacionServicio extends ServicioBase<Agrupacion, Long, Agrupacio
 		return repositorio.findByModalidad(modalidad);
 	}
 	
+	public List<Agrupacion> busquedaPorNombre(String nombre) {
+		return repositorio.findByNombreContainsOrderByNombreAsc(nombre);
+	}
+	
 }
