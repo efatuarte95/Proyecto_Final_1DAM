@@ -57,17 +57,17 @@ public class ControladorSesion {
 	@PostMapping("/nueva/submit")
 	public String submitNuevaSesion(@ModelAttribute("sesionForm") Sesion sesion, Model model) {
 			servicio.save(sesion);
-		return "redirect:/";
+		return "redirect:/calendario";
 	}
 
 	@GetMapping("/editar/{sesion_id}")
 	public String editarSesion(@PathVariable("sesion_id") Long sesion_id, Model model) {
 		Sesion sesion = servicio.findById(sesion_id);
 		if (sesion != null) {
-			model.addAttribute("sesion", sesion);
+			model.addAttribute("sesionForm", sesion);
 			return "form-sesion";
 		} else {
-			return "redirect:/";
+			return "redirect:/calendario";
 		}
 	}
 	
@@ -85,7 +85,7 @@ public class ControladorSesion {
 			}
 			
 		} 
-		return "redirect:/";
+		return "redirect:/calendario";
 	}
 
 	@GetMapping("/{tipoSesion}/{sesion_id}")

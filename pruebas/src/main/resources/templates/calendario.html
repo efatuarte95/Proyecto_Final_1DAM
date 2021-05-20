@@ -99,8 +99,8 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Tipo</th>
-                            <th>Fecha<i class="fa fa-sort"></i></th>
+                            <th style="width: 15%;">Tipo de Sesión</th>
+                            <th style="width: 25%;">Fecha<i class="fa fa-sort"></i></th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -110,7 +110,7 @@
                             <td th:text="${sesion.tipoSesion}"></td>
                             <td th:text="${#temporals.format(sesion.fecha)}"></td>
                             <td>
-                                <a href="#" th:href="@{/{tipoSesion}(tipoSesion=${sesion.tipoSesion})/{id}(id=${sesion.sesion_id})}" class="ver" title="Ver Sesión" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
+                                <a href="#" th:href="@{/sesion/{tipoSesion}/{id}(tipoSesion=${sesion.tipoSesion}, id=${sesion.sesion_id})}" class="ver" title="Ver Sesión" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
                                 <a href="#" th:href="@{/sesion/editar/{id}(id=${sesion.sesion_id})}" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
                                 <a href="#" th:href="@{/sesion/borrar/{sesion_id}(sesion_id=${sesion.sesion_id})}" class="delete" title="Borrar" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
                             </td>

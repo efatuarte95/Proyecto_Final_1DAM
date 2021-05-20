@@ -112,10 +112,13 @@
                     </div>
                 </div>
                 <form method="POST" th:action="@{nueva/submit}" th:object="${sesionForm}">
+                	<div class="form-group col-8 offset-2">
+                        <input type="hidden" th:field="*{sesion_id}" class="form-control" id="id" placeholder="Id" required>
+                    </div>
                     <div class="form-group col-8 offset-2">
                         <label for="selectTipoSesion">Tipo de Sesión</label>
                         <select th:field="*{tipoSesion}" class="form-control" id="selectTipoSesion" required>
-                            <option th:value="''" th:text="--------">-------</option>
+                            <option th:value="-1" th:text="--------">-------</option>
                             <option th:value="'Preliminares'" th:text="Preliminares">Preliminares</option>
                             <option th:value="'Cuartos'" th:text="Cuartos">Cuartos</option>
                             <option th:value="'Semifinales'" th:text="Semifinales">Semifinales</option>

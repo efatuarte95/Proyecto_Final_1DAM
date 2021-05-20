@@ -85,34 +85,26 @@
                         <div class="col-6">
                             <h2>Sesión: <b th:text="${tipoSesion}"></b></h2>
                         </div>
-                        <div class="col-4 offset-2">
-                            <div class="search-box">
-                                <i class="fa fa-search"></i>
-                                <input type="text" class="form-control" placeholder="Buscar&hellip;">
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <table class="table table-striped table-hover table-bordered">
                     <thead>
                         <tr>
-                            <th>Modalidad</th>
-                            <th style="width: 25%">Nombre<i class="fa fa-sort"></i></th>
-                            <th style="width: 25%">Director</th>
-                            <th style="width: 15%">Procedencia</th>
-                            <th>Puntos<i class="fa fa-sort"></i></th>
-                            <th>Hora</th>
+                        	<th>Orden</th>
+                            <th style="width: 12">Modalidad</th>
+                            <th style="width: 20%">Nombre</th>
+                            <th style="width: 20%">Director</th>
+                            <th style="width: 12">Procedencia</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr th:each="agrupacion : ${agrupacionesSesion}">
+                            <td th:text="${agrupacionStat.count}"></td>
                             <td th:text="${agrupacion.modalidad}"></td>
                             <td th:text="${agrupacion.nombre}"></td>
                             <td th:text="${agrupacion.director}"></td>
                             <td th:text="${agrupacion.procedencia}"></td>
-                            <td th:text="${agrupacion.puntos}"></td>
-                            <td><input type="time" value="20:00" min="20:00" max="00:00" step="1800" class="form-control" id="hora" disabled/></td>
                             <td>
                                 <a href="#" th:href="@{/agrupacion/{id}(id=${agrupacion.agrupacion_id})}" class="ver" title="Ver Agrupación" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
                                 <a href="#" th:href="@{/agrupacion/editar/{agrupacion_id}(agrupacion_id=${agrupacion.agrupacion_id})}" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>

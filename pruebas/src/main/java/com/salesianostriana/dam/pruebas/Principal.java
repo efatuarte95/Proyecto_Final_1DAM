@@ -33,9 +33,9 @@ public class Principal {
 			new Sesion(TipoSesion.Preliminares, LocalDate.of(2021, Month.JANUARY, 23)),
 			new Sesion(TipoSesion.Preliminares, LocalDate.of(2021, Month.JANUARY, 24)),
 			new Sesion(TipoSesion.Preliminares, LocalDate.of(2021, Month.JANUARY, 25)),
-			new Sesion(TipoSesion.Cuartos, LocalDate.of(2021, Month.JANUARY, 30)),
 			new Sesion(TipoSesion.Cuartos, LocalDate.of(2021, Month.FEBRUARY, 01)),
-			new Sesion(TipoSesion.Cuartos, LocalDate.of(2021, Month.FEBRUARY, 02))
+			new Sesion(TipoSesion.Cuartos, LocalDate.of(2021, Month.FEBRUARY, 02)),
+			new Sesion(TipoSesion.Cuartos, LocalDate.of(2021, Month.FEBRUARY, 03))
 		);
 		
 		// Guardo las sesiones
