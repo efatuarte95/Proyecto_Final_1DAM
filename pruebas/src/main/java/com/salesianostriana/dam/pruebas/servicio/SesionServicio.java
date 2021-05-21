@@ -1,10 +1,6 @@
 package com.salesianostriana.dam.pruebas.servicio;
 
-import java.util.Optional;
-
 import org.springframework.stereotype.Service;
-
-import com.salesianostriana.dam.pruebas.modelo.Agrupacion;
 import com.salesianostriana.dam.pruebas.modelo.Sesion;
 import com.salesianostriana.dam.pruebas.repositorio.AgrupacionRepositorio;
 import com.salesianostriana.dam.pruebas.repositorio.SesionRepositorio;
@@ -20,13 +16,7 @@ public class SesionServicio extends ServicioBase<Sesion, Long, SesionRepositorio
 		this.agrupacionRepositorio = agrupacionRepositorio;
 	}
 
-	public long numAgrupacionesSesion(Sesion sesion) {
-		return agrupacionRepositorio.countBySesiones(sesion);
-	}
-	
-	public void agregarAgrupacionSesion(long sesion, long agrupacion) {
-		Optional<Agrupacion> a = agrupacionRepositorio.findById(sesion);
-		Optional<Sesion> s = repositorio.findById(agrupacion);
-		repositorio.save(s.get().addAgrupacion(a.get()));
+	public long numAgrupacionesSesion(long sesion_id) {
+		return agrupacionRepositorio.countBySesion(sesion_id);
 	}
 }

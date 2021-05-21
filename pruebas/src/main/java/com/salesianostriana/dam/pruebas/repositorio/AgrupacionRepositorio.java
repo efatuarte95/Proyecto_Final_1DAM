@@ -13,7 +13,7 @@ public interface AgrupacionRepositorio extends JpaRepository<Agrupacion, Long> {
 	public Agrupacion findByNombre(String nombre);	
 	public List<Agrupacion> findTop20ByModalidadOrderByPuntosDesc(Modalidad modalidad);
 	public List<Agrupacion> findByModalidadOrderByNombreAsc(Modalidad modalidad);
-	public long countBySesiones(Sesion sesion);
 	public List<Agrupacion> findByNombreContainsOrderByNombreAsc(String consulta);
-
+	public long countBySesion(long sesion_id);
+	public List<Agrupacion> findBySesion(Sesion sesion);
 }

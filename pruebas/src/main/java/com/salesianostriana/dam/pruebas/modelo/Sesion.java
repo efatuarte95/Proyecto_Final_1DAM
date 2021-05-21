@@ -1,22 +1,20 @@
 package com.salesianostriana.dam.pruebas.modelo;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Data
@@ -33,12 +31,10 @@ public class Sesion {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate fecha;
 
-	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(
-			joinColumns = @JoinColumn(name = "sesion_id"), 
-			inverseJoinColumns = @JoinColumn(name = "agrupacion_id")
-	)
-	private List<Agrupacion> agrupaciones = new ArrayList<>();
+	@EqualsAndHashCode.Exclude
+	@ToString.Exclude
+	@OneToMany(mappedBy="sesion")
+	private List<Agrupacion> agrupaciones;
 	
 	public Sesion(TipoSesion tipoSesion, LocalDate fecha) {
 		this.tipoSesion = tipoSesion;
@@ -53,15 +49,14 @@ public class Sesion {
 
 	/** MÉTODOS HELPERS **/
 
-	public Sesion addAgrupacion(Agrupacion a) {
-		agrupaciones.add(a);
-		a.getSesiones().add(this);
-		return this;
+	public void addAgrupacion(Agrupacion a) {
+		this.agrupaciones.add(a);
+		a.setSesion(this);
 	}
 
 	public void removeAgrupacion(Agrupacion a) {
-		agrupaciones.remove(a);
-		a.getSesiones().remove(this);
+		this.agrupaciones.remove(a);
+		a.setSesion(null);
 	}
 
 }

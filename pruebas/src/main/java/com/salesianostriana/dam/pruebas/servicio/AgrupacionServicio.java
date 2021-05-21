@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.salesianostriana.dam.pruebas.modelo.Agrupacion;
 import com.salesianostriana.dam.pruebas.modelo.Modalidad;
+import com.salesianostriana.dam.pruebas.modelo.Sesion;
 import com.salesianostriana.dam.pruebas.repositorio.AgrupacionRepositorio;
 import com.salesianostriana.dam.pruebas.servicio.base.ServicioBase;
 
@@ -30,6 +31,10 @@ public class AgrupacionServicio extends ServicioBase<Agrupacion, Long, Agrupacio
 	
 	public List<Agrupacion> busquedaPorNombre(String nombre) {
 		return repositorio.findByNombreContainsOrderByNombreAsc(nombre);
+	}
+	
+	public List<Agrupacion> listarAgrupacionesSesion(Sesion sesion) {
+		return repositorio.findBySesion(sesion);
 	}
 	
 }

@@ -1,9 +1,9 @@
 package com.salesianostriana.dam.pruebas.controlador;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,9 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import com.salesianostriana.dam.pruebas.modelo.Agrupacion;
-import com.salesianostriana.dam.pruebas.modelo.AgrupacionSesion;
 import com.salesianostriana.dam.pruebas.modelo.Modalidad;
 import com.salesianostriana.dam.pruebas.modelo.Sesion;
 import com.salesianostriana.dam.pruebas.modelo.TipoSesion;
@@ -21,21 +19,19 @@ import com.salesianostriana.dam.pruebas.servicio.AgrupacionServicio;
 import com.salesianostriana.dam.pruebas.servicio.SesionServicio;
 
 import lombok.RequiredArgsConstructor;
-
+/**
+ * En esta clase estableceremos las rutas relacionadas con las sesiones y los comportamientos que tendrá la aplicación en cada una de ellas
+ * @author Ernesto Fatuarte
+ * @version 1.0
+ */
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/sesion")
 public class ControladorSesion {
 
+	// Inyectamos ambos servicios
 	private final SesionServicio servicio;
 	private final AgrupacionServicio agrupacionServicio;
-
-	// Listar todas las sesiones
-	@GetMapping("/")
-	public String mostrarSesiones(Model model) {
-		model.addAttribute("sesiones", servicio.findAll());
-		return "list-sesion";
-	}
 
 	@GetMapping("/{tipoSesion}")
 	public String listarAgrupacionesSesionController(@PathVariable("tipoSesion") TipoSesion tipoSesion, Model model) {
@@ -78,7 +74,7 @@ public class ControladorSesion {
 		Sesion sesion = servicio.findById(sesion_id);
 		
 		if (sesion != null) {
-			if (servicio.numAgrupacionesSesion(sesion) == 0) {
+			if (servicio.numAgrupacionesSesion(sesion_id) == 0) {
 				servicio.delete(sesion);				
 			} else {
 			//Se ha agregado el parámetro error con valor true a la ruta	
@@ -89,26 +85,34 @@ public class ControladorSesion {
 		return "redirect:/calendario";
 	}
 
+	/**
+	 * En este método crearemos una lista de las agrupaciones que pertenen a la sesión seleccionada y mezclaremos sus elementos para crear una sesión
+	 * @param sesion_id El id de la sesion seleccionada
+	 * @param tipoSesion El tipo de la sesión seleccionada
+	 * @param model
+	 * @return Devolvemos la plantilla necesaria
+	 */
 	@GetMapping("/{tipoSesion}/{sesion_id}")
 	public String listarSesionController(@PathVariable("sesion_id") long sesion_id, @PathVariable("tipoSesion") TipoSesion tipoSesion, Model model) {
 		List<Agrupacion> lista = new ArrayList<>();
-		for (int i = 0; i < agrupacionServicio.findAll().size(); i++) {
-			for (int j = 0; j < agrupacionServicio.findAll().get(i).getSesiones().size(); j++) {
-				if(agrupacionServicio.findAll().get(i).getSesiones().get(j).getTipoSesion().equals(tipoSesion) && 
-						agrupacionServicio.findAll().get(i).getSesiones().get(j).getSesion_id() == sesion_id)
-					lista.add(agrupacionServicio.findAll().get(i));
-			}
-		}	
+		Sesion sesion = servicio.findById(sesion_id);
+		// Creo una lista auxiliar donde guardo las agrupaciones pertenecientes a la sesion encontrada
+		List<Agrupacion> listAux = agrupacionServicio.listarAgrupacionesSesion(sesion);
+		
+		// Mezclo los elementos
+		Collections.shuffle(listAux);
+		
+		// Convierto a lista el resultado anterior
+		lista = listAux.stream().collect(Collectors.toList());
+		
+		// Paso al modelo la información anterior
 		model.addAttribute("agrupacionesSesion", lista);
 		model.addAttribute("tipoSesion", tipoSesion);
 		return "sesion";
 	}
 	
 	@GetMapping("{tipoSesion}/{sesion_id}/nueva/agrupacion")
-	public String agregarAgrupacionASesion(@PathVariable("sesion_id") long sesion_id, @PathVariable("tipoSesion") TipoSesion tipoSesion, Model model, AgrupacionSesion as) {
-		servicio.agregarAgrupacionSesion(as.getAgrupacion_id(), as.getSesion_id());
-		
-		model.addAttribute("agrupacionSesion", new AgrupacionSesion());
+	public String agregarAgrupacionASesion(@PathVariable("sesion_id") long sesion_id, @PathVariable("tipoSesion") TipoSesion tipoSesion, Model model) {
 		Sesion sesion = servicio.findById(sesion_id);
 		if (sesion != null) {
 			model.addAttribute("agrupacionSesionForm", sesion);
