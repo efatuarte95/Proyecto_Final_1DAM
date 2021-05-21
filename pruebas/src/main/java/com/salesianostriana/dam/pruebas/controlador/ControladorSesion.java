@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.salesianostriana.dam.pruebas.modelo.Agrupacion;
+import com.salesianostriana.dam.pruebas.modelo.AgrupacionSesion;
 import com.salesianostriana.dam.pruebas.modelo.Modalidad;
 import com.salesianostriana.dam.pruebas.modelo.Sesion;
 import com.salesianostriana.dam.pruebas.modelo.TipoSesion;
@@ -89,7 +90,7 @@ public class ControladorSesion {
 	}
 
 	@GetMapping("/{tipoSesion}/{sesion_id}")
-	public String listarSesionController(@PathVariable("tipoSesion") TipoSesion tipoSesion, @PathVariable("sesion_id") long sesion_id, Model model) {
+	public String listarSesionController(@PathVariable("sesion_id") long sesion_id, @PathVariable("tipoSesion") TipoSesion tipoSesion, Model model) {
 		List<Agrupacion> lista = new ArrayList<>();
 		for (int i = 0; i < agrupacionServicio.findAll().size(); i++) {
 			for (int j = 0; j < agrupacionServicio.findAll().get(i).getSesiones().size(); j++) {
@@ -103,8 +104,10 @@ public class ControladorSesion {
 		return "sesion";
 	}
 	
-	@GetMapping("{id}/nueva/agrupacion")
-	public String agregarAgrupacionASesion(@PathVariable("sesion_id") long sesion_id, Model model) {
+	@GetMapping("{tipoSesion}/{sesion_id}/nueva/agrupacion")
+	public String agregarAgrupacionASesion(@PathVariable("sesion_id") long sesion_id, @PathVariable("tipoSesion") TipoSesion tipoSesion, Model model, AgrupacionSesion as) {
+		
+		model.addAttribute("agrupacionSesion", new AgrupacionSesion());
 		Sesion sesion = servicio.findById(sesion_id);
 		if (sesion != null) {
 			model.addAttribute("agrupacionSesionForm", sesion);
@@ -118,7 +121,7 @@ public class ControladorSesion {
 	
 	@PostMapping("/nueva/agrupacion/submit")
 	public String submitNuevaAgrupacionSesion(@ModelAttribute("agrupacionSesionForm") Sesion sesion, Model model) {
-			servicio.save(sesion);
+			//sesion.addAgrupacion();
 		return "redirect:/calendario";
 	}
 

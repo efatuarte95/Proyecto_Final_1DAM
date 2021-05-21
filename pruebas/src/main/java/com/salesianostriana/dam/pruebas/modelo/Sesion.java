@@ -53,9 +53,10 @@ public class Sesion {
 
 	/** MÉTODOS HELPERS **/
 
-	public void addAgrupacion(Agrupacion a) {
+	public Sesion addAgrupacion(Agrupacion a) {
 		agrupaciones.add(a);
 		a.getSesiones().add(this);
+		return this;
 	}
 
 	public void removeAgrupacion(Agrupacion a) {

@@ -42,7 +42,7 @@
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">COAC</a>
                     <div class="dropdown-menu">
                         <a th:each="sesion : ${tipoSesiones}">
-                            <a class="dropdown-item" href="#" th:href="@{/sesion/{nombre_sesion}(nombre_sesion=${sesion})}" th:text="${#strings.capitalize(sesion)}">Sesion</a>
+                            <a class="dropdown-item" href="#" th:href="@{/sesion/{nombre_sesion}(nombre_sesion=${sesion})}" th:text="${#strings.capitalize(sesion)}">Sesión</a>
                         </a>
                     </div>
                 </li>
@@ -84,9 +84,6 @@
                     <div class="row">
                         <div class="col-6">
                             <h2>Sesión: <b th:text="${tipoSesion}"></b></h2>
-                        </div>
-                        <div class="col-2 offset-4">
-                            <a href="#" th:href="@{/sesion/{id}(id=${sesion.sesion_id})/nueva/agrupacion}"><button class="btn btn-info add-new"><i class="fa fa-plus"></i>Añadir</button></a>
                         </div>
                     </div>
                 </div>

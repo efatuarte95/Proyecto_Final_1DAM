@@ -9,7 +9,6 @@ import com.salesianostriana.dam.pruebas.modelo.Modalidad;
 import com.salesianostriana.dam.pruebas.repositorio.AgrupacionRepositorio;
 import com.salesianostriana.dam.pruebas.servicio.base.ServicioBase;
 
-
 @Service
 public class AgrupacionServicio extends ServicioBase<Agrupacion, Long, AgrupacionRepositorio>{
 	
