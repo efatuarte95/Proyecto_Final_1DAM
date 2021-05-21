@@ -103,13 +103,24 @@ public class ControladorSesion {
 		return "sesion";
 	}
 	
-//	public void agregarAgrupacionASesion(Agrupacion a, Sesion s) {
-//		if (a != null && s != null) 
-//			if(a.getAgrupacion_id() < 1)
-//				agrupacionServicio.save(a);
-//			s.addAgrupacion(a);
-//			agrupacionServicio.edit(a);	
-//	}
+	@GetMapping("{id}/nueva/agrupacion")
+	public String agregarAgrupacionASesion(@PathVariable("sesion_id") long sesion_id, Model model) {
+		Sesion sesion = servicio.findById(sesion_id);
+		if (sesion != null) {
+			model.addAttribute("agrupacionSesionForm", sesion);
+			model.addAttribute("agrupaciones", agrupacionServicio.findAll());
+			return "form-sesion-agrupacion";
+		} 
+		else {
+			return "redirect:/calendario";
+		}
+	}
+	
+	@PostMapping("/nueva/agrupacion/submit")
+	public String submitNuevaAgrupacionSesion(@ModelAttribute("agrupacionSesionForm") Sesion sesion, Model model) {
+			servicio.save(sesion);
+		return "redirect:/calendario";
+	}
 
 	@ModelAttribute("tipoSesiones")
 	public List<TipoSesion> listartipoSesiones() {

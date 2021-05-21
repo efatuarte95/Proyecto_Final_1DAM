@@ -85,14 +85,11 @@
                         <div class="col-6">
                             <h2>Modalidad: <b th:text="${modalidad} + s"></b></h2>
                         </div>
-                        <div class="col-4">
-                            <div class="search-box">
-                                <i class="fa fa-search"></i>
-                                <input type="text" class="form-control" name="q" th:value="${param.q}" placeholder="Buscar..." onchange="window.location.href='http://localhost:9000/agrupaciones/${modalidad}/?q=' + this.value" />
-                            </div>
+                        <div class="col-2 offset-2">
+                            <a href="#" th:href="@{/agrupaciones}"><button class="btn btn-info add-new"><i class="fa fa-eye"></i>Ver Todas</button></a>
                         </div>
                         <div class="col-2">
-                            <a href="#" th:href="@{/agrupaciones}"><button class="btn btn-info add-new"><i class="fa fa-eye"></i>Ver Todas</button></a>
+                            <a href="#" th:href="@{/agrupacion/nueva}"><button class="btn btn-info add-new"><i class="fa fa-plus"></i>Añadir</button></a>
                         </div>
                     </div>
                 </div>
