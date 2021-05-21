@@ -18,6 +18,7 @@ import com.salesianostriana.dam.pruebas.modelo.Modalidad;
 import com.salesianostriana.dam.pruebas.modelo.Sesion;
 import com.salesianostriana.dam.pruebas.modelo.TipoSesion;
 import com.salesianostriana.dam.pruebas.servicio.AgrupacionServicio;
+import com.salesianostriana.dam.pruebas.servicio.AgrupacionSesionServicio;
 import com.salesianostriana.dam.pruebas.servicio.SesionServicio;
 
 import lombok.RequiredArgsConstructor;
@@ -29,6 +30,7 @@ public class ControladorSesion {
 
 	private final SesionServicio servicio;
 	private final AgrupacionServicio agrupacionServicio;
+	private final AgrupacionSesionServicio agrSesionServicio;
 
 	// Listar todas las sesiones
 	@GetMapping("/")
@@ -106,7 +108,7 @@ public class ControladorSesion {
 	
 	@GetMapping("{tipoSesion}/{sesion_id}/nueva/agrupacion")
 	public String agregarAgrupacionASesion(@PathVariable("sesion_id") long sesion_id, @PathVariable("tipoSesion") TipoSesion tipoSesion, Model model, AgrupacionSesion as) {
-		
+		agrSesionServicio.agregarAgrupacionSesion(as.getAgrupacion_id(), as.getSesion_id());
 		model.addAttribute("agrupacionSesion", new AgrupacionSesion());
 		Sesion sesion = servicio.findById(sesion_id);
 		if (sesion != null) {
