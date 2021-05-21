@@ -30,7 +30,7 @@ public class AgrupacionServicio extends ServicioBase<Agrupacion, Long, Agrupacio
 	}
 	
 	public List<Agrupacion> busquedaPorNombre(String nombre) {
-		return repositorio.findByNombreContainsOrderByNombreAsc(nombre);
+		return repositorio.findByNombreContainsIgnoreCaseOrderByNombreAsc(nombre);
 	}
 	
 	public List<Agrupacion> listarAgrupacionesSesion(Sesion sesion) {

@@ -69,7 +69,7 @@ public class ControladorSesion {
 	}
 	
 	@GetMapping("/borrar/{sesion_id}")
-	public String borrarSesion(@PathVariable("sesion_id") Long sesion_id, Model model) {
+	public String borrarSesion(@PathVariable("sesion_id") long sesion_id, Model model) {
 		
 		Sesion sesion = servicio.findById(sesion_id);
 		
@@ -108,6 +108,7 @@ public class ControladorSesion {
 		// Paso al modelo la información anterior
 		model.addAttribute("agrupacionesSesion", lista);
 		model.addAttribute("tipoSesion", tipoSesion);
+		model.addAttribute("fecha", sesion.getFecha());
 		return "sesion";
 	}
 	
@@ -130,6 +131,34 @@ public class ControladorSesion {
 		return "redirect:/calendario";
 	}
 
+	/**
+	 * El siguiente método sirve para editar una agrupación
+	 * @param agrupacion_id El id de la agrupacion que queremos editar
+	 * @param model
+	 * @return Devuelve el formulario de una agrupación con sus campos rellenos
+	 */
+	@GetMapping("/agrupacion/editar/{agrupacion_id}")
+	public String editarAgrupacion(@PathVariable("agrupacion_id") Long agrupacion_id, Model model) {
+		Agrupacion agrupacion = agrupacionServicio.findById(agrupacion_id);
+		if (agrupacion != null) {
+			model.addAttribute("agrupacionForm", agrupacion);
+			model.addAttribute("sesiones", servicio.findAll());
+			return "form-agrupacionPuntos";
+		} else
+			return "redirect:/agrupaciones";
+	}
+	
+	/**
+	 * El siguiente método sirve para guardar la nueva agrupacion en la base de datos
+	 * @param agrupacion la agrupación que se ha creado
+	 * @return Nos redirige al listado de agrupaciones
+	 */
+	@PostMapping("/agrupacion/nueva/submit")
+	public String submitNuevaAgrupacion(@ModelAttribute("agrupacionForm") Agrupacion agrupacion) {
+			agrupacionServicio.save(agrupacion);
+		return "redirect:/agrupaciones";
+	}
+	
 	@ModelAttribute("tipoSesiones")
 	public List<TipoSesion> listartipoSesiones() {
 		List<Sesion> tipoSesiones = servicio.findAll();

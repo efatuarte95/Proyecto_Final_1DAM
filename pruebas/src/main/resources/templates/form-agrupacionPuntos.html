@@ -12,16 +12,50 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet">
+
     <style>
         body {
-            color: #566787;
-            background: #730707;
+            color: #730707;
         }
         
-        table.table td a.eye {
-            color: #003AA7;
+        .table-wrapper {
+            min-width: 100%;
+            background: white;
+            padding: 5% 3% 13% 0%;
+            box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+        }
+        
+        .add-new {
+            background-color: #730707;
+            border-color: #730707;
+            float: right;
+            height: 2.7em;
+            font-weight: bold;
+            font-size: 14px;
+            text-shadow: none;
+            min-width: 120px;
+            border-radius: 50px;
+            margin-top: 20%;
+        }
+        
+        .add-new i {
+            margin-left: -3px;
+            margin-right: 6px;
+        }
+        
+        .add-new:hover {
+            background-color: #730707;
+            border-color: #730707;
+        }
+        
+        .sub-footer {
+            margin-top: 4.5% !important;
+            background: #AF7840;
+            padding: 0% 0%;
         }
     </style>
+    <script>
+    </script>
 </head>
 
 <body>
@@ -75,56 +109,41 @@
         <div class="col-1 offset-1" style="margin-left: 5%;"><a href="#">Acceder<i class="fa fa-sign-in" style="margin-left: 6%" aria-hidden="true"></i></a></div>
     </nav>
 
-    <div class="jumbotron text-center">
-        <h1>Bienvenido al Gran Teatro Falla</h1>
-        <p class="text-secondary">Comprueba qué agrupaciones cantan en cada sesion del COAC.</p>
-    </div>
-    <div class="alert alert-warning alert-dismissible" role="alert" th:if="${param.error}">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-		</button>
-        <span>¡No se puede borrar una sesión que tiene asociadas agrupaciones!</span>
-    </div>
     <div class="container">
         <div class="table-responsive">
             <div class="table-wrapper">
-                <div class="table-title">
-                    <div class="row">
-                        <div class="col-6">
-                            <h2>Sesiones de <b th:text="${tipoSesion}"></b></h2>
-                        </div>
-                        <div class="col-3 offset-3">
-                            <a href="#" th:href="@{nueva}"><button class="btn btn-info add-new"><i class="fa fa-plus"></i>Añadir</button></a>
-                        </div>
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h2><b>Registro de Agrupaciones COAC</b></h2>
                     </div>
                 </div>
-                <table class="table table-striped table-hover table-bordered">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th style="width: 20%;">Tipo de Sesión</th>
-                            <th style="width: 25%;">Fecha<i class="fa fa-sort"></i></th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr th:each="sesion : ${sesiones}">
-                            <td th:text="${sesionStat.count}"></td>
-                            <td th:text="${sesion.tipoSesion}"></td>
-                            <td th:text="${#temporals.format(sesion.fecha)}"></td>
-                            <td>
-                                <a href="#" th:href="@{/sesion/{tipoSesion}/{id}(tipoSesion=${sesion.tipoSesion}, id=${sesion.sesion_id})}" class="ver" title="Ver Sesión" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
-                                <a href="#" th:href="@{/sesion/editar/{id}(id=${sesion.sesion_id})}" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
-                                <a href="#" th:href="@{/sesion/borrar/{sesion_id}(sesion_id=${sesion.sesion_id})}" class="delete" title="Borrar" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
-                                <a href="#" th:href="@{/sesion/{tipoSesion}/{id}/nueva/agrupacion(tipoSesion=${sesion.tipoSesion}, id=${sesion.sesion_id})}" title="Añadir Agrupaciones" data-toggle="tooltip"><i class="fa fa-users"></i></a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <form method="POST" th:action="@{/sesion/agrupacion/nueva/submit}" th:object="${agrupacionForm}">
+                    <div class="form-group col-8 offset-2">
+                        <input type="hidden" th:field="*{agrupacion_id}" class="form-control" id="id" placeholder="Id" required>
+                    </div>
+                    <div class="form-group col-8 offset-2">
+                        <label for="name">Nombre</label>
+                        <input disabled type="text" th:field="*{nombre}" class="form-control" id="name" placeholder="Nombre" required>
+                    </div>
+                    <div class="form-group col-8 offset-2">
+                        <label for="director">Director</label>
+                        <input disabled type="text" th:field="*{director}" class="form-control" id="director" placeholder="Director" required>
+                    </div>
+                    <div class="form-group col-8 offset-2">
+                        <label for="procedencia">Provincia</label>
+                        <input disabled type="text" th:field="*{procedencia}" class="form-control" id="provincia" placeholder="Provincia" required>
+                    </div>
+                    <div class="form-group col-8 offset-2">
+                        <label for="puntos">Puntos</label>
+                        <input type="number" th:field="*{puntos}" class="form-control" id="puntos" placeholder="Puntos" required>
+                    </div>
+                    <div class="col-2 offset-10">
+                        <button type="submit" class="btn btn-info add-new"><i class="fa fa-save"></i>Guardar</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-
     <footer class="main-footer bg-falla">
         <div class="sub-footer fl-wrap">
             <div class="container-fluid">

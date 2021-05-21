@@ -115,7 +115,7 @@
                         <h2><b>Registro de Agrupaciones COAC</b></h2>
                     </div>
                 </div>
-                <form method="POST" th:action="@{/sesion/nueva/agrupacion/submit}" th:object="${agrupacionSesionForm}">
+                <form method="POST" th:action="@{/nueva/agrupacion/submit}" th:object="${agrupacionSesionForm}">
                     <div class="form-group col-8 offset-2">
                         <input type="hidden" th:field="*{sesion_id}" class="form-control" id="id" placeholder="Id" required>
                     </div>

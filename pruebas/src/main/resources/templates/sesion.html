@@ -85,8 +85,11 @@
             <div class="table-wrapper">
                 <div class="table-title">
                     <div class="row">
-                        <div class="col-6">
-                            <h2>Sesión: <b th:text="${tipoSesion}"></b></h2>
+                        <div class="col-4">
+                            <h2>Sesión: <span th:text="${tipoSesion}"></span></h2>
+                        </div>
+                        <div class="col-4 offset-4">
+                            <h2 style="float: right;">Fecha: <span th:text="${#temporals.format(fecha)}"></span></h2>
                         </div>
                     </div>
                 </div>
@@ -94,10 +97,10 @@
                     <thead>
                         <tr>
                             <th>Orden</th>
-                            <th style="width: 12">Modalidad</th>
-                            <th style="width: 20%">Nombre</th>
-                            <th style="width: 20%">Director</th>
-                            <th style="width: 12">Procedencia</th>
+                            <th style="width: 12%">Modalidad</th>
+                            <th style="width: 30%">Nombre</th>
+                            <th style="width: 26%">Director</th>
+                            <th style="width: 12%">Procedencia</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -110,7 +113,7 @@
                             <td th:text="${agrupacion.procedencia}"></td>
                             <td>
                                 <a href="#" th:href="@{/agrupacion/{id}(id=${agrupacion.agrupacion_id})}" class="ver" title="Ver Agrupación" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
-                                <a href="#" th:href="@{/agrupacion/editar/{agrupacion_id}(agrupacion_id=${agrupacion.agrupacion_id})}" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
+                                <a href="#" th:href="@{/sesion/agrupacion/editar/{agrupacion_id}(agrupacion_id=${agrupacion.agrupacion_id})}" class="edit" title="Dar Puntos" data-toggle="tooltip"><i class="fa fa-star"></i></a>
                             </td>
                         </tr>
                     </tbody>
