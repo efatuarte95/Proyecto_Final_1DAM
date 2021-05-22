@@ -33,6 +33,12 @@ public class ControladorSesion {
 	private final SesionServicio servicio;
 	private final AgrupacionServicio agrupacionServicio;
 
+	/**
+	 * El siguiente método nos muestra las sesiones de un tipo de sesión concreta
+	 * @param tipoSesion El tipo de sesión seleccionada
+	 * @param model
+	 * @return Devuelve la plantilla de listado de sesiones
+	 */
 	@GetMapping("/{tipoSesion}")
 	public String listarAgrupacionesSesionController(@PathVariable("tipoSesion") TipoSesion tipoSesion, Model model) {
 		List<Sesion> lista = new ArrayList<>();
@@ -45,18 +51,35 @@ public class ControladorSesion {
 		return "list-sesion";
 	}
 
+	/**
+	 * El siguiente método sirve para añadir una nueva sesión
+	 * @param model
+	 * @return Devuelve el formulario de sesion
+	 */ 
 	@GetMapping("/nueva")
 	public String nuevaSesion(Model model) {
 		model.addAttribute("sesionForm", new Sesion());
 		return "form-sesion";
 	}
 
+	/**
+	 * El siguiente método sirve para enviar los datos del formulario de sesión
+	 * @param sesion La sesión que hemos creado
+	 * @param model
+	 * @return Se nos redirige a la lista de sesiones
+	 */
 	@PostMapping("/nueva/submit")
 	public String submitNuevaSesion(@ModelAttribute("sesionForm") Sesion sesion, Model model) {
 			servicio.save(sesion);
 		return "redirect:/calendario";
 	}
 
+	/**
+	 * El siguiente método sirve para editar una sesión concreta
+	 * @param sesion_id El id de la sesión que queremos editar
+	 * @param model
+	 * @return Devuelve el formulario de sesion con los datos rellenos
+	 */
 	@GetMapping("/editar/{sesion_id}")
 	public String editarSesion(@PathVariable("sesion_id") Long sesion_id, Model model) {
 		Sesion sesion = servicio.findById(sesion_id);
@@ -68,6 +91,12 @@ public class ControladorSesion {
 		}
 	}
 	
+	/**
+	 * El siguiente método sirve para borrar una sesión, comprobando previamente si tiene agrupaciones asociadas
+	 * @param sesion_id El id de la sesión que queremos borrar
+	 * @param model
+	 * @return Nos redirige a la lista de sesiones
+	 */
 	@GetMapping("/borrar/{sesion_id}")
 	public String borrarSesion(@PathVariable("sesion_id") long sesion_id, Model model) {
 		
@@ -112,6 +141,13 @@ public class ControladorSesion {
 		return "sesion";
 	}
 	
+	/**
+	 * El siguiente método nos permite añadir una agrupación a la sesión indicada
+	 * @param sesion_id El id de la sesión
+	 * @param tipoSesion El tipo de sesión
+	 * @param model
+	 * @return Nos devuelve la plantilla del formulario y si no existe la sesión nos lleva al listado de sesiones
+	 */
 	@GetMapping("{tipoSesion}/{sesion_id}/nueva/agrupacion")
 	public String agregarAgrupacionASesion(@PathVariable("sesion_id") long sesion_id, @PathVariable("tipoSesion") TipoSesion tipoSesion, Model model) {
 		Sesion sesion = servicio.findById(sesion_id);
@@ -125,6 +161,12 @@ public class ControladorSesion {
 		}
 	}
 	
+	/**
+	 * El siguiente método sirve para guardar los datos que provienen del formulario
+	 * @param sesion La sesión la cual hemos rellenado 
+	 * @param model
+	 * @return Nos redirige al listado de sesiones
+	 */
 	@PostMapping("/nueva/agrupacion/submit")
 	public String submitNuevaAgrupacionSesion(@ModelAttribute("agrupacionSesionForm") Sesion sesion, Model model) {
 			//sesion.addAgrupacion();
@@ -159,6 +201,10 @@ public class ControladorSesion {
 		return "redirect:/agrupaciones";
 	}
 	
+	/**
+	 * Con este método guardamos en el modelo los tipos de sesiones guardadas
+	 * @return Una lista con los tipos de las sesiones 
+	 */
 	@ModelAttribute("tipoSesiones")
 	public List<TipoSesion> listartipoSesiones() {
 		List<Sesion> tipoSesiones = servicio.findAll();
@@ -168,6 +214,10 @@ public class ControladorSesion {
 				.collect(Collectors.toList());
 	}
 	
+	/**
+	 * Creamos una lista con las modalidades de agrupaciones que existen y lo añadimos al modelo
+	 * @return Una lista con las modalidades
+	 */
 	@ModelAttribute("modalidades")
 	public List<Modalidad> listarNombreModalidades() {
 		List<Agrupacion> nombreModalidad = agrupacionServicio.findAll();

@@ -107,6 +107,12 @@ public class ControladorAgrupacion {
 			return "redirect:/calendario";
 	}
 	
+	/**
+	 * El siguiente método sirve para borrar una agrupación
+	 * @param agrupacion_id El id de la agrupación que queremos borrar
+	 * @param model
+	 * @return Nos redirige a la lista de sesiones
+	 */
 	@GetMapping("/agrupacion/borrar/{agrupacion_id}")
 	public String borrarAgrupacion(@PathVariable("agrupacion_id") Long agrupacion_id, Model model) {
 		
@@ -129,6 +135,12 @@ public class ControladorAgrupacion {
 //		return "redirect:/";
 //	}
 	
+	/**
+	 * El siguiente método nos mostrará la información de una agrupación concreta
+	 * @param agrupacion_id El id de la agrupacion que queremos ver
+	 * @param model
+	 * @return Nos devuelve la plantilla con la información de la agrupación seleccionada
+	 */
 	@GetMapping("/agrupacion/{agrupacion_id}")
 	public String mostrarInfoAgrupacion(@PathVariable("agrupacion_id") Long agrupacion_id, Model model) {
 		Agrupacion agrupacion = servicio.findById(agrupacion_id);
@@ -139,26 +151,29 @@ public class ControladorAgrupacion {
 		return "redirect:/";
 	}
 
+	/**
+	 * El siguiente método sirve para ver las mejores agrupaciones de una modalidad concreta
+	 * @param modalidad La modalidad que estamos consultando
+	 * @param model
+	 * @return Nos devuelve la plantilla de clasificación
+	 */
 	@GetMapping("/clasificacion/{modalidad}")
-	public String mostrarPuntosController(@RequestParam("q") Optional<String> consulta, @PathVariable("modalidad") Modalidad modalidad, Model model) {
+	public String mostrarPuntosController(@PathVariable("modalidad") Modalidad modalidad, Model model) {
 		List<Agrupacion> agrupaciones = servicio.mostrarMejoresAgrupaciones(modalidad);
-		List<Agrupacion> agrupacionesResult;
 		
 		if (agrupaciones != null) {
 			model.addAttribute("agrupacionClasificacion", agrupaciones);
 			model.addAttribute("modalidad", modalidad);
 			return "clasificacion";
 		}
-		
-		if(consulta.isEmpty())
-			agrupacionesResult = servicio.findAll();
 		else
-			agrupacionesResult = servicio.busquedaPorNombre(consulta.get());
-		model.addAttribute("agrupacionesConsulta", agrupacionesResult);
-		
-		return "redirect:/";
+			return "redirect:/";
 	}
-		
+	
+	/**
+	 * Con este método guardamos en el modelo los tipos de sesiones guardadas
+	 * @return Una lista con los tipos de las sesiones 
+	 */
 	@ModelAttribute("tipoSesiones")
 	public List<TipoSesion> listartipoSesiones() {
 		List<Sesion> tipoSesiones = sesionServicio.findAll();
@@ -168,6 +183,10 @@ public class ControladorAgrupacion {
 				.collect(Collectors.toList());
 	}
 	
+	/**
+	 * Creamos una lista con las modalidades de agrupaciones que existen y lo añadimos al modelo
+	 * @return Una lista con las modalidades
+	 */
 	@ModelAttribute("modalidades")
 	public List<Modalidad> listarNombreModalidades() {
 		List<Agrupacion> nombreModalidad = servicio.findAll();

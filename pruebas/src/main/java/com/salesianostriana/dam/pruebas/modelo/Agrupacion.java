@@ -9,6 +9,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * En esta clase se crea la POJO de una agrupación
+ * @author Ernesto Fatuarte
+ *
+ */
 @Entity
 @Data
 @NoArgsConstructor
