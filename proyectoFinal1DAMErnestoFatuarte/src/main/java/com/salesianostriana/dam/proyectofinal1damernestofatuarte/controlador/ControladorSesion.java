@@ -142,66 +142,6 @@ public class ControladorSesion {
 	}
 	
 	/**
-	 * El siguiente método nos permite añadir una agrupación a la sesión indicada
-	 * @param sesion_id El id de la sesión
-	 * @param tipoSesion El tipo de sesión
-	 * @param model
-	 * @return Nos devuelve la plantilla del formulario y si no existe la sesión nos lleva al listado de sesiones
-	 */
-	@GetMapping("{tipoSesion}/{sesion_id}/nueva/agrupacion")
-	public String agregarAgrupacionASesion(@PathVariable("sesion_id") long sesion_id, @PathVariable("tipoSesion") TipoSesion tipoSesion, Model model) {
-		Sesion sesion = servicio.findById(sesion_id);
-		if (sesion != null) {
-			model.addAttribute("agrupacionSesionForm", sesion);
-			model.addAttribute("agrupaciones", agrupacionServicio.findAll());
-			return "form-sesion-agrupacion";
-		} 
-		else {
-			return "redirect:/calendario";
-		}
-	}
-	
-	/**
-	 * El siguiente método sirve para guardar los datos que provienen del formulario
-	 * @param sesion La sesión la cual hemos rellenado 
-	 * @param model
-	 * @return Nos redirige al listado de sesiones
-	 */
-	@PostMapping("/nueva/agrupacion/submit")
-	public String submitNuevaAgrupacionSesion(@ModelAttribute("agrupacionSesionForm") Sesion sesion, Model model) {
-			//sesion.addAgrupacion();
-		return "redirect:/calendario";
-	}
-
-	/**
-	 * El siguiente método sirve para editar una agrupación
-	 * @param agrupacion_id El id de la agrupacion que queremos editar
-	 * @param model
-	 * @return Devuelve el formulario de una agrupación con sus campos rellenos
-	 */
-	@GetMapping("/agrupacion/editar/{agrupacion_id}")
-	public String editarAgrupacion(@PathVariable("agrupacion_id") Long agrupacion_id, Model model) {
-		Agrupacion agrupacion = agrupacionServicio.findById(agrupacion_id);
-		if (agrupacion != null) {
-			model.addAttribute("agrupacionForm", agrupacion);
-			model.addAttribute("sesiones", servicio.findAll());
-			return "form-agrupacionPuntos";
-		} else
-			return "redirect:/agrupaciones";
-	}
-	
-	/**
-	 * El siguiente método sirve para guardar la nueva agrupacion en la base de datos
-	 * @param agrupacion la agrupación que se ha creado
-	 * @return Nos redirige al listado de agrupaciones
-	 */
-	@PostMapping("/agrupacion/nueva/submit")
-	public String submitNuevaAgrupacion(@ModelAttribute("agrupacionForm") Agrupacion agrupacion) {
-			agrupacionServicio.save(agrupacion);
-		return "redirect:/agrupaciones";
-	}
-	
-	/**
 	 * Con este método guardamos en el modelo los tipos de sesiones guardadas
 	 * @return Una lista con los tipos de las sesiones 
 	 */

@@ -144,6 +144,13 @@
                         <label for="imagen">Imagen</label>
                         <input type="url" th:field="*{imagen}" class="form-control" id="imagen" placeholder="Imagen: https://...">
                     </div>
+                    <div class="form-group col-8 offset-2">
+                        <label for="selectModalidad">Sesión</label>
+                        <select th:field="*{sesion}" class="form-control" id="selectSesion" required>
+                            <option th:value="-1">---------</option>
+                            <option th:each="sesion : ${sesiones}" th:value="${sesion.sesion_id}" th:text="'Sesión día ' + ${sesionStat.count} + ': ' + ${sesion.tipoSesion}"></option>
+                        </select>
+                    </div>
                     <div class="col-2 offset-10">
                         <button type="submit" class="btn btn-info add-new"><i class="fa fa-save"></i>Guardar</button>
                     </div>

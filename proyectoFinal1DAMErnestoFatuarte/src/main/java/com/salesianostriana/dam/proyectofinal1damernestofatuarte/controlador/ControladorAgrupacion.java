@@ -76,6 +76,7 @@ public class ControladorAgrupacion {
 	@GetMapping("/agrupacion/nueva")
 	public String nuevaAgrupacion(Model model) {
 		model.addAttribute("agrupacionForm", new Agrupacion());
+		model.addAttribute("sesiones", sesionServicio.findAll());
 		return "form-agrupacion";
 	}
 
@@ -89,13 +90,24 @@ public class ControladorAgrupacion {
 			servicio.save(agrupacion);
 		return "redirect:/agrupaciones";
 	}
-
+	
 	/**
 	 * El siguiente método sirve para editar una agrupación
 	 * @param agrupacion_id El id de la agrupacion que queremos editar
 	 * @param model
 	 * @return Devuelve el formulario de una agrupación con sus campos rellenos
 	 */
+	@GetMapping("/agrupacion/puntos/editar/{agrupacion_id}")
+	public String editarPuntosAgrupacion(@PathVariable("agrupacion_id") Long agrupacion_id, Model model) {
+		Agrupacion agrupacion = servicio.findById(agrupacion_id);
+		if (agrupacion != null) {
+			model.addAttribute("agrupacionForm", agrupacion);
+			model.addAttribute("sesiones", sesionServicio.findAll());
+			return "form-agrupacionPuntos";
+		} else
+			return "redirect:/calendario";
+	}
+	
 	@GetMapping("/agrupacion/editar/{agrupacion_id}")
 	public String editarAgrupacion(@PathVariable("agrupacion_id") Long agrupacion_id, Model model) {
 		Agrupacion agrupacion = servicio.findById(agrupacion_id);
