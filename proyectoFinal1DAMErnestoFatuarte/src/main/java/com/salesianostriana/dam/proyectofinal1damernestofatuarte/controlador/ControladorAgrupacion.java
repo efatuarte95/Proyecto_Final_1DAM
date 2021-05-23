@@ -97,16 +97,6 @@ public class ControladorAgrupacion {
 	 * @param model
 	 * @return Devuelve el formulario de una agrupación con sus campos rellenos
 	 */
-	@GetMapping("/agrupacion/puntos/editar/{agrupacion_id}")
-	public String editarPuntosAgrupacion(@PathVariable("agrupacion_id") Long agrupacion_id, Model model) {
-		Agrupacion agrupacion = servicio.findById(agrupacion_id);
-		if (agrupacion != null) {
-			model.addAttribute("agrupacionForm", agrupacion);
-			model.addAttribute("sesiones", sesionServicio.findAll());
-			return "form-agrupacionPuntos";
-		} else
-			return "redirect:/calendario";
-	}
 	
 	@GetMapping("/agrupacion/editar/{agrupacion_id}")
 	public String editarAgrupacion(@PathVariable("agrupacion_id") Long agrupacion_id, Model model) {
